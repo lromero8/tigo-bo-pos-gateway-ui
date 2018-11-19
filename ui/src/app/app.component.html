@@ -1,0 +1,19 @@
+<div class="app"  [ngClass]="settings.theme.skin" 
+                  [class.navbar-fixed]="settings.theme.navbarIsFixed"  
+                  [class.sidebar-fixed]="settings.theme.sidebarIsFixed"  
+                  [class.horizontal-menu]="settings.theme.menu == 'horizontal'" 
+                  [class.compact]="settings.theme.menuType == 'compact'" 
+                  [class.mini]="settings.theme.menuType == 'mini'" 
+                  [class.menu-hide]="!settings.theme.showMenu">
+    <div class="wrapper">
+        <spinner
+            [backgroundColor]="'#2D00DD'"
+            [spinner]="spinkit.skThreeBounce"
+            [debounceDelay]="100"
+            [minDuration]="300"
+            [filteredUrlPatterns]="['http://localhost:3001/parameters']">
+
+        </spinner>
+        <router-outlet></router-outlet>
+    </div> 
+</div>

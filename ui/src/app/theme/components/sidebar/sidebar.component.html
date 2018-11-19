@@ -1,0 +1,12 @@
+<div class="sidebar-outer">
+    <a class="logo d-flex align-items-center" routerLink="/" (click)="closeSubMenus()" *ngIf="settings.theme.sidebarIsFixed">
+    	<div class="row">
+    		<div class="col">
+    			<img class="mr-3" src="../assets/img/logo/logo_tigo_white.svg" height="25" >
+    		</div>
+    	</div>
+    	
+        <span class="start"> </span>
+    </a>
+    <app-vertical-menu [menuItems]="menuItems"></app-vertical-menu>    
+</div>

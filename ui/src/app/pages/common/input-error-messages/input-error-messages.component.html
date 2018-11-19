@@ -1,0 +1,13 @@
+<div class="text-danger small" *ngIf="frm.get(ipn).hasError('required') && frm.get(ipn).touched">
+  El campo es requerido
+</div>
+
+
+<div class="text-danger small" *ngIf="frm.get(ipn).hasError('minlength') && frm.get(ipn).touched">
+  Debe de contener al menos <!-- {{obj.ipn.minLength}} --> {{ obj[ipn].minLength }} 
+</div>
+
+
+<div class="text-danger small" *ngIf="frm.get(ipn).hasError('maxlength') && frm.get(ipn).touched">
+  Debe de contener al m&aacute;ximo <!-- {{obj.ipn.maxLength}}  --> {{ obj[ipn].maxLength }}
+</div>
