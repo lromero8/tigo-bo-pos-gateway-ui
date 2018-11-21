@@ -1,13 +1,65 @@
-<!--
-//
-//  
-//  
-//
-//  Created by -- on --
-//  Copyright © 2018 hightech-corp. All rights reserved.
-//
--->
+<div class="row">
+  <div class="col-md-12">
+    <app-payments-header></app-payments-header>
+  </div>
+  <div class="col-md-6">
+    <app-payments-contracts (parentSearchPaymentContracts)="searchPaymentContracts($event)"></app-payments-contracts>
+  </div>
+  <div class="col-md-6">
+    <app-payments-methods (parentSearchPaymentMethods)="searchPaymentMethods($event)"></app-payments-methods>
+  </div>
+</div>
 
-<p>
-  advance-payment works!
-</p>
+<ng-template #modalPaymentContract let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Buscar</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputEmail4">Numero de contacto:</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputEmail4">NUmero de identificación:</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputEmail4">Numero de cuenta:</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="closeModal()">Save</button>
+  </div>
+</ng-template>
+<ng-template #modalPaymentMethod let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Formas de Pago<</h4> <button type="button" class="close"
+        aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
