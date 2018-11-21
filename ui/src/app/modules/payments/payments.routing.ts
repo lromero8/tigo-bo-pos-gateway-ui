@@ -17,8 +17,10 @@ import { FcmHotbillingPaymentComponent } from './fcm-hotbilling-payment/fcm-hotb
 import { SmallRechargePaymentComponent } from './small-recharge-payment/small-recharge-payment.component';
 import { EpinRechargePaymentComponent } from './epin-recharge-payment/epin-recharge-payment.component';
 import { MoneyInputComponent } from './money-input/money-input.component';
+import { IndexComponent } from './index/index.component';
 
 export const routes: Routes = [
+    { path: '',  component: IndexComponent },
     { path: 'advancePayment',  component: AdvancePaymentComponent },
     { path: 'advancePaymentByLimit',  component: AdvancePaymentByLimitComponent  },
     { path: 'voucherOndemandPayment',  component: VoucherOndemandPaymentComponent  },

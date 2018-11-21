@@ -17,13 +17,14 @@ import { SmallRechargePaymentComponent } from './small-recharge-payment/small-re
 import { EpinRechargePaymentComponent } from './epin-recharge-payment/epin-recharge-payment.component';
 import { MoneyInputComponent } from './money-input/money-input.component';
 
-import { routes, routing } from './payments.routing'
+import { routes, routing } from './payments.routing';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   imports: [
     CommonModule,
     routing
   ],
-  declarations: [AdvancePaymentComponent, AdvancePaymentByLimitComponent, VoucherOndemandPaymentComponent, VoucherOndemandPaymentMassiveComponent, FcmHotbillingPaymentComponent, SmallRechargePaymentComponent, EpinRechargePaymentComponent, MoneyInputComponent]
+  declarations: [AdvancePaymentComponent, AdvancePaymentByLimitComponent, VoucherOndemandPaymentComponent, VoucherOndemandPaymentMassiveComponent, FcmHotbillingPaymentComponent, SmallRechargePaymentComponent, EpinRechargePaymentComponent, MoneyInputComponent, IndexComponent]
 })
 export class PaymentsModule { }
