@@ -18,33 +18,92 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="inputEmail4">Numero de contacto:</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="inputEmail4">NUmero de identificación:</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="inputEmail4">Numero de cuenta:</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-        </div>
+    <div class="row">
+      <div class="col-md-12">
+        <aw-wizard>
+          <aw-wizard-step stepTitle="Title of step 1">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-12">
+                    Ingrese la información para busqueda de facturas
+                  </div>
+                  <div class="col-md-12 mt-4">
+                    <div class="form-group row">
+                      <label class="col-md-3 offset-md-2 col-form-label" for="">Número de Contrato:</label>
+                      <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="N° de contrato">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 offset-md-2 col-form-label" for="">Número de Identificación:</label>
+                      <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="N° identificación del cliente">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 offset-md-2 col-form-label" for="">Número de Cuenta:</label>
+                      <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="N° de cuenta">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 text-center mt-4">
+                <button type="button" class="btn btn-success" awNextStep>Siguiente</button>
+              </div>
+            </div>
+          </aw-wizard-step>
+          <aw-wizard-step stepTitle="Title of step 2">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-12">
+                    Seleccione el o los contratos a pagar
+                  </div>
+                  <div class="col-md-12 mt-4">
+                      <div class="card">
+                          <div class="card-header card-title-custom">Contratos</div>
+                          <div class="card-body">
+                              <ul class="list-group">
+                                  <li class="list-group-item"><input type="checkbox"> Contrato 1</li>
+                                  <li class="list-group-item"><input type="checkbox"> Contrato 2</li>
+                                  <li class="list-group-item"><input type="checkbox"> Contrato 3</li>
+                                </ul>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 text-center mt-4">
+                <button type="button" class="btn btn-primary mr-4" awPreviousStep>Anterior</button>
+                <button type="button" class="btn btn-success" awNextStep>Siguiente</button>
+              </div>
+            </div>
+          </aw-wizard-step>
+          <aw-wizard-step stepTitle="Title of step 3">
+            <div class="row">
+              <div class="col md-12">
+
+              </div>
+              <div class="col-md-12 text-center mt-4">
+                <button type="button" class="btn btn-primary mr-4" awPreviousStep>Anterior</button>
+                <button type="button" class="btn btn-success" (click)="finishFunction()">Finalizar</button>
+              </div>
+            </div>
+          </aw-wizard-step>
+        </aw-wizard>
       </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="closeModal()">Save</button>
+    </div>
   </div>
 </ng-template>
 <ng-template #modalPaymentMethod let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Agregar Formas de Pago<</h4> <button type="button" class="close"
-        aria-label="Close" (click)="closeModal()">
-        <span aria-hidden="true">&times;</span>
-        </button>
+    <h4 class="modal-title" id="modal-basic-title">Agregar Formas de Pago</h4> <button type="button" class="close"
+      aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="modal-body">
     <form>

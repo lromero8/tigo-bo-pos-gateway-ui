@@ -5,6 +5,7 @@ import { UploadComponent } from './upload/upload.component'
 import { FilterPipe } from './pipes/filter.pipe'
 import { OnlyNumber } from './directives/onlynumber.directive';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { ArchwizardModule } from 'angular-archwizard';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
   ],
   declarations: [InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, ],
   exports:[InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, OwlDateTimeModule, 
-    OwlNativeDateTimeModule,]
+    OwlNativeDateTimeModule, ArchwizardModule]
 })
 export class UtilModule { }
