@@ -32,7 +32,7 @@ import { InputErrorMessagesComponent } from './@core/input-error-messages/input-
 
 import { PagesModule } from './pages/pages.module'
 import { environment } from '../environments/environment';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -67,7 +67,8 @@ import { environment } from '../environments/environment';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent]
 })

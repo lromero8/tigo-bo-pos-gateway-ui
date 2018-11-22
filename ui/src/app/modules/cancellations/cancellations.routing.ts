@@ -19,9 +19,10 @@ import { CancelMoneyInputComponent } from './cancel-money-input/cancel-money-inp
 import { CancelAdvanceByLimitComponent } from './cancel-advance-by-limit/cancel-advance-by-limit.component';
 import { CancelCyclicBillComponent } from './cancel-cyclic-bill/cancel-cyclic-bill.component';
 import { CancelCyclicPaymetnBillComponent } from './cancel-cyclic-paymetn-bill/cancel-cyclic-paymetn-bill.component';
-
+import { IndexComponent } from './index/index.component';
 
 export const routes: Routes = [
+    { path: '', component: IndexComponent },
     { path: 'cancelInAdvance',  component: CancelInAdvanceComponent  },
     { path: 'cancelFcmPayment',  component: CancelFcmPaymentComponent  },
     { path: 'cancelOndemand',  component: CancelOndemandComponent  },

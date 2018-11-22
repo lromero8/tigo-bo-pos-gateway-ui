@@ -18,14 +18,15 @@ import { CancelMoneyInputComponent } from './cancel-money-input/cancel-money-inp
 import { CancelAdvanceByLimitComponent } from './cancel-advance-by-limit/cancel-advance-by-limit.component';
 import { CancelCyclicBillComponent } from './cancel-cyclic-bill/cancel-cyclic-bill.component';
 import { CancelCyclicPaymetnBillComponent } from './cancel-cyclic-paymetn-bill/cancel-cyclic-paymetn-bill.component';
+import { IndexComponent } from './index/index.component';
 
-import { routes, routing } from './cancellations.routing'
+import { routes, routing } from './cancellations.routing';
 
 @NgModule({
   imports: [
     CommonModule,
     routing
   ],
-  declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent]
+  declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent, IndexComponent]
 })
 export class CancellationsModule { }
