@@ -22,10 +22,13 @@ import { IndexComponent } from './index/index.component';
 
 import { routes, routing } from './cancellations.routing';
 
+import { UtilModule } from 'app/pages/common/util.module';
+
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    UtilModule
   ],
   declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent, IndexComponent]
 })
