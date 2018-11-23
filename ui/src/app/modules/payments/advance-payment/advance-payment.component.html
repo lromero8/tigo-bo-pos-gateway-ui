@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-md-12">
         <aw-wizard>
-          <aw-wizard-step stepTitle="Title of step 1">
+          <aw-wizard-step stepTitle="Paso 1">
             <div class="row">
               <div class="col-md-12">
                 <div class="row">
@@ -51,11 +51,11 @@
                 </div>
               </div>
               <div class="col-md-12 text-center mt-4">
-                <button type="button" class="btn btn-success" awNextStep>Siguiente</button>
+                <button type="button" class="btn btn-success" awNextStep (click)="getContracts()">Siguiente</button>
               </div>
             </div>
           </aw-wizard-step>
-          <aw-wizard-step stepTitle="Title of step 2">
+          <aw-wizard-step stepTitle="Paso 2">
             <div class="row">
               <div class="col-md-12">
                 <div class="row">
@@ -66,31 +66,33 @@
                     <div class="card">
                       <div class="card-header card-title-custom">Contratos</div>
                       <div class="card-body">
-                        <ul class="list-group">
-                          <li class="list-group-item" *ngFor="let item of listContracts.contracts;let i = index">
-                            <div class="row">
-                              <div class="col-md-12">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="chkContract_{{i}}" data-toggle="collapse"
-                                    [attr.href]="'#divContract_' + i">
-                                  <label class="form-check-label" for="chkContract_{{i}}">
-                                    {{item.name}}
-                                  </label>
+                        <form [formGroup]="ContractForm">
+                          <ul class="list-group">
+                            <li class="list-group-item" *ngFor="let item of listContracts.contracts;let i = index">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="chkContract_{{i}}" data-toggle="collapse"
+                                      [attr.href]="'#divContract_' + i">
+                                    <label class="form-check-label" for="chkContract_{{i}}" (click)="checkContract()">
+                                      {{item.name}}
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 collapse mt-3" id="divContract_{{i}}">
+                                  <ul class="list-group">
+                                    <li class="list-group-item" *ngFor="let itemchild of item.invoices; let a = index">
+                                      <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="chkInvoice{{i}}_{{a}}">
+                                        <label for="chkInvoice{{i}}_{{a}}" class="form-check-label">{{itemchild.name}}</label>
+                                      </div>
+                                    </li>
+                                  </ul>
                                 </div>
                               </div>
-                              <div class="col-md-12 collapse mt-3" id="divContract_{{i}}">
-                                <ul class="list-group">
-                                  <li class="list-group-item" *ngFor="let itemchild of item.invoices; let a = index">
-                                    <div class="form-check">
-                                      <input type="checkbox" class="form-check-input" id="chkInvoice{{i}}_{{a}}">
-                                      <label for="chkInvoice{{i}}_{{a}}" class="form-check-label">{{itemchild.name}}</label>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
+                            </li>
+                          </ul>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -98,18 +100,7 @@
               </div>
               <div class="col-md-12 text-center mt-4">
                 <button type="button" class="btn btn-primary mr-4" awPreviousStep>Anterior</button>
-                <button type="button" class="btn btn-success" awNextStep>Siguiente</button>
-              </div>
-            </div>
-          </aw-wizard-step>
-          <aw-wizard-step stepTitle="Title of step 3">
-            <div class="row">
-              <div class="col md-12">
-
-              </div>
-              <div class="col-md-12 text-center mt-4">
-                <button type="button" class="btn btn-primary mr-4" awPreviousStep>Anterior</button>
-                <button type="button" class="btn btn-success" (click)="finishFunction()">Finalizar</button>
+                <button type="button" class="btn btn-success" (click)="finishContracts()">Finalizar</button>
               </div>
             </div>
           </aw-wizard-step>

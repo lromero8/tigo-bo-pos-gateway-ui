@@ -8,7 +8,8 @@
 
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-advance-payment',
@@ -18,8 +19,14 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AdvancePaymentComponent implements OnInit {
   private modalReference: any;
+  private ngModalOptions: NgbModalOptions = {
+    backdrop: 'static',
+    keyboard: false,
+    size: 'lg'
+  };
   @ViewChild('modalPaymentMethod') modalPaymentMethod: any;
   @ViewChild('modalPaymentContract') modalPaymentContract: any;
+  private ContractForm: FormGroup;
 
   private listContracts =
     {
@@ -61,17 +68,57 @@ export class AdvancePaymentComponent implements OnInit {
       ]
     };
 
-  constructor(private modalService: NgbModal) { }
-
-  ngOnInit() {
+  constructor(private modalService: NgbModal,
+    private fb: FormBuilder) {
+      this.ContractForm = this.fb.group({
+        items: this.fb.array([])
+      })
   }
 
+  ngOnInit() {
+    this.listContracts.contracts.forEach(element => {
+      this.addItemForm(element);
+    });
+
+    console.log(this.ContractForm.getRawValue())
+  }
+
+
+  addItemForm(item) {
+    let itemArray = this.ContractForm.get('items') as FormArray;
+    itemArray.push(this.createItem(item));
+    const lastIndex = itemArray.length - 1
+    const itemArrayInvoice = itemArray.at(lastIndex).get('invoices') as FormArray
+    for (let index = 0; index < item.invoices.length; index++) {
+      itemArrayInvoice.push(this.createItemInvoice(item.invoices[index], index));
+    }
+  }
+
+  createItem(item): FormGroup {
+    return this.fb.group({
+      id: item.id,
+      name: item.name,
+      invoices: this.fb.array([])
+    })
+  }
+
+  createItemInvoice(item, index): FormGroup {
+    return this.fb.group({
+      index: index,
+      id: item.id,
+      name: item.name,
+      status: false
+    })
+  }
+
+
+
   searchPaymentMethods() {
-    this.modalReference = this.modalService.open(this.modalPaymentMethod, { size: 'lg' });
+    this.modalReference = this.modalService.open(this.modalPaymentMethod, this.ngModalOptions);
   }
 
   searchPaymentContracts() {
-    this.modalReference = this.modalService.open(this.modalPaymentContract, { size: 'lg' });
+    this.modalReference = this.modalService.open(this.modalPaymentContract, this.ngModalOptions);
   }
 
   closeModal() {
@@ -84,6 +131,13 @@ export class AdvancePaymentComponent implements OnInit {
     // } else {
     //   element.checked = true;
     // }
+  }
+  getContracts() {
+
+  }
+
+  finishContracts() {
+
   }
 
 }
