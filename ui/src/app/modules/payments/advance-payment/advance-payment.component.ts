@@ -21,21 +21,69 @@ export class AdvancePaymentComponent implements OnInit {
   @ViewChild('modalPaymentMethod') modalPaymentMethod: any;
   @ViewChild('modalPaymentContract') modalPaymentContract: any;
 
+  private listContracts =
+    {
+      'contracts': [
+        {
+          id: 0,
+          name: 'Contract 1',
+          invoices: [
+            {
+              id: '001',
+              name: 'invoice 1'
+            },
+            {
+              id: '002',
+              name: 'invoice 2'
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: 'Contract 2',
+          invoices: [
+            {
+              id: '003',
+              name: 'invoice 1'
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: 'Contract 2',
+          invoices: [
+            {
+              id: '003',
+              name: 'invoice 1'
+            }
+          ]
+        }
+      ]
+    };
+
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
 
   searchPaymentMethods() {
-    this.modalReference = this.modalService.open(this.modalPaymentMethod, {size: 'lg'});
+    this.modalReference = this.modalService.open(this.modalPaymentMethod, { size: 'lg' });
   }
 
   searchPaymentContracts() {
-    this.modalReference = this.modalService.open(this.modalPaymentContract, {size: 'lg'});
+    this.modalReference = this.modalService.open(this.modalPaymentContract, { size: 'lg' });
   }
 
   closeModal() {
-      this.modalReference.close();
+    this.modalReference.close();
+  }
+
+  collapseCheckbox(element) {
+    // if (element.checked) {
+    //   element.checked = false;
+    // } else {
+    //   element.checked = true;
+    // }
   }
 
 }

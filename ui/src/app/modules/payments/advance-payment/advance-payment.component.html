@@ -25,10 +25,10 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="row">
-                  <div class="col-md-12">
-                    Ingrese la información para busqueda de facturas
+                  <div class="col-md-12 mt-1">
+                    <p class="font-weight-bold"> Ingrese la información para busqueda de facturas</p>
                   </div>
-                  <div class="col-md-12 mt-4">
+                  <div class="col-md-12 mt-3">
                     <div class="form-group row">
                       <label class="col-md-3 offset-md-2 col-form-label" for="">Número de Contrato:</label>
                       <div class="col-md-5">
@@ -59,20 +59,40 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="row">
-                  <div class="col-md-12">
-                    Seleccione el o los contratos a pagar
+                  <div class="col-md-12 mt-1">
+                    <p class="font-weight-bold"> Seleccione el o los contratos a pagar</p>
                   </div>
-                  <div class="col-md-12 mt-4">
-                      <div class="card">
-                          <div class="card-header card-title-custom">Contratos</div>
-                          <div class="card-body">
-                              <ul class="list-group">
-                                  <li class="list-group-item"><input type="checkbox"> Contrato 1</li>
-                                  <li class="list-group-item"><input type="checkbox"> Contrato 2</li>
-                                  <li class="list-group-item"><input type="checkbox"> Contrato 3</li>
+                  <div class="col-md-12 mt-3">
+                    <div class="card">
+                      <div class="card-header card-title-custom">Contratos</div>
+                      <div class="card-body">
+                        <ul class="list-group">
+                          <li class="list-group-item" *ngFor="let item of listContracts.contracts;let i = index">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="chkContract_{{i}}" data-toggle="collapse"
+                                    [attr.href]="'#divContract_' + i">
+                                  <label class="form-check-label" for="chkContract_{{i}}">
+                                    {{item.name}}
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-md-12 collapse mt-3" id="divContract_{{i}}">
+                                <ul class="list-group">
+                                  <li class="list-group-item" *ngFor="let itemchild of item.invoices; let a = index">
+                                    <div class="form-check">
+                                      <input type="checkbox" class="form-check-input" id="chkInvoice{{i}}_{{a}}">
+                                      <label for="chkInvoice{{i}}_{{a}}" class="form-check-label">{{itemchild.name}}</label>
+                                    </div>
+                                  </li>
                                 </ul>
-                          </div>
-                        </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
