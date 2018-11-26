@@ -16,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, ],
   exports:[InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, OwlDateTimeModule, 
     OwlNativeDateTimeModule,
-    NgbModule
+    NgbModule,
   ]
 })
 export class UtilModule { }

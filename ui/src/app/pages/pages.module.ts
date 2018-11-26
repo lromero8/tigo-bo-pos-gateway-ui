@@ -34,7 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     PerfectScrollbarModule,
     routing,
     FormsModule,
-    NgbModule.forRoot(),
+   // NgbModule.forRoot(),
     // OwlDateTimeModule,
     // OwlNativeDateTimeModule,
 
