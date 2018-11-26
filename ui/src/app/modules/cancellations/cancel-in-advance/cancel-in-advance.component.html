@@ -8,6 +8,126 @@
 //
 -->
 
-<p>
+<!-- <p>
   cancel-in-advance works!
-</p>
+</p> -->
+
+<div class="container-fluid container-fullw bg-light shadow mb-5 py-4">
+
+	<form class="" [formGroup]="cancellation_form" (validSubmit)="onSubmit()">
+
+	<!-- <h3 class="text-center mb-4 mt-4">Anular Anticipo</h3> -->
+	<h1 class="display-4 text-center mb-4">Anular Anticipo</h1>
+
+
+	<div class="row pb-4">
+
+
+
+		<div class="col-md-2">
+
+		</div>
+		<div class="col-md-2">
+	        <div class="form-group">			
+	            <label for="numFactura">N° de factura</label>
+	            <input style="border-radius: 1rem" type="text" name="numFactura" id="numFactura" class="form-control" formControlName="numFactura">
+	        </div>
+		</div>
+		<div class="col-md-2">
+            <div class="form-group">
+                <label for="numCuenta">N° de cuenta</label>
+                <input style="border-radius: 1rem" type="text"  name="numCuenta" id="numCuenta" class="form-control" formControlName="numCuenta">
+            </div>
+		</div>
+		<div class="col-md-2">
+            <div class="form-group">
+                <label for="numContrato">N° de contrato</label>
+                <input style="border-radius: 1rem" type="text" name="numContrato" id="numContrato" class="form-control" formControlName="numContrato">
+            </div>
+		</div>
+		<div class="col-md-2">
+            <div class="form-group">
+                <label for="numIdCliente">N° de ID del cliente</label>
+                <input style="border-radius: 1rem" type="text" name="numIdCliente" id="numIdCliente" class="form-control" formControlName="numIdCliente">
+            </div>
+		</div>
+		<div class="col-md-2">
+            <button class="btn btn-primary  mt-4" style="" type="submit" ngbTooltip="Buscar" type="submit">
+	            <i class="fa fa-search fa-lg"></i>
+	        </button>
+            <button class="btn btn-primary  mt-4 ml-4" style="" (click)="cancellation_form.reset()" ngbTooltip="Limpiar" type="button">
+                <i class="fa fa-eraser fa-lg"></i> 
+            </button>       	        
+		</div>
+
+
+
+
+  </div>
+
+
+  </form>
+
+
+</div>
+
+
+
+
+
+
+
+  <!-- DATATABLE -->
+      <ngx-datatable
+        class='material'
+        [columnMode]="'force'"        
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="5"
+        [rows]='responseData?responseData:[]'>
+
+  	      <ngx-datatable-column name="N° Factura" prop="invoiceNumber" [width]="200"></ngx-datatable-column>
+  	      <ngx-datatable-column name="N° Cliente" prop="clientDebt"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Deuda Cliente" prop="startDate"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Desde" prop="endDate"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Hasta" prop="clientId" [width]="200"></ngx-datatable-column>
+
+          <ngx-datatable-column name="Acciones" prop="acciones">
+              <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                <button class="btn btn-primary " style="border-radius: 0" (click)="open(content)" type="button">
+                    Ver anticipos
+                </button> 
+              </ng-template>
+          </ngx-datatable-column>
+
+        
+      </ngx-datatable> 
+  <!-- DATATABLE -->
+
+
+
+
+
+
+
+
+
+
+<!-- MODAL -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Hello, World!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+  </div>
+</ng-template>
+<!-- MODAL -->
+

@@ -9,4 +9,14 @@ import { Injectable } from '@angular/core';
 export class CancelInAdvanceService {
 
   constructor(private http: HttpClient) { }
+
+  public mock(request:any) {
+    
+    return this.http.get<any>('http://localhost:9090/cancelInAdvance',request)
+        .pipe(map(data => {
+          
+            return data;
+        }));
+  }
+
 }

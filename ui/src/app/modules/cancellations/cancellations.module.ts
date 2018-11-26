@@ -19,13 +19,24 @@ import { CancelAdvanceByLimitComponent } from './cancel-advance-by-limit/cancel-
 import { CancelCyclicBillComponent } from './cancel-cyclic-bill/cancel-cyclic-bill.component';
 import { CancelCyclicPaymetnBillComponent } from './cancel-cyclic-paymetn-bill/cancel-cyclic-paymetn-bill.component';
 import { IndexComponent } from './index/index.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { routes, routing } from './cancellations.routing';
+
+// FORMVALIDATOR IMPORTS
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
+// FORMVALIDATOR IMPORTS
 
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    NgxDatatableModule,
+    NgBootstrapFormValidationModule,
+    FormsModule,
+    ReactiveFormsModule,
+
   ],
   declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent, IndexComponent]
 })
