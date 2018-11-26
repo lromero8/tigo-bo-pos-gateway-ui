@@ -28,6 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 // FORMVALIDATOR IMPORTS
 
+import { UtilModule } from 'app/pages/common/util.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -36,7 +38,7 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
     NgBootstrapFormValidationModule,
     FormsModule,
     ReactiveFormsModule,
-
+    UtilModule
   ],
   declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent, IndexComponent]
 })
