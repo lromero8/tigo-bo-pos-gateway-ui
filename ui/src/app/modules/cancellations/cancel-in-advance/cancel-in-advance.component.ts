@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 // ************************* FORM VALIDATOR ***********************************
 
 // ************************* SERVICES ***********************************
+import { ToastrService } from 'ngx-toastr';
 import { CancelInAdvanceService } from '../../../services/cancel-in-advance.service';
 // ************************* SERVICES ***********************************
 import { Title } from '@angular/platform-browser';
@@ -21,6 +22,7 @@ export class CancelInAdvanceComponent implements OnInit {
     /**
      * form group definitions
      */
+
     public cancellation_form: FormGroup; 
     public cardNumberControl: any;
     public expirationDateControl: any;
@@ -37,24 +39,12 @@ export class CancelInAdvanceComponent implements OnInit {
 
 
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,     
     private modalService: NgbModal,
     private CancelInAdvanceService: CancelInAdvanceService,
     private titleService: Title,
     ) { 
-
-        // ************************* FORM VALIDATOR ***********************************
-        this.cancellation_form = this.formBuilder.group({
-
-            numFactura: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]],
-            numCuenta: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]],
-            numContrato: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]],
-            numIdCliente: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]],
-            // emailControl: [
-            //     { value: '', disabled: false }, [Validators.required, Validators.email]
-            // ]
-        })
-        // ************************* FORM VALIDATOR ***********************************
 
 
   }
@@ -72,8 +62,8 @@ export class CancelInAdvanceComponent implements OnInit {
   getData() {
     this.CancelInAdvanceService.mock("").subscribe(
         data => {
-        console.log(data)
-        this.responseData = data
+        // console.log(data)
+        // this.responseData = data
         //   if (data.headers[environment.HEADER_SERVICE_CODE] === environment.SUCCESS_CODE) {
         //     // this.toastr.success("Se ejecuto con exito el Conciliador")
         //     this.rows = data.parameters;
@@ -91,18 +81,42 @@ export class CancelInAdvanceComponent implements OnInit {
       );
   }    
 
-  /*onSubmit(){
-        alert("it's works! \n" + JSON.stringify(this.cancellation_form.value, null, "\t"))
-        console.log(this.cancellation_form.value);
+  onSubmit(){
+        // alert("it's works! \n" + JSON.stringify(this.cancellation_form.value, null, "\t"))
+        // console.log(this.cancellation_form.value);
+
     }
-*/
+
+  search(ev){
+
+    if(ev.formData.numFactura !== '' || ev.formData.numCuenta !== '' || ev.formData.numContrato !== '' || ev.formData.numIdCliente !== '' ){
+
+      this.CancelInAdvanceService.search(ev.formData.numFactura, ev.formData.numCuenta, ev.formData.numContrato, ev.formData.numIdCliente).subscribe(
+        data => {
+          // console.log(data)
+          this.responseData = data
+
+        })
+
+    } else{
+
+      // console.log("vacios")
+      this.toastr.error("Debe ingresar al menos un parametro de busqueda");
+
+      
+    }
+
+  }
+
 
   public getFormData(ev){
     console.log(ev);
+    this.search(ev)
   }
 
   public clearFormData(ev){
     console.log(ev);
+    this.responseData = '';
   }
 
   public setTitle( newTitle: string): void {
