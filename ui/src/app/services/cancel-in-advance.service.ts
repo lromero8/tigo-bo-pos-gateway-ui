@@ -30,7 +30,7 @@ export class CancelInAdvanceService {
   	query += numContrato == ''? '' : '&contractNumber=' + numContrato
   	query += numIdCliente == ''? '' : '&clientId=' + numIdCliente
 
-  	// console.log('http://localhost:9090/cancelInAdvance?'+ query)
+  	console.log('http://localhost:9090/cancelInAdvance?'+ query)
 
     
     return this.http.get<any>('http://localhost:9090/cancelInAdvance?' + query)

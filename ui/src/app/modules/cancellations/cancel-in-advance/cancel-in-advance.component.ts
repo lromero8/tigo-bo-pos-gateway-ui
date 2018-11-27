@@ -22,7 +22,19 @@ export class CancelInAdvanceComponent implements OnInit {
     /**
      * form group definitions
      */
-    public cancellation_form: FormGroup;
+
+    public cancellation_form: FormGroup; 
+    public cardNumberControl: any;
+    public expirationDateControl: any;
+    public cvvControl: any;
+    public nameControl: any;
+    public phoneControl: any;
+    public emailControl: any;
+    public countryControl: any;
+    public stateControl: any;
+    public cityControl: any;
+    public addressControl: any;
+
     public responseData: any;
 
 
@@ -32,19 +44,6 @@ export class CancelInAdvanceComponent implements OnInit {
     private modalService: NgbModal,
     private CancelInAdvanceService: CancelInAdvanceService,
     ) { 
-
-        // ************************* FORM VALIDATOR ***********************************
-        this.cancellation_form = this.formBuilder.group({
-
-            numFactura: ['', [Validators.minLength(1), Validators.maxLength(8)]],
-            numCuenta: ['', [Validators.minLength(1), Validators.maxLength(8)]],
-            numContrato: ['', [Validators.minLength(1), Validators.maxLength(8)]],
-            numIdCliente: ['', [Validators.minLength(1), Validators.maxLength(8)]],
-            // emailControl: [
-            //     { value: '', disabled: false }, [Validators.required, Validators.email]
-            // ]
-        })
-        // ************************* FORM VALIDATOR ***********************************
 
 
   }
@@ -82,13 +81,14 @@ export class CancelInAdvanceComponent implements OnInit {
   onSubmit(){
         // alert("it's works! \n" + JSON.stringify(this.cancellation_form.value, null, "\t"))
         // console.log(this.cancellation_form.value);
+
     }
 
-  search(){
+  search(ev){
 
-    if(this.cancellation_form.value.numFactura !== '' || this.cancellation_form.value.numCuenta !== '' || this.cancellation_form.value.numContrato !== '' || this.cancellation_form.value.numIdCliente !== '' ){
+    if(ev.formData.numFactura !== '' || ev.formData.numCuenta !== '' || ev.formData.numContrato !== '' || ev.formData.numIdCliente !== '' ){
 
-      this.CancelInAdvanceService.search(this.cancellation_form.value.numFactura, this.cancellation_form.value.numCuenta, this.cancellation_form.value.numContrato, this.cancellation_form.value.numIdCliente).subscribe(
+      this.CancelInAdvanceService.search(ev.formData.numFactura, ev.formData.numCuenta, ev.formData.numContrato, ev.formData.numIdCliente).subscribe(
         data => {
           // console.log(data)
           this.responseData = data
@@ -105,5 +105,15 @@ export class CancelInAdvanceComponent implements OnInit {
 
   }
 
+
+  public getFormData(ev){
+    console.log(ev);
+    this.search(ev)
+  }
+
+  public clearFormData(ev){
+    console.log(ev);
+    this.responseData = '';
+  }
 
 }

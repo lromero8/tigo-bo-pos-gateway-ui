@@ -276,10 +276,10 @@
     d3-shape "^1.2.0"
     d3-time-format "^2.1.0"
 
-"@swimlane/ngx-datatable@^13.0.1":
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/@swimlane/ngx-datatable/-/ngx-datatable-13.0.1.tgz#6e949e19130b2054e2715d30d158751c4fbaa502"
-  integrity sha512-jjMEzQhXcdD+jfKNp+7U61lWx9ZzSGDn9QbpY6pJOJwz+E2CKeek6OouT5Qcc4MY4oFL9g/SZoPjLf90cbNIRw==
+"@swimlane/ngx-datatable@^13.1.0":
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/@swimlane/ngx-datatable/-/ngx-datatable-13.1.0.tgz#a79edc7eaed762a2f7868209a2ff597bbfc7137b"
+  integrity sha512-UJRXbRkLDq9oweY/ZlmU5X7MtnD3+7/nuCBx2cvsbkDKj6cECy+m1O/EfAGEh5++zZ55QWmX4rj7nM4G9pst/w==
 
 "@types/jasmine@2.8.7":
   version "2.8.7"
@@ -5083,6 +5083,13 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
+
+ng-bootstrap-form-validation@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/ng-bootstrap-form-validation/-/ng-bootstrap-form-validation-3.0.3.tgz#6cfdd4f633c65273809b3b6f118741f70e8b0610"
+  integrity sha512-snLFhG5B0YNCFCtt1BO/aiClQtRCp4g+Mp4MEvONQXTazZs8PQf1LvNgdEJfJXw7S2n03CiaQu5XNi8kICfbDA==
+  dependencies:
+    tslib "^1.9.0"
 
 ng-http-loader@^2.3.0:
   version "2.3.0"
