@@ -7,8 +7,25 @@ import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@ang
   encapsulation: ViewEncapsulation.None
 })
 export class PaymentsContractsComponent implements OnInit {
+  private listContractsShared = {
+    'contracts': [
+      {
+        id: 0,
+        name: '',
+        invoices: [
+          {
+            id: 0,
+            name: ''
+          }
+        ]
+      }
+    ]
+  };
+
   @Output() parentSearchPaymentContracts: EventEmitter<any> = new EventEmitter();
-  constructor() { }
+  constructor() {
+    this.listContractsShared.contracts = [];
+   }
 
   ngOnInit() {
   }

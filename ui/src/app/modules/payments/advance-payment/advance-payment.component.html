@@ -68,29 +68,37 @@
                       <div class="card-body">
                         <form [formGroup]="ContractForm">
                           <ul class="list-group">
-                            <li class="list-group-item" *ngFor="let item of listContracts.contracts;let i = index">
-                              <div class="row">
-                                <div class="col-md-12">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="chkContract_{{i}}" data-toggle="collapse"
-                                      [attr.href]="'#divContract_' + i">
-                                    <label class="form-check-label" for="chkContract_{{i}}" (click)="checkContract()">
-                                      {{item.name}}
-                                    </label>
-                                  </div>
-                                </div>
-                                <div class="col-md-12 collapse mt-3" id="divContract_{{i}}">
-                                  <ul class="list-group">
-                                    <li class="list-group-item" *ngFor="let itemchild of item.invoices; let a = index">
+                            <ng-container formArrayName="items">
+                              <li class="list-group-item" *ngFor="let item of ContractForm.controls.items.controls;let i = index">
+                                <ng-container [formGroupName]="i">
+                                  <div class="row">
+                                    <div class="col-md-12">
                                       <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="chkInvoice{{i}}_{{a}}">
-                                        <label for="chkInvoice{{i}}_{{a}}" class="form-check-label">{{itemchild.name}}</label>
+                                        <input class="form-check-input" formControlName="status_item" type="checkbox" id="chkContract_{{i}}"
+                                          data-toggle="collapse" [attr.href]="'#divContract_' + i">
+                                        <label class="form-check-label" for="chkContract_{{i}}">
+                                          {{item.controls.name.value}}
+                                        </label>
                                       </div>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </li>
+                                    </div>
+                                    <div class="col-md-12 collapse mt-3" id="divContract_{{i}}">
+                                      <ul class="list-group">
+                                        <ng-container formArrayName="invoices">
+                                          <li class="list-group-item" *ngFor="let itemchild of item.controls.invoices.controls; let a = index">
+                                            <ng-container [formGroupName]="a">
+                                              <div class="form-check">
+                                                <input type="checkbox" formControlName="status_invoice" class="form-check-input" id="chkInvoice{{i}}_{{a}}" (change)="checkInvoice(i, a)">
+                                                <label for="chkInvoice{{i}}_{{a}}" class="form-check-label">{{itemchild.controls.name.value}}</label>
+                                              </div>
+                                            </ng-container>
+                                          </li>
+                                        </ng-container>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </ng-container>
+                              </li>
+                            </ng-container>
                           </ul>
                         </form>
                       </div>
