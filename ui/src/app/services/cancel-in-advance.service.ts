@@ -22,13 +22,13 @@ export class CancelInAdvanceService {
   public search(numFactura:any, numCuenta:any, numContrato:any, numIdCliente:any) {
 
   	// console.log(numFactura)
-  	// console.log(numCuenta == ''?'es vacio':'no es vacio')
+  	// console.log(numCuenta == ''|| numCuenta == null?'es vacio':'no es vacio')
 
   	let query = "1=1"
-  	query += numFactura == ''? '' : '&billNumber=' + numFactura
-  	query += numCuenta == ''? '' : '&accountNumber=' + numCuenta
-  	query += numContrato == ''? '' : '&contractNumber=' + numContrato
-  	query += numIdCliente == ''? '' : '&clientId=' + numIdCliente
+  	query += numFactura == '' || numFactura == null? '' : '&billNumber=' + numFactura
+  	query += numCuenta == '' || numCuenta == null? '' : '&accountNumber=' + numCuenta
+  	query += numContrato == '' || numContrato == null? '' : '&contractNumber=' + numContrato
+  	query += numIdCliente == '' || numIdCliente == null? '' : '&clientId=' + numIdCliente
 
   	console.log('http://localhost:9090/cancelInAdvance?'+ query)
 

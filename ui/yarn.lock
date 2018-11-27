@@ -5103,6 +5103,11 @@ ng-pick-datetime@^6.0.10:
   resolved "https://registry.yarnpkg.com/ng-pick-datetime/-/ng-pick-datetime-6.0.10.tgz#214ce1c96b956e44b4603de483d1c2fcc9c6a7ff"
   integrity sha512-CrcDyFD0JxlO4Qh+Qa5hFygivQ2UWK7OX8zAcP6BfHJk6Qc4Nb79yNZvY8IUsfF37VeY91IiE3DIz5a1J5T+iw==
 
+ngx-bootstrap@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-3.1.2.tgz#f466f6290b456806dac2a9b95a12f9dc4979782f"
+  integrity sha512-ULooVAtHBir96PDOz8aDP+slkoY+YX3EWeYV7rwkwMQooc6MaFc+EFBBrAkQf1n0N/rJ4Z9GGccRS5vk/1JFog==
+
 ngx-pagination@^3.2.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-3.2.1.tgz#d82fe15b03a628621dabb835ebc90011f2557689"

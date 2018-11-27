@@ -42,6 +42,8 @@ import {
 
 import { CUSTOM_ERRORS } from "./custom-errors";
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 @NgModule({
@@ -71,7 +73,8 @@ import { CUSTOM_ERRORS } from "./custom-errors";
       timeOut: environment.TOASTER_TIMEOUT,
       preventDuplicates: environment.PREVENT_DUPLICATES
     }),
-    NgBootstrapFormValidationModule.forRoot()
+    NgBootstrapFormValidationModule.forRoot(),
+    ModalModule.forRoot()
 
 
   ],

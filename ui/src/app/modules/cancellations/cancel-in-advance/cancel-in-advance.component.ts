@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
 
 // ************************* FORM VALIDATOR ***********************************
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -8,6 +7,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 // ************************* SERVICES ***********************************
 import { ToastrService } from 'ngx-toastr';
 import { CancelInAdvanceService } from '../../../services/cancel-in-advance.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 // ************************* SERVICES ***********************************
 import { Title } from '@angular/platform-browser';
 
@@ -37,13 +38,16 @@ export class CancelInAdvanceComponent implements OnInit {
 
     public responseData: any;
 
+    public modalRef: BsModalRef;
+
+
 
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,     
-    private modalService: NgbModal,
     private CancelInAdvanceService: CancelInAdvanceService,
     private titleService: Title,
+    private modalService: BsModalService
     ) { 
 
 
@@ -55,8 +59,9 @@ export class CancelInAdvanceComponent implements OnInit {
     
   }
 
-  open(content) {
-    this.modalService.open(content);
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template,{'class':'modal-lg'});
   }
 
   getData() {
@@ -110,12 +115,12 @@ export class CancelInAdvanceComponent implements OnInit {
 
 
   public getFormData(ev){
-    console.log(ev);
+    // console.log(ev);
     this.search(ev)
   }
 
   public clearFormData(ev){
-    console.log(ev);
+    // console.log(ev);
     this.responseData = '';
   }
 
