@@ -27,4 +27,12 @@ export class CancelSmallRechargueComponent implements OnInit {
     this.titleService.setTitle( newTitle ); 
   }
 
+  public getFormData(ev) {
+    console.log(ev)
+  }
+
+  public clearFormData(ev) {
+    console.log(ev)
+  }
+
 }
