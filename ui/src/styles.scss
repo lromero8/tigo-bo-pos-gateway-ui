@@ -1,3 +1,5 @@
+
+
 $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap";
 @import "../node_modules/bootstrap/scss/bootstrap";
 $fa-font-path : "../node_modules/font-awesome/fonts";
@@ -374,4 +376,18 @@ app-breadcrumb {
       -webkit-transform: none;
       transform: none;
     }
+  }
+
+
+  .menu-icon{
+    left: 15px;
+  }
+ 
+  .d-flex.justify-content-start.align-items-center.top-navbar {
+    background-color: #fff;
+  }
+
+
+  .rdb {
+    border-radius: 1rem
   }

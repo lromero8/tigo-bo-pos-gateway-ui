@@ -23,6 +23,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { routes, routing } from './cancellations.routing';
 
+import { CancellationsSearchBarComponent } from './cancellations-search-bar/cancellations-search-bar.component';
+
 // FORMVALIDATOR IMPORTS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
@@ -40,6 +42,7 @@ import { UtilModule } from 'app/pages/common/util.module';
     ReactiveFormsModule,
     UtilModule
   ],
-  declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent, IndexComponent]
+  declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent, IndexComponent, 
+    CancellationsSearchBarComponent]
 })
 export class CancellationsModule { }

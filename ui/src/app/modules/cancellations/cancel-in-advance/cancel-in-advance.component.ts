@@ -21,7 +21,7 @@ export class CancelInAdvanceComponent implements OnInit {
     /**
      * form group definitions
      */
-    public cancellation_form: FormGroup;
+    public cancellation_form: FormGroup; 
     public cardNumberControl: any;
     public expirationDateControl: any;
     public cvvControl: any;
@@ -88,10 +88,18 @@ export class CancelInAdvanceComponent implements OnInit {
       );
   }    
 
-  onSubmit(){
+  /*onSubmit(){
         alert("it's works! \n" + JSON.stringify(this.cancellation_form.value, null, "\t"))
         console.log(this.cancellation_form.value);
     }
+*/
 
+  public getFormData(ev){
+    console.log(ev);
+  }
+
+  public clearFormData(ev){
+    console.log(ev);
+  }
 
 }

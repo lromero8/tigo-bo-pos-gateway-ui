@@ -8,15 +8,20 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 @NgModule({
   imports: [
     CommonModule,
     NgbModule.forRoot(),
+   // FormsModule
   ],
-  declarations: [InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, ],
+  declarations: [InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber,
+    
+    ],
   exports:[InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, OwlDateTimeModule, 
     OwlNativeDateTimeModule,
     NgbModule,
+  
   ]
 })
 export class UtilModule { }

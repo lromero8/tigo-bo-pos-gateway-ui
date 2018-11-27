@@ -12,70 +12,13 @@
   cancel-in-advance works!
 </p> -->
 
-<div class="container-fluid container-fullw bg-light shadow mb-5 py-4">
-
-	<form class="" [formGroup]="cancellation_form" (validSubmit)="onSubmit()">
-
-	<!-- <h3 class="text-center mb-4 mt-4">Anular Anticipo</h3> -->
-	<h1 class="display-4 text-center mb-4">Anular Anticipo</h1>
+<app-cancellations-search-bar (sendData)="getFormData($event)" (clearData)="clearFormData($event)"></app-cancellations-search-bar>
 
 
-	<div class="row pb-4">
+  
 
 
-
-		<div class="col-md-2">
-
-		</div>
-		<div class="col-md-2">
-	        <div class="form-group">			
-	            <label for="numFactura">N° de factura</label>
-	            <input style="border-radius: 1rem" type="text" name="numFactura" id="numFactura" class="form-control" formControlName="numFactura">
-	        </div>
-		</div>
-		<div class="col-md-2">
-            <div class="form-group">
-                <label for="numCuenta">N° de cuenta</label>
-                <input style="border-radius: 1rem" type="text"  name="numCuenta" id="numCuenta" class="form-control" formControlName="numCuenta">
-            </div>
-		</div>
-		<div class="col-md-2">
-            <div class="form-group">
-                <label for="numContrato">N° de contrato</label>
-                <input style="border-radius: 1rem" type="text" name="numContrato" id="numContrato" class="form-control" formControlName="numContrato">
-            </div>
-		</div>
-		<div class="col-md-2">
-            <div class="form-group">
-                <label for="numIdCliente">N° de ID del cliente</label>
-                <input style="border-radius: 1rem" type="text" name="numIdCliente" id="numIdCliente" class="form-control" formControlName="numIdCliente">
-            </div>
-		</div>
-		<div class="col-md-2">
-            <button class="btn btn-primary  mt-4" style="" type="submit" ngbTooltip="Buscar" type="submit">
-	            <i class="fa fa-search fa-lg"></i>
-	        </button>
-            <button class="btn btn-primary  mt-4 ml-4" style="" (click)="cancellation_form.reset()" ngbTooltip="Limpiar" type="button">
-                <i class="fa fa-eraser fa-lg"></i> 
-            </button>       	        
-		</div>
-
-
-
-
-  </div>
-
-
-  </form>
-
-
-</div>
-
-
-
-
-
-
+  <h1 class="display-4 text-center mb-4">Anular Anticipo</h1>
 
   <!-- DATATABLE -->
       <ngx-datatable
