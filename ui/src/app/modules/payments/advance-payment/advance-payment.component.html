@@ -3,7 +3,7 @@
     <app-payments-header></app-payments-header>
   </div>
   <div class="col-md-6">
-    <app-payments-contracts (parentSearchPaymentContracts)="searchPaymentContracts($event)"></app-payments-contracts>
+    <app-payments-contracts [contracts]="listContractsAdded" (parentSearchPaymentContracts)="searchPaymentContracts($event)"></app-payments-contracts>
   </div>
   <div class="col-md-6">
     <app-payments-methods (parentSearchPaymentMethods)="searchPaymentMethods($event)"></app-payments-methods>
@@ -63,46 +63,53 @@
                     <p class="font-weight-bold"> Seleccione el o los contratos a pagar</p>
                   </div>
                   <div class="col-md-12 mt-3">
-                    <div class="card">
-                      <div class="card-header card-title-custom">Contratos</div>
-                      <div class="card-body">
-                        <form [formGroup]="ContractForm">
-                          <ul class="list-group">
-                            <ng-container formArrayName="items">
-                              <li class="list-group-item" *ngFor="let item of ContractForm.controls.items.controls;let i = index">
-                                <ng-container [formGroupName]="i">
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <div class="form-check">
-                                        <input class="form-check-input" formControlName="status_item" type="checkbox" id="chkContract_{{i}}"
-                                          data-toggle="collapse" [attr.href]="'#divContract_' + i">
-                                        <label class="form-check-label" for="chkContract_{{i}}">
-                                          {{item.controls.name.value}}
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-12 collapse mt-3" id="divContract_{{i}}">
+                    <ng-container *ngFor="let item of ContractForm.controls.items.controls;let i = index">
+                      <form [formGroup]="ContractForm">
+                        <ng-container formArrayName="items">
+                            <ng-container [formGroupName]="i">
+                                <div class="card">
+                                    <div class="card-header card-title-custom">Contratos</div>
+                                    <div class="card-body">
                                       <ul class="list-group">
-                                        <ng-container formArrayName="invoices">
-                                          <li class="list-group-item" *ngFor="let itemchild of item.controls.invoices.controls; let a = index">
-                                            <ng-container [formGroupName]="a">
-                                              <div class="form-check">
-                                                <input type="checkbox" formControlName="status_invoice" class="form-check-input" id="chkInvoice{{i}}_{{a}}" (change)="checkInvoice(i, a)">
-                                                <label for="chkInvoice{{i}}_{{a}}" class="form-check-label">{{itemchild.controls.name.value}}</label>
+                                        <ng-container formArrayName="contracts">
+                                          <li class="list-group-item" *ngFor="let contracts of item.controls.contracts.controls; let c = index">
+                                            <ng-container [formGroupName]="c">
+                                              <div class="row">
+                                                <div class="col-md-12">
+                                                  <div class="form-check">
+                                                    <input class="form-check-input" formControlName="status_contract" type="checkbox"
+                                                      id="chkContract_{{i}} + _ + {{c}}" data-toggle="collapse" [attr.href]="'#divContract_' + i + '_' + c">
+                                                    <label class="form-check-label" for="chkContract_{{i}} + _ + {{c}}">
+                                                      {{contracts.controls.name_contract.value}}
+                                                    </label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-12 collapse mt-3" id="divContract_{{i}} + _ + {{c}}">
+                                                  <ul class="list-group">
+                                                    <ng-container formArrayName="invoices">
+                                                      <li class="list-group-item" *ngFor="let invoices of contracts.controls.invoices.controls; let a = index">
+                                                        <ng-container [formGroupName]="a">
+                                                          <div class="form-check">
+                                                            <input type="checkbox" formControlName="status_invoice" class="form-check-input"
+                                                              id="chkInvoice{{i}}_{{c}}_{{a}}" (change)="checkInvoice(i, c, a)">
+                                                            <label for="chkInvoice{{i}}_{{c}}_{{a}}" class="form-check-label">{{invoices.controls.name_invoice.value}}</label>
+                                                          </div>
+                                                        </ng-container>
+                                                      </li>
+                                                    </ng-container>
+                                                  </ul>
+                                                </div>
                                               </div>
                                             </ng-container>
                                           </li>
                                         </ng-container>
-                                      </ul>
+                                      </ul>          
                                     </div>
                                   </div>
-                                </ng-container>
-                              </li>
                             </ng-container>
-                          </ul>
-                        </form>
-                      </div>
-                    </div>
+                        </ng-container>
+                      </form>
+                    </ng-container>
                   </div>
                 </div>
               </div>

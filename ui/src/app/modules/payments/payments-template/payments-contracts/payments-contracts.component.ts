@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-payments-contracts',
@@ -7,24 +7,10 @@ import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@ang
   encapsulation: ViewEncapsulation.None
 })
 export class PaymentsContractsComponent implements OnInit {
-  private listContractsShared = {
-    'contracts': [
-      {
-        id: 0,
-        name: '',
-        invoices: [
-          {
-            id: 0,
-            name: ''
-          }
-        ]
-      }
-    ]
-  };
+  @Input('contracts') contractsParent: any;
 
   @Output() parentSearchPaymentContracts: EventEmitter<any> = new EventEmitter();
   constructor() {
-    this.listContractsShared.contracts = [];
    }
 
   ngOnInit() {

@@ -1,16 +1,72 @@
 <div class="row row-payment-left">
   <div class="col-md-12 mt-4">
-      <button class="btn btn-success" (click)="searchContracts()"><i class="fa fa-search" aria-hidden="true"></i> Buscar Contratos</button> 
+    <button class="btn btn-success" (click)="searchContracts()"><i class="fa fa-search" aria-hidden="true"></i> Buscar
+      Contratos</button>
   </div>
   <div class="col-md-12">
-    <div class="jumbotron  mt-4">
-      What is Lorem Ipsum?
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-      industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-      scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-      electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-      Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-      Aldus PageMaker including versions of Lorem Ipsum.
+    <div class="jumbotron mt-4">
+      <div class="row">
+        <ng-container *ngFor="let item of contractsParent.contracts">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <h5>Información del cliente</h5>
+              </div>
+              <div class="col-md-12" style="background: #bcbcbc;">
+                <div class="form-group row">
+                  <label for="" class="col-md-4 col-form-label font-weight-bold">Cliente:</label>
+                  <div class="col-md-8">
+                    <input type="text" readonly class="form-control-plaintext" value="{{item.user.name_user}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="" class="col-md-4 col-form-label font-weight-bold">Contrato:</label>
+                  <div class="col-md-8">
+                    <input type="text" readonly class="form-control-plaintext" value="{{item.contract.name_contract}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="" class="col-md-4 col-form-label font-weight-bold">Tipo de cuenta:</label>
+                  <div class="col-md-8">
+                    <input type="text" readonly class="form-control-plaintext" value="{{item.contract.type_account}}">
+                  </div>
+                </div>
+              </div>
+              <div class="col md-12 mt-4">
+                <div class="card">
+                  <div class="card-header" style="background: #013069;color:white">
+                    Contratos
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      Contrato 1
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                          Factura 1
+                        </li>
+                        <li class="list-group-item">
+                          Factura 2
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="list-group-item">
+                      Contrato 2
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                          Factura 1
+                        </li>
+                        <li class="list-group-item">
+                          Factura 2
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>
