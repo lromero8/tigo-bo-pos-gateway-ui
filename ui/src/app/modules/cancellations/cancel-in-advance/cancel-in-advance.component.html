@@ -14,7 +14,7 @@
 
 <div class="container-fluid container-fullw bg-light shadow mb-5 py-4">
 
-	<form class="" [formGroup]="cancellation_form" (validSubmit)="onSubmit()">
+	<form class="" [formGroup]="cancellation_form" (validSubmit)="onSubmit(); search()">
 
 	<!-- <h3 class="text-center mb-4 mt-4">Anular Anticipo</h3> -->
 	<h1 class="display-4 text-center mb-4">Anular Anticipo</h1>
@@ -87,7 +87,7 @@
         [limit]="5"
         [rows]='responseData?responseData:[]'>
 
-  	      <ngx-datatable-column name="N° Factura" prop="invoiceNumber" [width]="200"></ngx-datatable-column>
+  	      <ngx-datatable-column name="N° Factura" prop="billNumber" [width]="200"></ngx-datatable-column>
   	      <ngx-datatable-column name="N° Cliente" prop="clientDebt"[width]="200"></ngx-datatable-column>
           <ngx-datatable-column name="Deuda Cliente" prop="startDate"[width]="200"></ngx-datatable-column>
           <ngx-datatable-column name="Fecha Desde" prop="endDate"[width]="200"></ngx-datatable-column>

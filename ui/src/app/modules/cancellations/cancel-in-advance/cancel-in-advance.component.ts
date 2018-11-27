@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 // ************************* FORM VALIDATOR ***********************************
 
 // ************************* SERVICES ***********************************
+import { ToastrService } from 'ngx-toastr';
 import { CancelInAdvanceService } from '../../../services/cancel-in-advance.service';
 // ************************* SERVICES ***********************************
 
@@ -22,22 +23,12 @@ export class CancelInAdvanceComponent implements OnInit {
      * form group definitions
      */
     public cancellation_form: FormGroup;
-    public cardNumberControl: any;
-    public expirationDateControl: any;
-    public cvvControl: any;
-    public nameControl: any;
-    public phoneControl: any;
-    public emailControl: any;
-    public countryControl: any;
-    public stateControl: any;
-    public cityControl: any;
-    public addressControl: any;
-
     public responseData: any;
 
 
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,     
     private modalService: NgbModal,
     private CancelInAdvanceService: CancelInAdvanceService,
     ) { 
@@ -45,10 +36,10 @@ export class CancelInAdvanceComponent implements OnInit {
         // ************************* FORM VALIDATOR ***********************************
         this.cancellation_form = this.formBuilder.group({
 
-            numFactura: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]],
-            numCuenta: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]],
-            numContrato: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]],
-            numIdCliente: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(8)]],
+            numFactura: ['', [Validators.minLength(1), Validators.maxLength(8)]],
+            numCuenta: ['', [Validators.minLength(1), Validators.maxLength(8)]],
+            numContrato: ['', [Validators.minLength(1), Validators.maxLength(8)]],
+            numIdCliente: ['', [Validators.minLength(1), Validators.maxLength(8)]],
             // emailControl: [
             //     { value: '', disabled: false }, [Validators.required, Validators.email]
             // ]
@@ -69,8 +60,8 @@ export class CancelInAdvanceComponent implements OnInit {
   getData() {
     this.CancelInAdvanceService.mock("").subscribe(
         data => {
-        console.log(data)
-        this.responseData = data
+        // console.log(data)
+        // this.responseData = data
         //   if (data.headers[environment.HEADER_SERVICE_CODE] === environment.SUCCESS_CODE) {
         //     // this.toastr.success("Se ejecuto con exito el Conciliador")
         //     this.rows = data.parameters;
@@ -89,9 +80,30 @@ export class CancelInAdvanceComponent implements OnInit {
   }    
 
   onSubmit(){
-        alert("it's works! \n" + JSON.stringify(this.cancellation_form.value, null, "\t"))
-        console.log(this.cancellation_form.value);
+        // alert("it's works! \n" + JSON.stringify(this.cancellation_form.value, null, "\t"))
+        // console.log(this.cancellation_form.value);
     }
+
+  search(){
+
+    if(this.cancellation_form.value.numFactura !== '' || this.cancellation_form.value.numCuenta !== '' || this.cancellation_form.value.numContrato !== '' || this.cancellation_form.value.numIdCliente !== '' ){
+
+      this.CancelInAdvanceService.search(this.cancellation_form.value.numFactura, this.cancellation_form.value.numCuenta, this.cancellation_form.value.numContrato, this.cancellation_form.value.numIdCliente).subscribe(
+        data => {
+          // console.log(data)
+          this.responseData = data
+
+        })
+
+    } else{
+
+      // console.log("vacios")
+      this.toastr.error("Debe ingresar al menos un parametro de busqueda");
+
+      
+    }
+
+  }
 
 
 }
