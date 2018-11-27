@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 // ************************* SERVICES ***********************************
 import { CancelInAdvanceService } from '../../../services/cancel-in-advance.service';
 // ************************* SERVICES ***********************************
-
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cancel-in-advance',
@@ -40,6 +40,7 @@ export class CancelInAdvanceComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private modalService: NgbModal,
     private CancelInAdvanceService: CancelInAdvanceService,
+    private titleService: Title,
     ) { 
 
         // ************************* FORM VALIDATOR ***********************************
@@ -60,6 +61,8 @@ export class CancelInAdvanceComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
+    this.setTitle('cancelar en adelanto');
+    
   }
 
   open(content) {
@@ -100,6 +103,10 @@ export class CancelInAdvanceComponent implements OnInit {
 
   public clearFormData(ev){
     console.log(ev);
+  }
+
+  public setTitle( newTitle: string): void {
+    this.titleService.setTitle( newTitle ); 
   }
 
 }

@@ -7,6 +7,7 @@
 //
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cancel-money-input',
@@ -16,9 +17,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CancelMoneyInputComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.setTitle('Cancelar ingreso de dinero');
+  }
+
+  public setTitle( newTitle: string): void {
+    this.titleService.setTitle( newTitle ); 
   }
 
 }

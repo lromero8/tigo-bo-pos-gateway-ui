@@ -7,6 +7,7 @@
 //
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cancel-cyclic-paymetn-bill',
@@ -16,9 +17,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CancelCyclicPaymetnBillComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.setTitle('Cancelar el pago de factura ciclica');
+  }
+
+  public setTitle( newTitle: string): void {
+    this.titleService.setTitle( newTitle ); 
   }
 
 }

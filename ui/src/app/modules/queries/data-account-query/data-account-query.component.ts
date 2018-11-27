@@ -7,6 +7,7 @@
 //
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-data-account-query',
@@ -16,9 +17,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DataAccountQueryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.setTitle('Consulta de los datos de la cuenta');
+  }
+
+  public setTitle( newTitle: string): void {
+    this.titleService.setTitle( newTitle ); 
   }
 
 }

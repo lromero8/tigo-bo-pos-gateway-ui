@@ -13,7 +13,7 @@ export class CancellationsSearchBarComponent implements OnInit {
   public cancellation_form: FormGroup; 
   
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
   ) {
 
     // ************************* FORM VALIDATOR ***********************************
