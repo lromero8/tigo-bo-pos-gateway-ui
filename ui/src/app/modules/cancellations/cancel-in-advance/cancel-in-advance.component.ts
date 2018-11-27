@@ -10,7 +10,7 @@ import { CancelInAdvanceService } from '../../../services/cancel-in-advance.serv
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 // ************************* SERVICES ***********************************
-
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cancel-in-advance',
@@ -46,6 +46,7 @@ export class CancelInAdvanceComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,     
     private CancelInAdvanceService: CancelInAdvanceService,
+    private titleService: Title,
     private modalService: BsModalService
     ) { 
 
@@ -54,6 +55,8 @@ export class CancelInAdvanceComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
+    this.setTitle('cancelar en adelanto');
+    
   }
 
 
@@ -119,6 +122,10 @@ export class CancelInAdvanceComponent implements OnInit {
   public clearFormData(ev){
     // console.log(ev);
     this.responseData = '';
+  }
+
+  public setTitle( newTitle: string): void {
+    this.titleService.setTitle( newTitle ); 
   }
 
 }

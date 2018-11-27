@@ -7,6 +7,7 @@
 //
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cancel-small-rechargue',
@@ -16,9 +17,22 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CancelSmallRechargueComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.setTitle('Cancelar mini recarga');
+  }
+
+  public setTitle( newTitle: string): void {
+    this.titleService.setTitle( newTitle ); 
+  }
+
+  public getFormData(ev) {
+    console.log(ev)
+  }
+
+  public clearFormData(ev) {
+    console.log(ev)
   }
 
 }

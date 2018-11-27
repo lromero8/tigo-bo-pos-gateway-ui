@@ -7,6 +7,7 @@
 //
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-small-recharge-payment',
@@ -16,9 +17,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SmallRechargePaymentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.setTitle('Opciones de pago');
   }
 
+  public setTitle( newTitle: string): void {
+    this.titleService.setTitle( newTitle ); 
+  }
 }
