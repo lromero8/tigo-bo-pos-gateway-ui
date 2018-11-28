@@ -7,21 +7,28 @@ import { OnlyNumber } from './directives/onlynumber.directive';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { DatepickerModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule.forRoot(),
-   // FormsModule
+    BsDatepickerModule.forRoot(),
+    FormsModule,
+    NgSelectModule
   ],
   declarations: [InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber,
     
     ],
   exports:[InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, OwlDateTimeModule, 
     OwlNativeDateTimeModule,
-    NgbModule,
-  
+    NgbModule, 
+    BsDatepickerModule,
+    FormsModule,
+    NgSelectModule
   ]
 })
 export class UtilModule { }

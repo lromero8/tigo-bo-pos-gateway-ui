@@ -38,7 +38,7 @@ import { UtilModule } from 'app/pages/common/util.module';
     routing,
     NgxDatatableModule,
     NgBootstrapFormValidationModule,
-    FormsModule,
+    //FormsModule,
     ReactiveFormsModule,
     UtilModule
   ],
