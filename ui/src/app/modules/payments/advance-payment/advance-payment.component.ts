@@ -161,9 +161,13 @@ export class AdvancePaymentComponent implements OnInit {
     })
   }
 
-  checkInvoice(contract, invoice) {
-    let item = (this.ContractForm.get('items') as FormArray).at(contract);
-    let itemsInvoice = item.get('invoices') as FormArray;
+  checkInvoice(element, contract, invoice) {
+
+    let items = this.ContractForm.get('items') as FormArray;
+    let uniqueItem = items.at(element);
+    let itemsContract = uniqueItem.get('contracts')as FormArray;
+    let uniqueItemsInvoice = itemsContract.at(contract);
+    let itemsInvoice = uniqueItemsInvoice.get('invoices') as FormArray;
     const currentItemInvoice = itemsInvoice.at(invoice).get('status_invoice');
     if (currentItemInvoice.value) {
       if ((invoice + 1) < itemsInvoice.length) {

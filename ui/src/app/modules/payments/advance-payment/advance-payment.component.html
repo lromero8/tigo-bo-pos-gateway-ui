@@ -78,13 +78,13 @@
                                                 <div class="col-md-12">
                                                   <div class="form-check">
                                                     <input class="form-check-input" formControlName="status_contract" type="checkbox"
-                                                      id="chkContract_{{i}} + _ + {{c}}" data-toggle="collapse" [attr.href]="'#divContract_' + i + '_' + c">
-                                                    <label class="form-check-label" for="chkContract_{{i}} + _ + {{c}}">
+                                                      id="chkContract_{{i}}_{{c}}" data-toggle="collapse" [attr.href]="'#divContract_' + i + '_' + c">
+                                                    <label class="form-check-label" for="chkContract_{{i}}_{{c}}">
                                                       {{contracts.controls.name_contract.value}}
                                                     </label>
                                                   </div>
                                                 </div>
-                                                <div class="col-md-12 collapse mt-3" id="divContract_{{i}} + _ + {{c}}">
+                                                <div class="col-md-12 collapse mt-3" id="divContract_{{i}}_{{c}}">
                                                   <ul class="list-group">
                                                     <ng-container formArrayName="invoices">
                                                       <li class="list-group-item" *ngFor="let invoices of contracts.controls.invoices.controls; let a = index">
