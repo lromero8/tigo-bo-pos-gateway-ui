@@ -39,7 +39,7 @@
 
           <ngx-datatable-column name="Acciones" prop="acciones" [width]="200">
               <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                <button class="btn btn-primary" (click)="openModal(template, row)">Large modal</button>
               </ng-template>
           </ngx-datatable-column>
 
@@ -66,7 +66,94 @@
     </button>
   </div>
   <div class="modal-body">
-    This is a modal.
+
+    <p class="font-weight-bold">Factura: #{{billNumber}}</p>
+    <br>
+    Seleccione un pago para anular
+    <br>
+    <br>
+
+
+
+
+
+
+  <!-- DATATABLE -->
+    <!-- <div style="width: "> -->
+      <ngx-datatable
+        class='material'
+        [columnMode]="'force'"        
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="5"
+        [rows]='selectedRow?selectedRow:[]'
+        [selected]="selected"
+        [selectionType]="'checkbox'"
+        [selectAllRowsOnPage]="false"
+        [displayCheck]="displayCheck"
+        (activate)="onActivate($event)"
+        (select)='onSelect($event)'>
+
+        <ngx-datatable-column
+          [width]="50"
+          [sortable]="false"
+          [canAutoResize]="false"
+          [draggable]="false"
+          [resizeable]="false"
+          [headerCheckboxable]="true"
+          [checkboxable]="true">      
+        </ngx-datatable-column>          
+
+
+          <ngx-datatable-column name="Pago" prop="amountPayment"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha de Pago" prop="paymentDate"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Motivo" prop="reason">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row" 
+            let-group="group" let-rowHeight="rowHeight">   
+              <ng-select 
+              [items]="reasons"
+              [selectOnTab]="true"
+              bindValue="value"
+              bindLabel="id"
+              placeholder="Seleccione motivo"
+              >
+              </ng-select>
+            </ng-template>                
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Comentario" prop="comment">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row" 
+            let-group="group" let-rowHeight="rowHeight">   
+              <textarea 
+                autofocus
+                (blur)="updateValue($event, 'comment', rowIndex)"
+                type="text" 
+                name="comment" 
+                [value]="value">
+              </textarea>        
+<!--               <input autofocus
+                (blur)="updateValue($event, 'comment', rowIndex)"
+                type="text" 
+                name="comment" 
+                [value]="value"/> -->
+            </ng-template>                
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Modificacion" prop="modifyDate" [width]="200"></ngx-datatable-column>
+
+<!--           <ngx-datatable-column name="Acciones" prop="acciones" [width]="200">
+              <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                <button class="btn btn-primary" (click)="openModal(template, row)">Large modal</button>
+              </ng-template>
+          </ngx-datatable-column> -->
+
+        
+      </ngx-datatable> 
+    <!-- </div> -->
+  <!-- DATATABLE -->
+
+
+
+
   </div>
 </ng-template>
 <!-- NGX-MODAL -->

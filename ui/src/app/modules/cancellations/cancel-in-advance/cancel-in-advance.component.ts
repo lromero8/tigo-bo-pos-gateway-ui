@@ -25,20 +25,19 @@ export class CancelInAdvanceComponent implements OnInit {
      */
 
     public cancellation_form: FormGroup; 
-    public cardNumberControl: any;
-    public expirationDateControl: any;
-    public cvvControl: any;
-    public nameControl: any;
-    public phoneControl: any;
-    public emailControl: any;
-    public countryControl: any;
-    public stateControl: any;
-    public cityControl: any;
-    public addressControl: any;
-
-    public responseData: any;
-
     public modalRef: BsModalRef;
+    
+    public billNumber: any;
+    public responseData: any;
+    public selectedRow: any;
+    public selected = [];
+
+    public reasons = [
+        { "id": "Falta de fondos", "value": "insufficientFunds" },
+        { "id": "Fecha expirada", "value": "dateExpired" },
+        { "id": "Razones personales", "value": "personalReasons" }     
+    ];    
+
 
 
 
@@ -60,8 +59,11 @@ export class CancelInAdvanceComponent implements OnInit {
   }
 
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template,{'class':'modal-lg'});
+  openModal(template: TemplateRef<any>, row) {
+    this.modalRef = this.modalService.show(template,{'class':'modal-xl modal-lg'});
+    // console.log(row)
+    this.billNumber = row.billNumber;
+    this.selectedRow = row.invoice;
   }
 
   getData() {
@@ -98,8 +100,8 @@ export class CancelInAdvanceComponent implements OnInit {
 
       this.CancelInAdvanceService.search(ev.formData.numFactura, ev.formData.numCuenta, ev.formData.numContrato, ev.formData.numIdCliente).subscribe(
         data => {
-          // console.log(data)
           this.responseData = data
+          console.log(this.responseData)
 
         })
 
@@ -127,5 +129,38 @@ export class CancelInAdvanceComponent implements OnInit {
   public setTitle( newTitle: string): void {
     this.titleService.setTitle( newTitle ); 
   }
+
+  onSelect({ selected }) {
+    console.log('Select Event', selected, this.selected);
+
+    this.selected.splice(0, this.selected.length);
+    this.selected.push(...selected);
+  }
+
+  onActivate(event) {
+    console.log('Activate Event', event);
+  }
+
+  add() {
+    // this.selected.push(this.rows[1], this.rows[3]);
+  }
+
+  update() {
+    // this.selected = [ this.rows[1], this.rows[3] ];
+  }
+
+  remove() {
+    this.selected = [];
+  }
+
+  displayCheck(row) {
+    return row.name !== 'Ethel Price';
+  } 
+
+  updateValue(event, cell, rowIndex) {
+    // this.editing[rowIndex + '-' + cell] = false;
+    // this.rows[rowIndex][cell] = event.target.value;
+    // this.rows = [...this.rows];
+  }  
 
 }

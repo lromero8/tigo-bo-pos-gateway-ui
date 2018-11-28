@@ -108,3 +108,9 @@ material table theme
   //   background-color:  #ededed;
   // }
 }
+
+@media (min-width: 992px){
+  .modal-lg {
+      max-width: 1224px;
+  }
+}
