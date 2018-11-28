@@ -11,6 +11,7 @@ $fa-font-path : "../node_modules/font-awesome/fonts";
 @import "~ngx-toastr/toastr.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "~ng-pick-datetime/assets/style/picker.min.css";
+@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
 
 //@import "~animate.css/animate.css";
 @font-face {
@@ -396,3 +397,11 @@ app-breadcrumb {
   .app.blue .form-group label {
     font-weight: bold;
   }
+
+  .ng-select .ng-select-container {
+    border-radius: 1rem;
+  }
+
+  .ng-dropdown-panel .scroll-host {
+    border: 1px solid #cccccc;
+  } 
