@@ -27,4 +27,12 @@ export class CancelMoneyOutputComponent implements OnInit {
     this.titleService.setTitle( newTitle ); 
   }
 
+  public search(ev) {
+    console.log(ev)
+  }
+
+  public clear() {
+    console.log('clear');
+  }
+
 }

@@ -20,49 +20,14 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class CancelMoneyInputComponent implements OnInit {
 
-  public locale = 'en';
-  public colorTheme = 'theme-dark-blue';
-  public bsConfig: Partial<BsDatepickerConfig>;
-  public locales = listLocales();
-  public reasons: Array<any>;
-  public cancelMoneyFrm: FormGroup;
 
-
-  @ViewChild('dpa') dpa: BsDaterangepickerDirective;
-  @ViewChild('dpb') dpb: BsDaterangepickerDirective;
-
-  constructor(private titleService: Title, 
-              private localeService: BsLocaleService, 
-              private formBuilder: FormBuilder,
-              ) { 
-    this.reasons = [
-      {
-        "id": 1,
-        "name": "a"
-      },
-      {
-        "id": 2,
-        "name": "b"
-      },
-      {
-        "id": 3,
-        "name": "c"
-      }
-    ]
-
-    this.cancelMoneyFrm = this.formBuilder.group({ 
-
-      transacctionId : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
-      reason : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
-      startDate : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
-      endDate : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
-    }); 
+  constructor(private titleService: Title) { 
+   
   }
 
   ngOnInit() {
     this.setTitle('Cancelar ingreso de dinero');
-    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
-    this.localeService.use('es');
+
     
   }
 
@@ -70,16 +35,12 @@ export class CancelMoneyInputComponent implements OnInit {
     this.titleService.setTitle( newTitle ); 
   }
 
-  get f() { return this.cancelMoneyFrm.controls }
- 
- public search() {
-    console.log(
-      this.f.transacctionId.value,
-      this.f.reason.value,
-      this.f.startDate.value,
-      this.f.endDate.value,
-    )
- }
+  public search(ev) {
+    console.log(ev)
+  }
 
+  public clear() {
+    console.log('clear')
+  }
 
 }
