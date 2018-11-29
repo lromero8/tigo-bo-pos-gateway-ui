@@ -11,7 +11,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatepickerModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
@@ -22,15 +21,17 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     NgSelectModule
   ],
-  declarations: [InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber,
-    
-    ],
-  exports:[InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, OwlDateTimeModule, 
+  declarations: [InputErrorMessagesComponent, UploadComponent, FilterPipe, OnlyNumber,
+
+  ],
+  exports: [InputErrorMessagesComponent, UploadComponent, FilterPipe, OnlyNumber, OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    NgbModule, 
+    NgbModule,
     BsDatepickerModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    ArchwizardModule,
+    ReactiveFormsModule
   ]
 })
 export class UtilModule { }

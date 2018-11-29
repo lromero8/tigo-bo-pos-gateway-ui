@@ -26,6 +26,7 @@
     "@ng-select/ng-select": "^2.3.1",
     "@swimlane/ngx-charts": "^8.1.0",
     "@swimlane/ngx-datatable": "^13.1.0",
+    "angular-archwizard": "^3.0.0",
     "angular-user-idle": "^2.0.0",
     "bootstrap": "4.1.1",
     "core-js": "2.5.6",
