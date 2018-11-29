@@ -1,25 +1,18 @@
-//
-//  
-//  
-//
-//  Created by -- on --
-//  Copyright © 2018 hightech-corp. All rights reserved.
-//
-
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-payments-detail',
-  templateUrl: './payments-detail.component.html',
-  styleUrls: ['./payments-detail.component.scss'],
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styleUrls: ['./index.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PaymentsDetailComponent implements OnInit {
+export class IndexComponent implements OnInit {
 
   constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.setTitle('Menu de cancelaciones');
   }
 
   public setTitle( newTitle: string): void {

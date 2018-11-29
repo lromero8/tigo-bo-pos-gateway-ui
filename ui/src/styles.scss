@@ -1,3 +1,5 @@
+
+
 $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap";
 @import "../node_modules/bootstrap/scss/bootstrap";
 $fa-font-path : "../node_modules/font-awesome/fonts";
@@ -5,9 +7,13 @@ $fa-font-path : "../node_modules/font-awesome/fonts";
 @import '~@swimlane/ngx-datatable/release/index.css';
 @import '~@swimlane/ngx-datatable/release/themes/material.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import '~@swimlane/ngx-datatable/release/themes/bootstrap.css';
 @import "~ngx-toastr/toastr.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "~ng-pick-datetime/assets/style/picker.min.css";
+@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+
+//@import "~animate.css/animate.css";
 @font-face {
     font-family: 'MoonHouse';
     src: url('./assets/fonts/moonhouse.eot');
@@ -314,3 +320,88 @@ $fa-font-path : "../node_modules/font-awesome/fonts";
 app-breadcrumb {
   display: none;
 }
+
+
+.modal-dialog {
+ 
+  webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+
+    -webkit-animation-duration:1s;
+    animation-duration:1s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both;
+    
+}
+
+
+@-webkit-keyframes fadeInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+
+
+
+@keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+
+
+  .menu-icon{
+    left: 15px;
+  }
+ 
+  .d-flex.justify-content-start.align-items-center.top-navbar {
+    background-color: #fff;
+  }
+
+
+  .rdb {
+    border-radius: 1rem;
+    height: 34px
+  }
+
+  .app.blue .form-group label {
+    font-weight: bold;
+  }
+
+  .ng-select .ng-select-container {
+    border-radius: 1rem;
+  }
+
+  .ng-dropdown-panel .scroll-host {
+    border: 1px solid #cccccc;
+  } 

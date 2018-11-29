@@ -8,12 +8,29 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ArchwizardModule } from 'angular-archwizard';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatepickerModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   imports: [
     CommonModule,
+    NgbModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    FormsModule,
+    NgSelectModule
   ],
-  declarations: [InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, ],
+  declarations: [InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber,
+    
+    ],
   exports:[InputErrorMessagesComponent,UploadComponent,FilterPipe, OnlyNumber, OwlDateTimeModule, 
-    OwlNativeDateTimeModule, ArchwizardModule, ReactiveFormsModule, FormsModule]
+    OwlNativeDateTimeModule,
+    NgbModule, 
+    BsDatepickerModule,
+    FormsModule,
+    NgSelectModule
+  ]
 })
 export class UtilModule { }

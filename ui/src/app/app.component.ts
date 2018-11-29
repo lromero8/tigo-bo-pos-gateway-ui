@@ -10,6 +10,9 @@ import { LogoutService } from './services/logout.service';
 import { environment } from '../environments/environment';
 import { RefreshTokenService } from './services/refresh-token.service';
 
+import { setTheme } from 'ngx-bootstrap/utils';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -33,6 +36,7 @@ export class AppComponent {
     ) {
         this.settings = this.appSettings.settings;
         this.idle = false;
+        setTheme('bs4');
     }
 
     /**

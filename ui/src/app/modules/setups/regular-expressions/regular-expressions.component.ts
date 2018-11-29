@@ -7,6 +7,7 @@
 //
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-regular-expressions',
@@ -16,9 +17,16 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class RegularExpressionsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private titleService: Title) { 
   }
+  
+  ngOnInit() {
+    this.setTitle('Expresiones regulares');
+  }
+
+  public setTitle( newTitle: string): void {
+    this.titleService.setTitle( newTitle );
+  }
+
 
 }

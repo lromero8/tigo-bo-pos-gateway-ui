@@ -8,6 +8,65 @@
 //
 -->
 
-<p>
+<!-- <p>
   cancel-in-advance works!
-</p>
+</p> -->
+
+
+<app-cancellations-search-bar (sendData)="getFormData($event)" (clearData)="clearFormData($event)"></app-cancellations-search-bar>
+
+
+  
+
+
+  <h1 class="display-5 text-center mb-4">Anular Anticipo</h1>
+
+  <!-- DATATABLE -->
+      <ngx-datatable
+        class='material'
+        [columnMode]="'force'"        
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="5"
+        [rows]='responseData?responseData:[]'>
+
+  	      <ngx-datatable-column name="N° Factura" prop="billNumber" [width]="200"></ngx-datatable-column>
+  	      <ngx-datatable-column name="N° Cliente" prop="clientDebt"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Deuda Cliente" prop="startDate"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Desde" prop="endDate"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Hasta" prop="clientId" [width]="200"></ngx-datatable-column>
+
+          <ngx-datatable-column name="Acciones" prop="acciones" [width]="200">
+              <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+              </ng-template>
+          </ngx-datatable-column>
+
+        
+      </ngx-datatable> 
+  <!-- DATATABLE -->
+
+
+
+
+
+
+
+
+
+
+<!-- NGX-MODAL -->
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
+</ng-template>
+<!-- NGX-MODAL -->

@@ -18,14 +18,31 @@ import { CancelMoneyInputComponent } from './cancel-money-input/cancel-money-inp
 import { CancelAdvanceByLimitComponent } from './cancel-advance-by-limit/cancel-advance-by-limit.component';
 import { CancelCyclicBillComponent } from './cancel-cyclic-bill/cancel-cyclic-bill.component';
 import { CancelCyclicPaymetnBillComponent } from './cancel-cyclic-paymetn-bill/cancel-cyclic-paymetn-bill.component';
+import { IndexComponent } from './index/index.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-import { routes, routing } from './cancellations.routing'
+import { routes, routing } from './cancellations.routing';
+
+import { CancellationsSearchBarComponent } from './cancellations-search-bar/cancellations-search-bar.component';
+
+// FORMVALIDATOR IMPORTS
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
+// FORMVALIDATOR IMPORTS
+
+import { UtilModule } from 'app/pages/common/util.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    NgxDatatableModule,
+    NgBootstrapFormValidationModule,
+    //FormsModule,
+    ReactiveFormsModule,
+    UtilModule
   ],
-  declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent]
+  declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent, IndexComponent, 
+    CancellationsSearchBarComponent]
 })
 export class CancellationsModule { }

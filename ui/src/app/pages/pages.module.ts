@@ -33,8 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgxDatatableModule,
     PerfectScrollbarModule,
     routing,
-    FormsModule,
-    NgbModule.forRoot(),
+    //FormsModule,
+   // NgbModule.forRoot(),
     // OwlDateTimeModule,
     // OwlNativeDateTimeModule,
 

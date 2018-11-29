@@ -25,6 +25,7 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  FormsModule,
   Validators
 } from '@angular/forms';
 
@@ -32,7 +33,25 @@ import { InputErrorMessagesComponent } from './@core/input-error-messages/input-
 
 import { PagesModule } from './pages/pages.module'
 import { environment } from '../environments/environment';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
+import { 
+  NgBootstrapFormValidationModule,
+  CUSTOM_ERROR_MESSAGES
+ } from 'ng-bootstrap-form-validation';
+
+import { CUSTOM_ERRORS } from "./custom-errors";
+
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { deLocale , esLocale, ruLocale } from 'ngx-bootstrap/locale';
+import { listLocales } from 'ngx-bootstrap/chronos';
+
+
+defineLocale('es', esLocale);
+defineLocale('de', deLocale);
+defineLocale('ru', ruLocale);
 
 
 @NgModule({
@@ -57,17 +76,28 @@ import { environment } from '../environments/environment';
       ping: environment.PING
     }),
     ReactiveFormsModule,
+    //FormsModule,
     ToastrModule.forRoot({
       timeOut: environment.TOASTER_TIMEOUT,
       preventDuplicates: environment.PREVENT_DUPLICATES
     }),
+    NgBootstrapFormValidationModule.forRoot(),
+    ModalModule.forRoot(),
+
   ],
   providers: [AppSettings,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
-      multi: true
-    }
+      multi: true,
+
+    },
+    {
+      useValue: CUSTOM_ERRORS,
+      provide: CUSTOM_ERROR_MESSAGES,
+      multi: true,
+    },
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent]
 })

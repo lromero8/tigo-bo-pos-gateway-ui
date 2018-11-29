@@ -1,0 +1,65 @@
+
+<div class="container-fluid container-fullw  box-shadow mb-5 pt-2">
+
+  <form class="" [formGroup]="cancellation_form" (validSubmit)="search()">
+
+  <!-- <h3 class="text-center mb-4 mt-4">Anular Anticipo</h3> -->
+  
+  <div class="row pb-4">
+    
+   <!--
+
+     <div class="col-md-2">
+      
+    </div>
+   -->
+    <div class="col-md-2">
+      <div class="form-group">			
+        <label for="numFactura">N° de factura</label>
+        <input  type="text" name="numFactura" id="numFactura" class="rdb form-control" formControlName="numFactura" placeholder="# de factura ...">
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="numCuenta">N° de cuenta</label>
+        <input type="text"  name="numCuenta" id="numCuenta" class="rdb form-control" formControlName="numCuenta" placeholder="# de cuenta ...">
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="numContrato">N° de contrato</label>
+        <input type="text" name="numContrato" id="numContrato" class="rdb form-control" formControlName="numContrato" placeholder="# de contrato ...">
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="numIdCliente">N° de ID del cliente</label>
+        <input type="text" name="numIdCliente" id="numIdCliente" class="rdb form-control" formControlName="numIdCliente" placeholder="# de ID de cliente...">
+      </div>
+    </div>
+    <div class="col-md-2">
+    <div class="form-group">
+        &nbsp;
+      <label for=""> &nbsp; &nbsp; </label>
+      <button class="btn btn-primary  btn-sm btn-block rdb" type="submit" ngbTooltip="Buscar" type="submit" click="search()">
+          <i class="fa fa-search fa-lg"></i>
+      </button>
+    </div>    
+        
+    </div>
+
+      <div class="col-md-2">
+          <div class="form-group">
+              &nbsp;
+            <label for=""> &nbsp; &nbsp; </label>
+            <button class="btn btn-primary  btn-sm btn-block rdb" (click)="cancellation_form.reset(); clear()" ngbTooltip="Limpiar" type="button">
+                <i class="fa fa-eraser fa-lg"></i> 
+            </button>
+          </div>
+
+      </div>
+
+      </div>
+      
+    </form>
+  </div>

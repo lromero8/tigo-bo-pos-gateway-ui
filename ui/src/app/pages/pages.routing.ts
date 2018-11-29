@@ -10,12 +10,7 @@ export const routes: Routes = [
     component: PagesComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      {
-        path: 'dashboard',
-        loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule',
-        canActivate: [AuthGuard],
-        data: { breadcrumb: 'Dashboard' }
-      },
+
       {
         path: 'blank',
         component: BlankComponent,

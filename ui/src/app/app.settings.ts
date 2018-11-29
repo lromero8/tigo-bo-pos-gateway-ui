@@ -5,7 +5,7 @@ import { Settings } from './app.settings.model';
 export class AppSettings {
     public settings = new Settings(
         '', // Cambiar titulo si se desea que aparezca otro
-        'Porta numerica',
+        'POS',
         {
             menu: 'vertical', // horizontal , vertical
             menuType: 'default', // default, compact, mini
