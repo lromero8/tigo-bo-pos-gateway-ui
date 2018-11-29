@@ -18,7 +18,8 @@ import { CancelRechargeEpinService } from '../../../services/cancel-recharge-epi
 })
 export class CancelRechargeEpinComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+    private cancelRechargeEpinService: CancelRechargeEpinService) { }
 
   ngOnInit() {
     this.setTitle('cancelar recarga de epin');

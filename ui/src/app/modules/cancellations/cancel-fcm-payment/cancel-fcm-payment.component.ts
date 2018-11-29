@@ -18,7 +18,8 @@ import { CancelFcmPaymentService } from '../../../services/cancel-fcm-payment.se
 })
 export class CancelFcmPaymentComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private cancelFcmPaymentService: CancelFcmPaymentService) { }
 
   ngOnInit() {
     this.setTitle('Cancelar pago de FCM/Hot Billing');

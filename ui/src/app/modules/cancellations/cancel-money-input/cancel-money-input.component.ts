@@ -22,7 +22,8 @@ import { CancelMoneyInputService } from '../../../services/cancel-money-input.se
 export class CancelMoneyInputComponent implements OnInit {
 
 
-  constructor(private titleService: Title) { 
+  constructor(private titleService: Title,
+              private cancelMoneyInputService: CancelMoneyInputService) { 
    
   }
 

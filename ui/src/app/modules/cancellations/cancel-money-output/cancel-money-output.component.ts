@@ -18,7 +18,8 @@ import { CancelMoneyOutPutService } from '../../../services/cancel-money-out-put
 })
 export class CancelMoneyOutputComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title, 
+              private cancelMoneyOutPutService: CancelMoneyOutPutService) { }
 
   ngOnInit() {
     this.setTitle('cancelar egreso de dinero');

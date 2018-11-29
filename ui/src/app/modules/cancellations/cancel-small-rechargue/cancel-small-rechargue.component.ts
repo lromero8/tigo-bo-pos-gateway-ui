@@ -18,7 +18,8 @@ import { CancelSmallRechargeService } from '../../../services/cancel-small-recha
 })
 export class CancelSmallRechargueComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title, 
+    private cancelSmallRechargeService: CancelSmallRechargeService) { }
 
   ngOnInit() {
     this.setTitle('Cancelar mini recarga');

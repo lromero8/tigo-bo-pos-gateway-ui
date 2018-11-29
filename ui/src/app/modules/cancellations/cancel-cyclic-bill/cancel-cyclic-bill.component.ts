@@ -18,7 +18,8 @@ import { CancelCyclicBillService } from '../../../services/cancel-cyclic-bill.se
 })
 export class CancelCyclicBillComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private cancelCyclicBillService: CancelCyclicBillService) { }
 
   ngOnInit() {
     this.setTitle('Cancelar factura ciclica');

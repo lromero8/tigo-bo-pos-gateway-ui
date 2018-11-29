@@ -23,7 +23,10 @@ import { CancelAdvanceByLimitService } from '../../../services/cancel-advance-by
 })
 export class CancelAdvanceByLimitComponent implements OnInit {
 
-  constructor(private modalService: NgbModal, private titleService: Title) { }
+  constructor(private modalService: NgbModal, 
+              private titleService: Title,
+              private cancelAdvanceByLimitService: CancelAdvanceByLimitService,
+              ) { }
 
 
   ngOnInit() {

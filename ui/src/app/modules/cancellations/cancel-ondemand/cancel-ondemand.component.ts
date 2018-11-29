@@ -18,7 +18,8 @@ import { CancelOnDemandService } from '../../../services/cancel-on-demand.servic
 })
 export class CancelOndemandComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private CancelOnDemandService: CancelOnDemandService) { }
 
   ngOnInit() {
     this.setTitle('Cancelar on demand');
