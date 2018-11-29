@@ -34,7 +34,7 @@ export class AdvancePaymentComponent implements OnInit {
         id: 123213,
         client_name: 'JORGE ANTONIO',
         client_last_name: 'SAAVEDRA SAAVEDRA',
-        contrat_number: '1070230',
+        contract_number: '1070230',
         type_account: 'CET',
         contracts: [
           {
@@ -74,7 +74,7 @@ export class AdvancePaymentComponent implements OnInit {
       id: null,
       client_name: null,
       client_last_name: null,
-      contrat_number: null,
+      contract_number: null,
       type_account: null,
       contracts: [
         {
@@ -100,11 +100,14 @@ export class AdvancePaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listContracts.forEach(element => {
-      this.addItemForm(element);
+    this.ContractForm = this.fb.group({
+      items: this.fb.array([])
     });
   }
 
+  resetForm() {
+    this.ContractForm.reset();
+  }
 
   addItemForm(item) {
     let itemArray = this.ContractForm.get('items') as FormArray;
@@ -128,7 +131,6 @@ export class AdvancePaymentComponent implements OnInit {
         }
       }
     }
-    console.table(this.ContractForm.getRawValue());
   }
 
   createItem(item): FormGroup {
@@ -137,7 +139,7 @@ export class AdvancePaymentComponent implements OnInit {
       client_name: item.client_name,
       client_last_name: item.client_last_name,
       contract_number: item.contract_number,
-      type_account: item.type_accounnt,
+      type_account: item.type_account,
       contracts: this.fb.array([])
     })
   }
@@ -165,7 +167,7 @@ export class AdvancePaymentComponent implements OnInit {
 
     let items = this.ContractForm.get('items') as FormArray;
     let uniqueItem = items.at(element);
-    let itemsContract = uniqueItem.get('contracts')as FormArray;
+    let itemsContract = uniqueItem.get('contracts') as FormArray;
     let uniqueItemsInvoice = itemsContract.at(contract);
     let itemsInvoice = uniqueItemsInvoice.get('invoices') as FormArray;
     const currentItemInvoice = itemsInvoice.at(invoice).get('status_invoice');
@@ -185,6 +187,26 @@ export class AdvancePaymentComponent implements OnInit {
     }
   }
 
+  checkContract(element, contract) {
+
+    let items = this.ContractForm.get('items') as FormArray;
+    let uniqueItem = items.at(element);
+    let itemsContract = uniqueItem.get('contracts') as FormArray;
+    let uniqueContract = itemsContract.at(contract);
+    const currentItemInvoice = uniqueContract.get('status_contract');
+    let itemsInvoices = uniqueContract.get('invoices') as FormArray;
+    if (!currentItemInvoice.value) {
+      for (let i = 0; i < itemsInvoices.length; i++) {
+        let uniqueInvoice = itemsInvoices.at(i).get('status_invoice');
+        uniqueInvoice.setValue(false);
+        uniqueInvoice.disable();
+      }
+    } else {
+        let uniqueInvoice = itemsInvoices.at(0).get('status_invoice');
+        uniqueInvoice.enable();
+    }
+  }
+
   searchPaymentMethods() {
     this.modalReference = this.modalService.open(this.modalPaymentMethod, this.ngModalOptions);
   }
@@ -198,57 +220,64 @@ export class AdvancePaymentComponent implements OnInit {
   }
   getContracts() {
 
+    this.resetForm();
+    this.listContracts.forEach(element => {
+      this.addItemForm(element);
+    });
   }
 
   finishContracts() {
-  //   const items = this.ContractForm.get('items') as FormArray;
-  //   for (let index = 0; index < items.length; index++) {
-  //     let itemAdded = false;
-  //     const itemContract = items.at(index);
-  //     const itemContractStatus = itemContract.get('status_item');
-  //     if (itemContractStatus.value) {
-  //       const itemsInvoice = items.at(index).get('invoices') as FormArray;
-  //       for (let invoices = 0; invoices < itemsInvoice.length; invoices++) {
-  //         const itemInvoiceStatus = itemsInvoice.at(invoices).get('status_invoice');
-  //         const uniqueContract = itemsInvoice.at(invoices);
-  //         if (itemInvoiceStatus.value) {
-  //           itemAdded = true;
-  //           const idContract = itemContract.get('id').value;
-  //           const nameContract = itemContract.get('name').value;
-  //           const idInvoice = uniqueContract.get('id').value;
-  //           const nameInvoice = uniqueContract.get('name').value;
-  //           if (invoices == 0) {
-  //             this.listContractsAdded.contracts.push({
-  //               user: {
-  //                 id: 10000,
-  //                 name_user: 'Juan Perez'
-  //               },
-  //               contract: {
-  //                 id: idContract,
-  //                 name_contract: nameContract,
-  //                 type_account: 'CET'
-  //               },
-  //               invoices: [
-  //                 {
-  //                   id: idInvoice,
-  //                   name_invoice: nameInvoice
-  //                 }
-  //               ]
-  //             });
-  //           } else {
-  //             this.listContractsAdded.contracts[index].invoices.push({
-  //               id: idInvoice,
-  //               name_invoice: nameInvoice
-  //             })
-  //           }
-  //         }
-  //         if (!itemAdded) {
-  //           alert('Se ha seleccionado uno o mas contratos sin elegir alguna factura');
-  //           return;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+    this.listContractsAdded = [];
+    const items = this.ContractForm.get('items') as FormArray;
+    for (let i = 0; i < items.length; i++) {
+      const idClient = items.at(i).get('id').value;
+      const clientName = items.at(i).get('client_name').value;
+      const clientLastName = items.at(i).get('client_last_name').value;
+      const contractNumber = items.at(i).get('contract_number').value;
+      const typeAccount = items.at(i).get('type_account').value;
+      this.listContractsAdded.push({
+        id: idClient,
+        client_name: clientName,
+        client_last_name: clientLastName,
+        contract_number: contractNumber,
+        type_account: typeAccount,
+        contracts: []
+      });
+      const itemsContracts = items.at(i).get('contracts') as FormArray;
+      for (let c = 0; c < itemsContracts.length; c++) {
+        let itemAdded = false;
+        const itemContractStatus = itemsContracts.at(c).get('status_contract');
+        if (itemContractStatus.value) {
+          const idContract = itemsContracts.at(c).get('id').value;
+          const nameContract = itemsContracts.at(c).get('name_contract').value;
+          const itemsInvoices = itemsContracts.at(c).get('invoices') as FormArray;
+          this.listContractsAdded[i].contracts.push({
+            id: idContract,
+            name_contract: nameContract,
+            invoices: []
+          });
+
+          for (let inv = 0; inv < itemsInvoices.length; inv++) {
+            const itemInvoiceStatus = itemsInvoices.at(inv).get('status_invoice').value;
+            if (itemInvoiceStatus) {
+              itemAdded = true;
+              const idInvoice = itemsInvoices.at(inv).get('id').value;
+              const nameInvoice = itemsInvoices.at(inv).get('name_invoice').value;
+              this.listContractsAdded[i].contracts[c].invoices.push({
+                id: idInvoice,
+                name_invoice: nameInvoice
+              })
+            }
+          }
+          if (!itemAdded) {
+            alert('Se ha seleccionado uno o mas contratos sin elegir alguna factura');
+            return;
+          }
+
+        }
+      }
+    }
+    this.closeModal()
   }
 }
+

@@ -78,7 +78,8 @@
                                                 <div class="col-md-12">
                                                   <div class="form-check">
                                                     <input class="form-check-input" formControlName="status_contract" type="checkbox"
-                                                      id="chkContract_{{i}}_{{c}}" data-toggle="collapse" [attr.href]="'#divContract_' + i + '_' + c">
+                                                      id="chkContract_{{i}}_{{c}}" data-toggle="collapse" [attr.href]="'#divContract_' + i + '_' + c"
+                                                      (change)="checkContract(i, c )">
                                                     <label class="form-check-label" for="chkContract_{{i}}_{{c}}">
                                                       {{contracts.controls.name_contract.value}}
                                                     </label>

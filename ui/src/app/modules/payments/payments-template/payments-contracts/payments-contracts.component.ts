@@ -7,11 +7,18 @@ import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } fro
   encapsulation: ViewEncapsulation.None
 })
 export class PaymentsContractsComponent implements OnInit {
-  @Input('contracts') contractsParent: any;
+  private dataContracts: any;
+  @Input('contracts')
+  set data(data: any) {
+    if (data) {
+      this.dataContracts = data;
+    }
+
+  }
 
   @Output() parentSearchPaymentContracts: EventEmitter<any> = new EventEmitter();
   constructor() {
-   }
+  }
 
   ngOnInit() {
   }
