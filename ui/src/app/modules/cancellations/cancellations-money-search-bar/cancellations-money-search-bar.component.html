@@ -14,7 +14,7 @@
      -->
       <div class="col-md-2">
         <div class="form-group">			
-          <label for="numFactura">Id de transaccion:</label>
+          <label for="numFactura">Id de transacci&oacute;n:</label>
           <input  type="text" name="transacctionId" id="transacctionId" class="rdb form-control"  placeholder="# de transaccion ..." formControlName="transacctionId" >
         </div>
       </div>
@@ -56,7 +56,7 @@
             <div class="form-group">
                 &nbsp;
               <label for=""> &nbsp; &nbsp; </label>
-              <button class="btn btn-primary  btn-sm btn-block rdb" (click)="cancelMoneyFrm.reset()" ngbTooltip="Limpiar" type="button">
+              <button class="btn btn-primary  btn-sm btn-block rdb" (click)="cancelMoneyFrm.reset(); clean()" ngbTooltip="Limpiar" type="button">
                   <i class="fa fa-eraser fa-lg"></i> 
               </button>
             </div>
