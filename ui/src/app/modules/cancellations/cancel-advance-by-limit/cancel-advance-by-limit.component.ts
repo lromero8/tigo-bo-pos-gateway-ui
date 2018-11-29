@@ -11,6 +11,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Title } from '@angular/platform-browser';
+import { CancelAdvanceByLimitService } from '../../../services/cancel-advance-by-limit.service'
 
 
 @Component({

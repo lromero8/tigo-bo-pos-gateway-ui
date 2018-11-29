@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CancelFcmPaymentService } from '../../../services/cancel-fcm-payment.service'
 
 @Component({
   selector: 'app-cancel-fcm-payment',

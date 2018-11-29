@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CancelOnDemandService } from '../../../services/cancel-on-demand.service'
 
 @Component({
   selector: 'app-cancel-ondemand',

@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CancelRechargeEpinService } from '../../../services/cancel-recharge-epin.service'
 
 @Component({
   selector: 'app-cancel-recharge-epin',

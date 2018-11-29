@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CancelMoneyOutPutService } from '../../../services/cancel-money-out-put.service'
 
 @Component({
   selector: 'app-cancel-money-output',
@@ -34,5 +35,7 @@ export class CancelMoneyOutputComponent implements OnInit {
   public clear() {
     console.log('clear');
   }
+
+  
 
 }

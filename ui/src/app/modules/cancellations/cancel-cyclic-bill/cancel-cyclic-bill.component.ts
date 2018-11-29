@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CancelCyclicBillService } from '../../../services/cancel-cyclic-bill.service'
 
 @Component({
   selector: 'app-cancel-cyclic-bill',
