@@ -43,11 +43,13 @@ export class AdvancePaymentComponent implements OnInit {
             invoices: [
               {
                 id: 0,
-                name_invoice: 'Factura 1'
+                name_invoice: 'Factura 1',
+                price_invoice: 120
               },
               {
                 id: 1,
-                name_invoice: 'Factura 2'
+                name_invoice: 'Factura 2',
+                price_invoice: 110
               }
             ]
           },
@@ -57,11 +59,13 @@ export class AdvancePaymentComponent implements OnInit {
             invoices: [
               {
                 id: 0,
-                name_invoice: 'Factura 1'
+                name_invoice: 'Factura 1',
+                price_invoice: 100
               },
               {
                 id: 1,
-                name_invoice: 'Factura 2'
+                name_invoice: 'Factura 2',
+                price_invoice: 130
               }
             ]
           }
@@ -83,7 +87,8 @@ export class AdvancePaymentComponent implements OnInit {
           invoices: [
             {
               id: null,
-              name_invoice: ''
+              name_invoice: '',
+              price_invoice: null
             }
           ]
         }
@@ -107,6 +112,9 @@ export class AdvancePaymentComponent implements OnInit {
 
   resetForm() {
     this.ContractForm.reset();
+    this.ContractForm = this.fb.group({
+      items: this.fb.array([])
+    });
   }
 
   addItemForm(item) {
@@ -159,6 +167,7 @@ export class AdvancePaymentComponent implements OnInit {
       index: index,
       id: item.id,
       name_invoice: item.name_invoice,
+      price_invoice: item.price_invoice,
       status_invoice: false
     })
   }
@@ -221,6 +230,7 @@ export class AdvancePaymentComponent implements OnInit {
   getContracts() {
 
     this.resetForm();
+    console.table(this.ContractForm.getRawValue());
     this.listContracts.forEach(element => {
       this.addItemForm(element);
     });
@@ -263,9 +273,11 @@ export class AdvancePaymentComponent implements OnInit {
               itemAdded = true;
               const idInvoice = itemsInvoices.at(inv).get('id').value;
               const nameInvoice = itemsInvoices.at(inv).get('name_invoice').value;
+              const priceInvoice = itemsInvoices.at(inv).get('price_invoice').value;
               this.listContractsAdded[i].contracts[c].invoices.push({
                 id: idInvoice,
-                name_invoice: nameInvoice
+                name_invoice: nameInvoice,
+                price_invoice: priceInvoice
               })
             }
           }
@@ -277,7 +289,7 @@ export class AdvancePaymentComponent implements OnInit {
         }
       }
     }
-    this.closeModal()
+    this.closeModal();
   }
 }
 

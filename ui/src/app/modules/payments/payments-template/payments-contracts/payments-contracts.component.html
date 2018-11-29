@@ -1,31 +1,45 @@
 <div class="row row-payment-left">
   <div class="col-md-12 mt-4">
-    <button class="btn btn-success" (click)="searchContracts()"><i class="fa fa-search" aria-hidden="true"></i> Buscar
-      Contratos</button>
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-success" (click)="searchContracts()"><i class="fa fa-search" aria-hidden="true"></i>
+          Buscar Contratos</button>
+      </div>
+      <div class="col-md-6">
+        <ng-container *ngIf="dataContracts.length">
+          <div class="row">
+            <div class="col-md-6 text-right">
+               <span class="spn-contract-text">Total:</span>
+            </div>
+            <div class="col-md-6">
+              <span class="spn-contract-total">{{totalInvoices}}</span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
   </div>
   <div class="col-md-12">
-    <div class="jumbotron mt-4">
+    <div class="jumbotron mt-4 jumbotron-custom">
       <div class="row">
         <ng-container *ngFor="let item of dataContracts; let i = index">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-12 text-center">
-                <h5>Información del cliente</h5>
-              </div>
-              <div class="col-md-12" style="background: #bcbcbc;">
-                <div class="form-group row" style="margin-bottom: 0!important">
+              <div class="col-md-12 col-md-12-custom">
+                <p class="text-center"><span class="spn-info-client">Información del cliente</span></p>
+                <div class="form-group row form-group-row-custom">
                   <label for="" class="col-md-4 col-form-label font-weight-bold">Cliente:</label>
                   <div class="col-md-8">
                     <input type="text" readonly class="form-control-plaintext" value="{{item.client_name + ' ' + item.client_last_name}}">
                   </div>
                 </div>
-                <div class="form-group row"  style="margin-bottom: 0!important">
+                <div class="form-group row form-group-row-custom">
                   <label for="" class="col-md-4 col-form-label font-weight-bold">Contrato:</label>
                   <div class="col-md-8">
                     <input type="text" readonly class="form-control-plaintext" value="{{item.contract_number}}">
                   </div>
                 </div>
-                <div class="form-group row"  style="margin-bottom: 0!important">
+                <div class="form-group row form-group-row-custom">
                   <label for="" class="col-md-4 col-form-label font-weight-bold">Tipo de cuenta:</label>
                   <div class="col-md-8">
                     <input type="text" readonly class="form-control-plaintext" value="{{item.type_account}}">
@@ -34,20 +48,28 @@
               </div>
               <div class="col md-12 mt-4">
                 <div class="card">
-                  <div class="card-header" style="background: #013069;color:white">
+                  <div class="card-header card-header-custom">
                     Contratos
                   </div>
                   <ul class="list-group list-group-flush">
                     <ng-container *ngFor="let contract of item.contracts">
-                      <li class="list-group-item">
-                        {{contract.name_contract}}
-                        <ng-container *ngFor="let invoice of contract.invoices">
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                              {{invoice.name_invoice}}
-                            </li>
-                          </ul>
-                        </ng-container>
+                      <li class="list-group-item list-group-item-custom">
+                        <div class="row">
+                          <div class="col-md-12 col-md-12-custom-cn">
+                            <span class="span-custom-contract">{{contract.name_contract}}</span>
+                          </div>
+                          <div class="col-md-12 c-m-12-c-invoice">
+
+                            <ul class="list-group list-group-flush">
+                              <ng-container *ngFor="let invoice of contract.invoices">
+                                <li class="list-group-item">
+                                  <span class="span-custom">{{invoice.name_invoice}}</span>
+                                </li>
+                              </ng-container>
+                            </ul>
+
+                          </div>
+                        </div>
                       </li>
                     </ng-container>
                   </ul>
