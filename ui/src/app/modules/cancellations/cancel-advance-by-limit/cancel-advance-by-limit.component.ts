@@ -37,4 +37,11 @@ export class CancelAdvanceByLimitComponent implements OnInit {
     this.titleService.setTitle( newTitle ); 
   }
 
+  public getFormData(ev): void {
+    console.log(ev)
+  }
+
+  public clearFormData(): void {
+    console.log('clean')
+  }
 }
