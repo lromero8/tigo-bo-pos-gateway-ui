@@ -11,8 +11,10 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { RegularExpressionsComponent } from './regular-expressions/regular-expressions.component';
 import { PaymentsOptionsComponent } from './payments-options/payments-options.component';
+import { IndexComponent } from './index/index.component'
 
 export const routes: Routes = [
+    { path: '', component: IndexComponent },
     { path: 'regularExpressions',  component: RegularExpressionsComponent  },
     { path: 'paymentOptions',  component: PaymentsOptionsComponent  }
    

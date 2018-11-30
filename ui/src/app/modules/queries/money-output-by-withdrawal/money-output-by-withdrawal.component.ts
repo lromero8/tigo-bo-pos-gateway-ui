@@ -8,7 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { MoneyOutputByWithdrawalService } from '../../../services/money-output-by-withdrawal.service'
+import { MoneyOutputByWithdrawalService } from '../../../services/money-output-by-withdrawal.service' //money-output-by-withdrawal.service
 
 @Component({
   selector: 'app-money-output-by-withdrawal',
