@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CashierPayrollReportsService } from '../../../services/cashier-payroll-reports.service'
 
 @Component({
   selector: 'app-cashier-payroll-reports',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class CashierPayrollReportsComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private cashierPayrollReportsService: CashierPayrollReportsService) { }
 
   ngOnInit() {
     this.setTitle('Opciones de pago');

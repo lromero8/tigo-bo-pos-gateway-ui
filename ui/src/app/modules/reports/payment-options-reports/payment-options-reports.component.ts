@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { PaymentOptionsReportService } from '../../../services/payment-options-report.service'
 
 @Component({
   selector: 'app-payment-options-reports',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class PaymentOptionsReportsComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title, 
+              private paymentOptionsReportService: PaymentOptionsReportService) { }
 
   ngOnInit() {
     this.setTitle('Opciones de pago');
