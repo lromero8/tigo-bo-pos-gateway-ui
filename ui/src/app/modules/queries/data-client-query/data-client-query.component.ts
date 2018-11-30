@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { DataClientQueryService } from '../../../services/data-client-query.service';
 
 @Component({
   selector: 'app-data-client-query',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class DataClientQueryComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private dataClientQueryService: DataClientQueryService) { }
 
   ngOnInit() {
     this.setTitle('Consultas de los datos del cliente');
