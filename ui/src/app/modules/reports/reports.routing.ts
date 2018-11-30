@@ -17,9 +17,9 @@ import { IndexComponent } from './index/index.component'
 
 export const routes: Routes = [
     { path: '', component: IndexComponent },
-    { path: 'paymentOptions',  component: PaymentOptionsReportsComponent  },
-    { path: 'payments',  component: PaymentReportsComponent  },
-    { path: 'cashierPayroll',  component: CashierPayrollReportsComponent   },
+    { path: 'paymentOptionsReports',  component: PaymentOptionsReportsComponent  },
+    { path: 'paymentsReports',  component: PaymentReportsComponent  },
+    { path: 'cashierPayrollReports',  component: CashierPayrollReportsComponent   },
     { path: 'paymetnDetail',  component: PaymentsDetailComponent  }
 ];
 
