@@ -14,13 +14,14 @@ import { PaymentReportsComponent } from './payment-reports/payment-reports.compo
 import { CashierPayrollReportsComponent } from './cashier-payroll-reports/cashier-payroll-reports.component';
 import { PaymentsDetailComponent } from './payments-detail/payments-detail.component';
 
-import { routes, routing } from './reports.routing'
+import { routes, routing } from './reports.routing';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   imports: [
     CommonModule,
     routing
   ],
-  declarations: [PaymentOptionsReportsComponent, PaymentReportsComponent, CashierPayrollReportsComponent, PaymentsDetailComponent]
+  declarations: [PaymentOptionsReportsComponent, PaymentReportsComponent, CashierPayrollReportsComponent, PaymentsDetailComponent, IndexComponent]
 })
 export class ReportsModule { }

@@ -13,8 +13,10 @@ import { PaymentOptionsReportsComponent } from './payment-options-reports/paymen
 import { PaymentReportsComponent } from './payment-reports/payment-reports.component';
 import { CashierPayrollReportsComponent } from './cashier-payroll-reports/cashier-payroll-reports.component';
 import { PaymentsDetailComponent } from './payments-detail/payments-detail.component';
+import { IndexComponent } from './index/index.component'
 
 export const routes: Routes = [
+    { path: '', component: IndexComponent },
     { path: 'paymentOptions',  component: PaymentOptionsReportsComponent  },
     { path: 'payments',  component: PaymentReportsComponent  },
     { path: 'cashierPayroll',  component: CashierPayrollReportsComponent   },
