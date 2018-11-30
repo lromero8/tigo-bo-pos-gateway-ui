@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { FcmHotBillingPaymentService } from '../../../services/fcm-hot-billing-payment.service'
 
 @Component({
   selector: 'app-fcm-hotbilling-payment',

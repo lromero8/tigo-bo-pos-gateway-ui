@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { EpinRechargePaymentService } from '../../../services/epin-recharge-payment.service'
 
 @Component({
   selector: 'app-epin-recharge-payment',
