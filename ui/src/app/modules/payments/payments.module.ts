@@ -19,12 +19,17 @@ import { MoneyInputComponent } from './money-input/money-input.component';
 
 import { routes, routing } from './payments.routing';
 import { IndexComponent } from './index/index.component';
+import { PaymentsHeaderComponent } from './payments-template/payments-header/payments-header.component';
+import { PaymentsContractsComponent } from './payments-template/payments-contracts/payments-contracts.component';
+import { PaymentsMethodsComponent } from './payments-template/payments-methods/payments-methods.component';
+import { UtilModule } from 'app/pages/common/util.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    UtilModule
   ],
-  declarations: [AdvancePaymentComponent, AdvancePaymentByLimitComponent, VoucherOndemandPaymentComponent, VoucherOndemandPaymentMassiveComponent, FcmHotbillingPaymentComponent, SmallRechargePaymentComponent, EpinRechargePaymentComponent, MoneyInputComponent, IndexComponent]
+  declarations: [AdvancePaymentComponent, AdvancePaymentByLimitComponent, VoucherOndemandPaymentComponent, VoucherOndemandPaymentMassiveComponent, FcmHotbillingPaymentComponent, SmallRechargePaymentComponent, EpinRechargePaymentComponent, MoneyInputComponent, IndexComponent, PaymentsHeaderComponent, PaymentsContractsComponent, PaymentsMethodsComponent]
 })
 export class PaymentsModule { }
