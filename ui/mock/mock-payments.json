@@ -1,0 +1,42 @@
+{
+    "advancePayment": [
+      {
+        "id": 1
+      }
+    ],
+    "advancePaymentByLimit": [
+      {
+        "id": 1
+      }
+    ],
+    "epinRechargePayment": [
+      {
+        "id": 1
+      }
+    ],
+    "fcmHotBillingPayment": [
+      {
+        "id": 1
+      }
+    ],
+    "moneyInput": [
+      {
+        "id": 1
+      }
+    ],
+    "smallRechargePayment": [
+      {
+        "id": 1
+      }
+    ],
+    "voucherOndemandPayment": [
+      {
+        "id": 1
+      }
+    ],
+    "voucherOnDemandPaymentMassive": [
+      {
+        "id": 1
+      }
+    ]
+  }

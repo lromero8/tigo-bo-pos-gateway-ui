@@ -1,0 +1,154 @@
+{
+    "dataAccountQuery": [
+        {
+            "id": 1,
+            "clientAccount": {
+                "clientId":"48451",
+                "client": "48451 SAAVEDRA SAAVEDRA JORGE ANTONIO",
+                "contractId": "1070230",
+                "accountType": "CET",
+                "accountNumber": "77345678",
+                "startDate": "00/00/0000",
+                "endDate": "23/08/2017",
+                "currentPaymentStatus": {
+                    "clientDebt": 0.0,
+                    "contractDebt": 0.0,
+                    "accountBalance": 0.0,
+                    "warranty": 0.0,
+                    "advance": 0.0,
+                    "advanceByLimit": 0.0
+                },
+                "paymentRecords": [
+                    {
+                        "id": 1,
+                        "date": "00/00/0000",
+                        "debtClientAmount": "0Bs",
+                        "accountingStatement": "Cancelado",
+                        "amountToHave": "379.5",
+                        "paymentStatus": "Aplicado Total",
+                        "balanceStatus": 0.00
+                    },
+                    {
+                        "id": 2,
+                        "date": "06/09/2003",
+                        "debtClientAmount": "379.5",
+                        "accountingStatement": "No pagado",
+                        "amountToHave": 0.00,
+                        "paymentStatus": "Aplicado Parcial",
+                        "balanceStatus": 379.5
+                    }
+                ]
+            }
+        } 
+    ],
+    "dataClientQuery": [
+      {
+        "id": 1,
+        "clientAccount": {
+            "clientId":"48451",
+            "clientFullName":"SAAVEDRA SAAVEDRA JORGE ANTONIO",
+            "modality": "Pospago",
+            "accountType": "CET",
+            "accountNumber": "77345678",
+            "accountStatus": "ACTIVO",
+            "accountCicle": "F",
+            "situationType": "Propio",
+            "businessDate": "15/10/2018",
+            "3g": false,
+            "branchOffice": "La Paz",
+            "segment": "-",
+            "consumption plan": "Plan Comercial LTE Bolsa de Minutos/BOLSA TIGO BUSSINESS LTE PP100",
+            "contracts": [
+                {
+                    "id": 1,
+                    "paymentOption": "",
+                    "clientId":"48451",
+                    "chargeAccount": "0",
+                    "contractId": "48451",
+                    "creditLine": "77345678",
+                    "accountCicle": "F",
+                    "consumptionLine": "1000.0",
+                    "segment": "AAA",
+                    "accountNumbers": "0",
+                    "toInvoice": "-",
+                    "paymentAddress": "C MERCADO ESQ YANACOCHA N1004 CENTRAL",
+                    "excutiveAccount": "Margarita Ramirez",
+                    "balanceStatus": 0.00            
+                }
+            ]
+        } 
+      }
+    ],
+    "moneyRefoundQuery": [
+      {
+        "id": 1,
+        "clientAccount": {
+            "clientId":"48451",
+            "client": "48451 SAAVEDRA SAAVEDRA JORGE ANTONIO",
+            "contractId": "1070230",
+            "accountType": "CET",
+            "accountNumber": "77345678",
+            "startDate": "00/00/0000",
+            "endDate": "23/08/2017",
+            "contracts": [
+                {
+                    "invoices": [
+                        {
+                            "id":1,
+                            "invoiceNumber": "33312",
+                            "contractType": "Pospago",
+                            "amount": "100Bs",
+                            "accountingStatement": "Cancelado"
+                        },
+                        {
+                            "id":2,
+                            "invoiceNumber": "33313",
+                            "contractType": "Pospago",
+                            "amount": "100Bs",
+                            "accountingStatement": "Pago parcial"
+                        }
+                    ]
+                }
+            ]
+        }
+      }
+    ],
+    "montlyDebtQuery": [
+      {
+        "id": 1,  
+        "clientAccount": {
+            "clientId":"48451",
+            "client": "48451 SAAVEDRA SAAVEDRA JORGE ANTONIO",
+            "contractId": "1070230",
+            "accountType": "CET",
+            "accountNumber": "77345678",
+            "startDate": "00/00/0000",
+            "endDate": "23/08/2017",
+            "contracts": [
+                {
+                    "invoices": [
+                        {
+                            "id": 1,
+                            "invoiceNumber": "33312",
+                            "contractType": "Pospago",
+                            "amount": "100Bs",
+                            "accountingStatement": "Cancelado",
+                            "paymments": [
+                                {
+                                    "id": 1,
+                                    "paymentNumber": 1,
+                                    "paymentDate": "23/08/2017",
+                                    "voucher":"1304",
+                                    "amountToHave": "100Bs",
+                                    "debtClientAmount": "0Bs"
+            
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+      }
+    ]
+}
