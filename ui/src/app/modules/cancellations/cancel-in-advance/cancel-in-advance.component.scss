@@ -85,3 +85,37 @@ material table theme
 //   }
 // }
 
+
+.ngx-datatable.material {
+  .datatable-header {
+        background-color: #2196F3;
+    .datatable-header-cell {
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+      // your styles here
+      &:not(:last-child){
+        border-right: 1px solid #eee;        
+      }
+    }
+  }
+  .datatable-body-cell:not(:last-child) {
+        border-right: 1px solid #eee;
+  }
+  .datatable-row-wrapper:not(:last-child) {
+        border-bottom: 1px solid #eee;
+  }
+  // .datatable-footer {
+  //   background-color:  #ededed;
+  // }
+}
+
+@media (min-width: 992px){
+  .modal-lg {
+      max-width: 1224px;
+  }
+}
+
+textarea{
+  outline: none 
+}
