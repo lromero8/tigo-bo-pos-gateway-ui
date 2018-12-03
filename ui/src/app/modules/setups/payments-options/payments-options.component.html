@@ -8,7 +8,7 @@
 //
 -->
 
-<div class="container-fluid h-100 shortcuts">
+<div class="container-fluid h-100 shortcuts bounceInLeft">
   <div class="row align-items-center h-100">
     <div class="col-lg-10 col-md-12 mx-auto">
 
@@ -71,24 +71,74 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <div class="modal-body">
-      <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
-      [limit]="5" [rows]='[]'>
+
+
+
+
+      <aw-wizard>
+          <aw-wizard-step stepTitle="Listado de monedas registradas">
+
+
+              <div>
+                  <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
+              <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
+              [limit]="5" [rows]='[]'>
+          
+              <ngx-datatable-column name="Moneda" prop="currency"></ngx-datatable-column>
+              <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
+              <ngx-datatable-column name="Cambio de moneda local" prop="changeLocalCurrency"></ngx-datatable-column>
+              <ngx-datatable-column name="Tasa de cambio" prop="exchangeRate"></ngx-datatable-column>
+              <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
+          
+              <ngx-datatable-column name="Acciones" prop="acciones">
+                  <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                  </ng-template>
+              </ngx-datatable-column>
+          </ngx-datatable>
+        
+        
+        
+          </div>
+        
+          </aw-wizard-step>
+      
   
-      <ngx-datatable-column name="Moneda" prop="currency"></ngx-datatable-column>
-      <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
-      <ngx-datatable-column name="Cambio de moneda local" prop="changeLocalCurrency"></ngx-datatable-column>
-      <ngx-datatable-column name="Tasa de cambio" prop="exchangeRate"></ngx-datatable-column>
-      <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
-  
-      <ngx-datatable-column name="Acciones" prop="acciones">
-          <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-              <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
-          </ng-template>
-      </ngx-datatable-column>
-  
-  
-  </ngx-datatable>
+          <aw-wizard-step stepTitle="Registrar una nueva moneda" awOptionalStep>
+      
+
+            <div class="row justify-content-center align-items-center bounceInRight">
+              <div class="col-md-8">
+                  <form>
+                      <div class="form-group">
+                        <label for="">Moneda:</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="">Descripci&oacute;n:</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="">S&iacute;mbolo:</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for=""> &nbsp; &nbsp; </label>
+                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
+                      </div>
+                  </form>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+      
+          </aw-wizard-step>
+      </aw-wizard>
+
+      
+
   </div>
 </ng-template>
 
@@ -113,6 +163,74 @@
   </div>
   <div class="modal-body">
     
+
+      <aw-wizard>
+          <aw-wizard-step stepTitle="Listado de tarjetas registradas">
+
+
+              <div>
+                  <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
+              <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
+              [limit]="5" [rows]='[]'>
+          
+              <ngx-datatable-column name="Codigo" prop="currency"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de tarjeta" prop="description"></ngx-datatable-column>
+              <ngx-datatable-column name="Descripcion" prop="changeLocalCurrency"></ngx-datatable-column>
+              <ngx-datatable-column name="Premium" prop="exchangeRate"></ngx-datatable-column>
+              <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
+          
+              <ngx-datatable-column name="Acciones" prop="acciones">
+                  <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                  </ng-template>
+              </ngx-datatable-column>
+          </ngx-datatable>
+        
+        
+        
+          </div>
+        
+          </aw-wizard-step>
+      
+  
+          <aw-wizard-step stepTitle="Registrar una nueva tarjeta" awOptionalStep>
+      
+
+            <div class="row justify-content-center align-items-center">
+              <div class="col-md-8">
+                  <form>
+                      <div class="form-group">
+                        <label for="">C&oacute;digo:</label>
+                        <input type="text" class="form-control">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="">Tipon de tarjeta:</label>
+                          <input type="text" class="form-control">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="">Descripci&oacute;n:</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      
+                      <div class="form-group">
+                          <label for="">Premium:</label>
+                          <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for=""> &nbsp; &nbsp; </label>
+                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
+                      </div>
+                  </form>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+      
+          </aw-wizard-step>
+      </aw-wizard>
+
   </div>
 </ng-template>
 
@@ -125,5 +243,70 @@
   </div>
   <div class="modal-body">
     
+
+      <aw-wizard>
+          <aw-wizard-step stepTitle="Listado de bancos registrados">
+
+
+              <div>
+                  <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
+              <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
+              [limit]="5" [rows]='[]'>
+          
+              <ngx-datatable-column name="Persona juridica" prop="currency"></ngx-datatable-column>
+              <ngx-datatable-column name="Razon social" prop="description"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de razon social" prop="changeLocalCurrency"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de persona juridica" prop="exchangeRate"></ngx-datatable-column>
+              <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
+          
+              <ngx-datatable-column name="Acciones" prop="acciones">
+                  <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                  </ng-template>
+              </ngx-datatable-column>
+          </ngx-datatable>
+        
+        
+          </div>
+        
+          </aw-wizard-step>
+      
+  
+          <aw-wizard-step stepTitle="Registrar un nuevo banco" awOptionalStep>
+      
+            <div class="row justify-content-center align-items-center">
+              <div class="col-md-8">
+                  <form>
+                      <div class="form-group">
+                        <label for="">Persona juridica:</label>
+                        <input type="text" class="form-control">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="">Razon social:</label>
+                          <input type="text" class="form-control">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="">Tipo de razon social:</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      
+                      <div class="form-group">
+                          <label for="">Tipo de persona juridica:</label>
+                          <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for=""> &nbsp; &nbsp; </label>
+                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
+                      </div>
+                  </form>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+      
+          </aw-wizard-step>
+      </aw-wizard>
   </div>
 </ng-template>
