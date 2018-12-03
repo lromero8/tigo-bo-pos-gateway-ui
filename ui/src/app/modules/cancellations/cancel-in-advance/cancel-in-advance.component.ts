@@ -74,6 +74,8 @@ export class CancelInAdvanceComponent implements OnInit {
     // console.log(row)
     this.billNumber = row.billNumber;
     this.selectedRow = row.invoice;
+        console.log(this.cancellationInAdvanceForm.getRawValue())
+
     this.selectedRow.forEach( i => {
       // console.log(i)
       this.addItems(i)
@@ -83,15 +85,18 @@ export class CancelInAdvanceComponent implements OnInit {
 
   closeModal(){
 
-    this.cancellationInAdvanceForm.reset()
+    // console.log(this.cancellationInAdvanceForm.getRawValue())
     // debugger
-    this.cancellationInAdvanceForm = this.formBuilder.group({
-      items: this.formBuilder.array([])
-    });
-    this.confirmationModal = false
+    let forms = this.cancellationInAdvanceForm.get("items") as FormArray
+    while (forms.length > 0) {
+      forms.removeAt(0)
+    }    
+    this.selectedRow = []
     this.selected = [];
     this.filteredData = [];
     this.modalRef.hide();
+    this.confirmationModal = false
+
   }
 
   addItems(items){
@@ -116,19 +121,6 @@ export class CancelInAdvanceComponent implements OnInit {
   getData() {
     this.CancelInAdvanceService.mock("").subscribe(
         data => {
-        // console.log(data)
-        // this.responseData = data
-        //   if (data.headers[environment.HEADER_SERVICE_CODE] === environment.SUCCESS_CODE) {
-        //     // this.toastr.success("Se ejecuto con exito el Conciliador")
-        //     this.rows = data.parameters;
-        //     if (data.length == 0) { 
-        //       this.toastr.warning("No se encontraron registros de esa fecha");
-        //     } 
-        //    } else {
-        //      this.toastr.error(data.headers[environment.HEADER_SERVICE_DESCRIPTION]);
-        //    }
-
-        // }, error => { this.toastr.success("Fallo critico ") 
         },
         error => { console.log("Error") }
   
@@ -272,6 +264,23 @@ export class CancelInAdvanceComponent implements OnInit {
     }
     // console.log("Len ", len)
     console.log("Form ", this.filteredData)
+  }
+
+
+  confirmar(){
+
+    let forms = this.cancellationInAdvanceForm.get("items") as FormArray
+    while (forms.length > 0) {
+      forms.removeAt(0)
+    }    
+    this.selectedRow = []
+    this.selected = [];
+    this.filteredData = [];
+    this.modalRef.hide();
+    this.confirmationModal = false
+    
+    this.toastr.success("Registro Anulado Exitosamente", "Exito")
+    this.toastr.error("Error al tratar de procesar la anulacion", "Error"))
   }
 
 }
