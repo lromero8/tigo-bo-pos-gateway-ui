@@ -1,0 +1,411 @@
+{
+    "cancelCyclicPlaymentBill": [
+        {
+          "id": 1,
+          "billNumber": 33,
+          "paymentDate": "",
+          "modifyDate": "",
+          "invoice": [
+              {
+                  "id": 1,
+                  "amountPayment": 100.0,
+                  "paymentDate": "",
+                  "reason": "",
+                  "comments": "",
+                  "modifyDate": ""
+              }
+          ]
+
+        }
+      ],
+
+      "cancelInAdvance": [
+        {
+            "id": 1,
+            "billNumber": 33,
+            "accountNumber": 23,
+            "clientDebt":44.32,
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": 22,
+            "contractNumber": 85,
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 100.0,
+                    "paymentDate": "2020-10-05 01:35:19",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2018-10-06 01:35:19"
+                },
+                {
+                    "id": 2,
+                    "amountPayment": 200.0,
+                    "paymentDate": "2016-02-06 08:35:19",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2019-09-10 12:35:19"
+                },
+                {
+                    "id": 3,
+                    "amountPayment": 300.0,
+                    "paymentDate": "2017-02-06 08:35:19",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2019-09-10 12:35:19"
+                }                                 
+            ]
+          },
+        {
+            "id": 2,
+            "billNumber": 25,
+            "accountNumber": 93,
+            "clientDebt": 454.32,
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": 41,
+            "contractNumber": 34,            
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 100.0,
+                    "paymentDate": "2008-10-06 01:35:19",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-12-06 01:35:19"
+                }
+            ]
+          },
+        {
+            "id": 3,
+            "billNumber": 75,
+            "accountNumber": 94,
+            "clientDebt": 86.32,
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": 22,
+            "contractNumber": 98,            
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 100.0,
+                    "paymentDate": "2017-11-06 01:35:19",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-09-26 01:35:19"
+                }
+            ]
+          },
+        {
+            "id": 4,
+            "billNumber": 62,
+            "accountNumber": 20,
+            "clientDebt": 86.32,
+            "startDate": "2016-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": 22,
+            "contractNumber": 96,            
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 500.0,
+                    "paymentDate": "2017-11-06 01:35:19",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-09-26 01:35:19"
+                }
+            ]
+          }                              
+      ],
+
+    "cancelAdvanceByLimit": [
+        {
+            "id": 1,
+            "billNumber": 33,
+            "accountNumber": 100.0,
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": "",
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 100.0,
+                    "paymentDate": "",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": ""
+                }
+            ]
+          }
+      ],
+      "cancelMoneyOutPut": [
+        {
+            "id": 1,
+            "billNumber": 33,
+            "accountNumber": "23.59Bs",
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": "",
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 100.0,
+                    "paymentDate": "",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": ""
+                }
+            ]
+          }
+      ],
+
+      "cancelCyclicBill": [
+        {
+            "id": 1,
+            "billNumber": 33,
+            "accountNumber": "23.59Bs",
+            "amountPayment": 58.5,
+            "paymentDate": "2017-10-06 01:35:17",
+            "clientId": "",
+            "reason": "",
+            "comments": "",
+            "modifyDate": ""
+        }
+      ],
+      "cancelMoneyInput": [
+        {
+          "id": 1,
+          "billNumber": "",
+          "accountNumber": "23.59Bs",
+          "startDate": "2017-10-06 01:35:19",
+          "endDate": "2017-10-06 01:35:19",
+          "clientId": "",
+          "reason": "",
+          "comments": "",
+          "modifyDate": ""
+        }
+      ],
+
+      "cancelSmallRecharge": [
+        {
+            "id": 1,
+            "billNumber": "",
+            "accountNumber": "23.59Bs",
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": "",
+            "reason": "",
+            "comments": "",
+            "modifyDate": ""
+        }
+      ],
+
+      "cancelOnDemand": [
+        {
+            "id": 1,
+            "billNumber": "",
+            "accountNumber": "23.59Bs",
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": "",
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 100.0,
+                    "paymentDate": "2017-10-06 01:35:17",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-10-06 01:35:19"
+                },
+                {
+                    "id": 2,
+                    "amountPayment": 50.0,
+                    "paymentDate": "2017-10-06 01:35:17",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-10-06 01:35:19"
+                }
+            ]
+        }
+      ],
+      
+      "cancelRechargeEpin": [
+        {
+            "id": 1,
+            "billNumber": "",
+            "accountNumber": "23.59Bs",
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": "",
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 100.0,
+                    "paymentDate": "2017-10-06 01:35:17",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-10-06 01:35:19"
+                },
+                {
+                    "id": 2,
+                    "amountPayment": 50.0,
+                    "paymentDate": "2017-10-06 01:35:17",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-10-06 01:35:19"
+                }
+            ]
+        }
+      ],
+
+      "cancelFcmPayment": [
+        {
+            "id": 1,
+            "billNumber": "",
+            "accountNumber": "23.59Bs",
+            "startDate": "2017-10-06 01:35:19",
+            "endDate": "2017-10-06 01:35:19",
+            "clientId": "",
+            "paymentOption": "Tarjeta Debito",
+            "invoice": [
+                {
+                    "id": 1,
+                    "amountPayment": 100.0,
+                    "paymentDate": "2017-10-06 01:35:17",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-10-06 01:35:19"
+                },
+                {
+                    "id": 2,
+                    "amountPayment": 50.0,
+                    "paymentDate": "2017-10-06 01:35:17",
+                    "reason": "",
+                    "comments": "",
+                    "modifyDate": "2017-10-06 01:35:19"
+                }
+            ]
+        } 
+      ],
+
+      "paymentOptionsReport": [
+        {
+            "id": 1,
+            "invoiceId": "123",
+            "payments": [
+              {
+                  "id": 1,
+                  "cahsierId": "123",
+                  "registerId": "4",
+                  "date": "10/05/2017",
+                  "hour": "10:10:10",
+                  "voucher": "123****123****",
+                  "paymentOption": "T. Credito",
+                  "amount": 500
+              },
+              {
+                  "id": 2,
+                  "cahsierId": "123",
+                  "registerId": "5",
+                  "date": "10/06/2017",
+                  "hour": "10:10:10",
+                  "voucher": "123****123****",
+                  "paymentOption": "T. Debito",
+                  "amount": 1000
+              }
+            ]
+        }
+      ],
+      "paymentRepors": [
+        {
+            "id": 1,
+            "invoiceId": "123",
+            "branchOffice":"La Paz",
+            "local": "Edificio Hansa",
+            "registerId":"96",
+            "registerName": "Caja Walter Copa La Paz",
+            "EHumano": "6581",
+            "EHumanoName": "Copa CHAMBI, Walter",
+            "paymentNumber": "123456",
+            "paymentDetails": [
+                {
+                    "status":"AL",
+                    "type": "FCM",
+                    "number": "234965",
+                    "serie": "LP",
+                    "date": "04/01/2013",
+                    "client":"234965",
+                    "amountCharged": 100
+                }
+            ]
+        }
+      ],
+      "registerPayrollReports": [
+        {
+            "id": 1,
+            "branchOffice": "1",
+            "local": "1",
+            "register": "3",
+            "EHumano": "5787",
+            "period": "0043",
+            "payroll": "1",
+            "payrollStatus": "Depositado",
+            "startDate": "08:53:00am",
+            "endDate": "08:53:00am",
+            "totalCharging": 2950
+        },
+        {
+            "id": 2,
+            "branchOffice": "1",
+            "local": "1",
+            "register": "3",
+            "EHumano": "5787",
+            "period": "0043",
+            "payroll": "2",
+            "payrollStatus": "Depositado",
+            "startDate": "03:57:00pm",
+            "endDate": "03:57:00pm",
+            "totalCharging": 450.4
+        },
+        {
+            "id": 3,
+            "branchOffice": "1",
+            "local": "1",
+            "register": "3",
+            "EHumano": "5787",
+            "period": "0043",
+            "payroll": "3",
+            "payrollStatus": "Cerrado",
+            "startDate": "12:31:04pm",
+            "endDate": "12:31:04pm",
+            "totalCharging": 433
+        }
+      ],
+      "cashierPayrollReports": [
+        {
+            "id": 1,
+            "branchOffice": "1",
+            "local": "1",
+            "register": "3",
+            "EHumano": "5787",
+            "period": "0043",
+            "payroll": "1",
+            "payrollStatus": "Depositado",
+            "startDate": "08:53:00am",
+            "endDate": "08:53:00am",
+            "totalCharging": "2950"
+        }
+        
+      ],
+      "paymentDetatail": [
+        {
+          "id": 1,
+          "date": "01/04/2017",
+          "debtClientAmount": 260.0,
+          "accountingStatement": "Cancelado",
+          "amountToHave": 0,
+          "paymentStatus": "Aplicado",
+          "balanceStatus": 260.0
+        }
+      ]
+}

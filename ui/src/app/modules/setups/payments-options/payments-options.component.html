@@ -3,11 +3,127 @@
 //  
 //  
 //
-//  Created by -- on --
+//  Created by Fancisco Hernandez on 03-12-2018
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 -->
 
-<p>
-  payments-options works!
-</p>
+<div class="container-fluid h-100 shortcuts">
+  <div class="row align-items-center h-100">
+    <div class="col-lg-10 col-md-12 mx-auto">
+
+
+      <h2 class="display-4 text-center">Formas de pago</h2>
+      <h3 class="text-center"> </h3>
+      <br>
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="row justify-content-center align-items-center">
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo por limite" (click)="openModal(money, 1)" >
+                <img src="/assets/img/icons/shortcuts/money.png" alt="Moneda">
+                <small class="d-block mt-2"> Moneda </small>
+              </a>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Procesadores de pago" (click)="openModal(paymentCollectors, 2)">
+                <img src="/assets/img/icons/shortcuts/payment-collectors.png" alt="Procesadores de pago">
+                <small class="d-block mt-2"> Procesadores de pago </small>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Tarjetas" (click)="openModal(cards, 3)">
+                <img src="/assets/img/icons/shortcuts/cards.png" alt="Expresiones regulares">
+                <small class="d-block mt-2"> Tarjetas </small>
+              </a>
+            </div>
+
+
+
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo" (click)="openModal(bank, 4)">
+                <img src="/assets/img/icons/shortcuts/bank.png" alt="Bancos">
+                <small class="d-block mt-2"> Bancos </small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #money>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Moneda</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
+      [limit]="5" [rows]='[]'>
+  
+      <ngx-datatable-column name="Moneda" prop="currency"></ngx-datatable-column>
+      <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
+      <ngx-datatable-column name="Cambio de moneda local" prop="changeLocalCurrency"></ngx-datatable-column>
+      <ngx-datatable-column name="Tasa de cambio" prop="exchangeRate"></ngx-datatable-column>
+      <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
+  
+      <ngx-datatable-column name="Acciones" prop="acciones">
+          <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+              <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+          </ng-template>
+      </ngx-datatable-column>
+  
+  
+  </ngx-datatable>
+  </div>
+</ng-template>
+
+<ng-template #paymentCollectors>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Procesadores de pago</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+  </div>
+</ng-template>
+
+<ng-template #cards>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Tarjetas</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+  </div>
+</ng-template>
+
+<ng-template #bank>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Bancos</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+  </div>
+</ng-template>

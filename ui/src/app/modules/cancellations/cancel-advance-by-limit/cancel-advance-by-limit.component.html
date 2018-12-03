@@ -8,12 +8,12 @@
 //
 -->
 
-<app-cancellations-search-bar (sendData)="getFormData($event)" (clearData)="clearFormData($event)"></app-cancellations-search-bar>
+<app-cancellations-search-bar (sendData)="getFormData($event)" (clearData)="clearFormData()"></app-cancellations-search-bar>
 
 <h1 class="display-5 text-center mb-4">Anular el anticipo por limite</h1>
 
 <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
-    [limit]="5" [rows]='responseData?responseData:[]'>
+    [limit]="5" [rows]='[]'>
 
     <ngx-datatable-column name="N° Factura" prop="billNumber"></ngx-datatable-column>
     <ngx-datatable-column name="N° Cliente" prop="clientDebt"></ngx-datatable-column>

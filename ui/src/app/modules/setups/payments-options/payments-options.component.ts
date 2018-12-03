@@ -6,9 +6,11 @@
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PaymentOptionsService } from '../../../services/payment-options.service'
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-payments-options',
@@ -18,8 +20,10 @@ import { PaymentOptionsService } from '../../../services/payment-options.service
 })
 export class PaymentsOptionsComponent implements OnInit {
 
+  public modalRef: BsModalRef;
   constructor(private titleService: Title,
-              private paymentOptionsService: PaymentOptionsService) {
+              private paymentOptionsService: PaymentOptionsService,
+              private modalService: BsModalService) {
     
   }
 
@@ -29,6 +33,26 @@ export class PaymentsOptionsComponent implements OnInit {
 
   public setTitle( newTitle: string): void {
     this.titleService.setTitle( newTitle ); 
+  }
+
+  public banks(): void {
+
+  }
+
+  public money(): void {
+
+  }
+
+  public paymentCollectors(): void {
+
+  }
+
+  public cards(): void {
+
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template,{'class':'modal-lg'});
   }
 
 
