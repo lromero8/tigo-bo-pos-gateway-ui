@@ -29,7 +29,7 @@
         [footerHeight]="50"
         [rowHeight]="'auto'"
         [limit]="5"
-        [rows]='[]'>
+        [rows]='responseData?responseData:[]'>
 
   	      <ngx-datatable-column name="N° Factura" prop="billNumber" [width]="200"></ngx-datatable-column>
   	      <ngx-datatable-column name="N° Cliente" prop="clientDebt"[width]="200"></ngx-datatable-column>
@@ -39,7 +39,7 @@
 
           <ngx-datatable-column name="Acciones" prop="acciones" [width]="200">
               <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                <button class="btn btn-primary" (click)="openModal(template, row)">Large modal</button>
+                <button class="btn btn-primary" (click)="openModal(template, row)">Ver Anticipos</button>
               </ng-template>
           </ngx-datatable-column>
 
