@@ -40,4 +40,13 @@ export class CancelInAdvanceService {
         }));
   }  
 
+    public delete(cancelId, invoiceId) {
+        // const httpOptions = {
+        // headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: {id: id}}
+        return this.http.delete<any>('http://localhost:9090/invoices/' + invoiceId + '?cancelInAdvanceId/' + cancelId )
+            .pipe(map(data => {
+                return data;
+            }));
+    }
+
 }

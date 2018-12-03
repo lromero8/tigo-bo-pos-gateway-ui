@@ -19,101 +19,45 @@
   ],
   "cancelInAdvance": [
     {
-        "id": 1,
-        "billNumber": 33,
-        "accountNumber": 23,
-        "clientDebt":44.32,
-        "startDate": "2017-10-06 01:35:19",
-        "endDate": "2017-10-06 01:35:19",
-        "clientId": 22,
-        "contractNumber": 85,
-        "invoice": [
-            {
-                "id": 1,
-                "amountPayment": 100.0,
-                "paymentDate": "2020-10-05 01:35:19",
-                "reason": "",
-                "comments": "",
-                "modifyDate": "2018-10-06 01:35:19"
-            },
-            {
-                "id": 2,
-                "amountPayment": 200.0,
-                "paymentDate": "2016-02-06 08:35:19",
-                "reason": "",
-                "comments": "",
-                "modifyDate": "2019-09-10 12:35:19"
-            },
-            {
-                "id": 3,
-                "amountPayment": 300.0,
-                "paymentDate": "2017-02-06 08:35:19",
-                "reason": "",
-                "comments": "",
-                "modifyDate": "2019-09-10 12:35:19"
-            }                                 
-        ]
-      },
+      "id": 1,
+      "billNumber": 33,
+      "accountNumber": 23,
+      "clientDebt": 44.32,
+      "startDate": "2017-10-06 01:35:19",
+      "endDate": "2017-10-06 01:35:19",
+      "clientId": 22,
+      "contractNumber": 85
+    },
     {
-        "id": 2,
-        "billNumber": 25,
-        "accountNumber": 93,
-        "clientDebt": 454.32,
-        "startDate": "2017-10-06 01:35:19",
-        "endDate": "2017-10-06 01:35:19",
-        "clientId": 41,
-        "contractNumber": 34,            
-        "invoice": [
-            {
-                "id": 1,
-                "amountPayment": 100.0,
-                "paymentDate": "2008-10-06 01:35:19",
-                "reason": "",
-                "comments": "",
-                "modifyDate": "2017-12-06 01:35:19"
-            }
-        ]
-      },
+      "id": 2,
+      "billNumber": 25,
+      "accountNumber": 93,
+      "clientDebt": 454.32,
+      "startDate": "2017-10-06 01:35:19",
+      "endDate": "2017-10-06 01:35:19",
+      "clientId": 41,
+      "contractNumber": 34
+    },
     {
-        "id": 3,
-        "billNumber": 75,
-        "accountNumber": 94,
-        "clientDebt": 86.32,
-        "startDate": "2017-10-06 01:35:19",
-        "endDate": "2017-10-06 01:35:19",
-        "clientId": 22,
-        "contractNumber": 98,            
-        "invoice": [
-            {
-                "id": 1,
-                "amountPayment": 100.0,
-                "paymentDate": "2017-11-06 01:35:19",
-                "reason": "",
-                "comments": "",
-                "modifyDate": "2017-09-26 01:35:19"
-            }
-        ]
-      },
+      "id": 3,
+      "billNumber": 75,
+      "accountNumber": 94,
+      "clientDebt": 86.32,
+      "startDate": "2017-10-06 01:35:19",
+      "endDate": "2017-10-06 01:35:19",
+      "clientId": 22,
+      "contractNumber": 98
+    },
     {
-        "id": 4,
-        "billNumber": 62,
-        "accountNumber": 20,
-        "clientDebt": 86.32,
-        "startDate": "2016-10-06 01:35:19",
-        "endDate": "2017-10-06 01:35:19",
-        "clientId": 22,
-        "contractNumber": 96,            
-        "invoice": [
-            {
-                "id": 1,
-                "amountPayment": 500.0,
-                "paymentDate": "2017-11-06 01:35:19",
-                "reason": "",
-                "comments": "",
-                "modifyDate": "2017-09-26 01:35:19"
-            }
-        ]
-      }                              
+      "id": 4,
+      "billNumber": 62,
+      "accountNumber": 20,
+      "clientDebt": 86.32,
+      "startDate": "2016-10-06 01:35:19",
+      "endDate": "2017-10-06 01:35:19",
+      "clientId": 22,
+      "contractNumber": 96
+    }
   ],
   "invoices": [
     {

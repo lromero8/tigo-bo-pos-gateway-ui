@@ -401,6 +401,10 @@ app-breadcrumb {
     font-weight: bold;
   }
 
+  .datatable-body-cell {
+    overflow-x: visible !important;
+  }  
+
   .ng-select .ng-select-container {
     border-radius: 1rem;
   }
