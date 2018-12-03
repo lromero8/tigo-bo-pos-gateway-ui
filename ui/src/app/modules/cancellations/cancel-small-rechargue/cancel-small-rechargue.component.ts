@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CancelSmallRechargeService } from '../../../services/cancel-small-recharge.service'
 
 @Component({
   selector: 'app-cancel-small-rechargue',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class CancelSmallRechargueComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title, 
+    private cancelSmallRechargeService: CancelSmallRechargeService) { }
 
   ngOnInit() {
     this.setTitle('Cancelar mini recarga');

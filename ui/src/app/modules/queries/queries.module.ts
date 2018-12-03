@@ -15,12 +15,13 @@ import { DataClientQueryComponent } from './data-client-query/data-client-query.
 import { DataAccountQueryComponent } from './data-account-query/data-account-query.component';
 
 import { routes, routing } from './queries.routing';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   imports: [
     CommonModule,
     routing
   ],
-  declarations: [MontlyDebtQueryComponent, MoneyRefundQueryComponent, MoneyOutputByWithdrawalComponent, DataClientQueryComponent, DataAccountQueryComponent]
+  declarations: [MontlyDebtQueryComponent, MoneyRefundQueryComponent, MoneyOutputByWithdrawalComponent, DataClientQueryComponent, DataAccountQueryComponent, IndexComponent]
 })
 export class QueriesModule { }

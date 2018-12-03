@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MoneyOutputByWithdrawalService } from '../../../services/money-output-by-withdrawal.service' //money-output-by-withdrawal.service
 
 @Component({
   selector: 'app-money-output-by-withdrawal',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class MoneyOutputByWithdrawalComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private moneyOutputByWithdrawalService: MoneyOutputByWithdrawalService) { }
 
   ngOnInit() {
     this.setTitle('Consultas de egreso de dinero por retiro');

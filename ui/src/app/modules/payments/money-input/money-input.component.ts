@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MoneyInputService } from '../../../services/money-input.service'
 
 @Component({
   selector: 'app-money-input',

@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CancelCyclicPlaymentBillService } from '../../../services/cancel-cyclic-playment-bill.service'
 
 @Component({
   selector: 'app-cancel-cyclic-paymetn-bill',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class CancelCyclicPaymetnBillComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private CancelCyclicPlaymentBillService: CancelCyclicPlaymentBillService) { }
 
   ngOnInit() {
     this.setTitle('Cancelar el pago de factura ciclica');

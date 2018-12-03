@@ -11,3 +11,27 @@
 <app-cancellations-search-bar (sendData)="getFormData($event)" (clearData)="clearFormData($event)"></app-cancellations-search-bar>
 
 <h1 class="display-5 text-center mb-4">Anular OnDemand</h1>
+
+<ngx-datatable
+        class='material'
+        [columnMode]="'force'"        
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="5"
+        [rows]='responseData?responseData:[]'>
+
+  	      <ngx-datatable-column name="N° Factura" prop="billNumber" [width]="200"></ngx-datatable-column>
+  	      <ngx-datatable-column name="N° Cliente" prop="clientDebt"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Deuda Cliente" prop="startDate"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Desde" prop="endDate"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Hasta" prop="clientId" [width]="200"></ngx-datatable-column>
+
+          <ngx-datatable-column name="Acciones" prop="acciones" [width]="200">
+              <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+              </ng-template>
+          </ngx-datatable-column>
+
+        
+      </ngx-datatable> 

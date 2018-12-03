@@ -12,12 +12,13 @@ import { RegularExpressionsComponent } from './regular-expressions/regular-expre
 import { PaymentsOptionsComponent } from './payments-options/payments-options.component';
 
 import { routes, routing } from './setups.routing';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   imports: [
     CommonModule,
     routing
   ],
-  declarations: [RegularExpressionsComponent, PaymentsOptionsComponent]
+  declarations: [RegularExpressionsComponent, PaymentsOptionsComponent, IndexComponent]
 })
 export class SetupsModule { }

@@ -10,3 +10,27 @@
 <app-cancellations-search-bar (sendData)="getFormData($event)" (clearData)="clearFormData($event)"></app-cancellations-search-bar>
 
 <h1 class="display-5 text-center mb-4">Anular el pago de una factura ciclica</h1>
+
+<ngx-datatable
+class='material'
+[columnMode]="'force'"        
+[headerHeight]="50"
+[footerHeight]="50"
+[rowHeight]="'auto'"
+[limit]="5"
+[rows]='[]'>
+
+  <ngx-datatable-column name="N° Factura" prop="billNumber" ></ngx-datatable-column>
+  <ngx-datatable-column name="Fecha de pago" prop="paymentDate"></ngx-datatable-column>
+  <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate" [width]="200"></ngx-datatable-column>
+  <ngx-datatable-column name="Info field 1" prop="infoFielda"></ngx-datatable-column>
+  <ngx-datatable-column name="Info field 2" prop="infoFieldb"></ngx-datatable-column>
+
+  <ngx-datatable-column name="Acciones" prop="acciones" [width]="200">
+      <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+        <button class="btn btn-primary" >Large modal</button>
+      </ng-template>
+  </ngx-datatable-column>
+
+
+</ngx-datatable>

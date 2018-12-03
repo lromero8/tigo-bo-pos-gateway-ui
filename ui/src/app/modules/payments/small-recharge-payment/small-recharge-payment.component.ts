@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { SmallRechargePaymentService } from '../../../services/small-recharge-payment.service'
 
 @Component({
   selector: 'app-small-recharge-payment',

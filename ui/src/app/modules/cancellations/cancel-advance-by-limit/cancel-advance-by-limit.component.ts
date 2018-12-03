@@ -11,6 +11,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Title } from '@angular/platform-browser';
+import { CancelAdvanceByLimitService } from '../../../services/cancel-advance-by-limit.service'
 
 
 @Component({
@@ -22,7 +23,10 @@ import { Title } from '@angular/platform-browser';
 })
 export class CancelAdvanceByLimitComponent implements OnInit {
 
-  constructor(private modalService: NgbModal, private titleService: Title) { }
+  constructor(private modalService: NgbModal, 
+              private titleService: Title,
+              private cancelAdvanceByLimitService: CancelAdvanceByLimitService,
+              ) { }
 
 
   ngOnInit() {
@@ -37,4 +41,11 @@ export class CancelAdvanceByLimitComponent implements OnInit {
     this.titleService.setTitle( newTitle ); 
   }
 
+  public getFormData(ev): void {
+    console.log(ev)
+  }
+
+  public clearFormData(): void {
+    console.log('clean')
+  }
 }

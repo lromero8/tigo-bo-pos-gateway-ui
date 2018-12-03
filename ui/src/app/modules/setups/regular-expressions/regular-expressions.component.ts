@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { RegularExpressionsService } from '../../../services/regular-expressions.service'
 
 @Component({
   selector: 'app-regular-expressions',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class RegularExpressionsComponent implements OnInit {
 
-  constructor(private titleService: Title) { 
+  constructor(private titleService: Title,
+              private regularExpressionsService: RegularExpressionsService) { 
   }
   
   ngOnInit() {

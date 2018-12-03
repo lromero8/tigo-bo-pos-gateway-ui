@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MontlyDebtQueryService } from '../../../services/montly-debt-query.service'
 
 @Component({
   selector: 'app-montly-debt-query',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class MontlyDebtQueryComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private MontlyDebtQueryService: MontlyDebtQueryService) { }
 
   ngOnInit() {
     this.setTitle('Consulta de deuda mensual');

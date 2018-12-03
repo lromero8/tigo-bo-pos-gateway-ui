@@ -31,6 +31,7 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 // FORMVALIDATOR IMPORTS
 
 import { UtilModule } from 'app/pages/common/util.module';
+import { CancellationsMoneySearchBarComponent } from './cancellations-money-search-bar/cancellations-money-search-bar.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,6 @@ import { UtilModule } from 'app/pages/common/util.module';
     UtilModule
   ],
   declarations: [CancelInAdvanceComponent, CancelFcmPaymentComponent, CancelOndemandComponent, CancelRechargeEpinComponent, CancelSmallRechargueComponent, CancelMoneyOutputComponent, CancelMoneyInputComponent, CancelAdvanceByLimitComponent, CancelCyclicBillComponent, CancelCyclicPaymetnBillComponent, IndexComponent, 
-    CancellationsSearchBarComponent]
+    CancellationsSearchBarComponent, CancellationsMoneySearchBarComponent]
 })
 export class CancellationsModule { }

@@ -8,6 +8,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CancelOnDemandService } from '../../../services/cancel-on-demand.service'
 
 @Component({
   selector: 'app-cancel-ondemand',
@@ -17,7 +18,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class CancelOndemandComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: Title,
+              private CancelOnDemandService: CancelOnDemandService) { }
 
   ngOnInit() {
     this.setTitle('Cancelar on demand');
@@ -25,6 +27,14 @@ export class CancelOndemandComponent implements OnInit {
 
   public setTitle( newTitle: string): void {
     this.titleService.setTitle( newTitle ); 
+  }
+
+  public getFormData(ev): void {
+    console.log(ev)
+  }
+
+  public clearFormData(): void {
+    console.log('clean')
   }
 
 }

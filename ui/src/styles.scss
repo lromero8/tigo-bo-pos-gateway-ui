@@ -11,7 +11,10 @@ $fa-font-path : "../node_modules/font-awesome/fonts";
 @import "~ngx-toastr/toastr.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "~ng-pick-datetime/assets/style/picker.min.css";
-@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+
+
+$theme-dark-blue: #00377B !default;
+@import '~ngx-bootstrap/datepicker/bs-datepicker.scss';
 
 //@import "~animate.css/animate.css";
 @font-face {
@@ -228,7 +231,7 @@ $fa-font-path : "../node_modules/font-awesome/fonts";
     }
 }
 ::-webkit-scrollbar-track {
-    background: #666666;
+    background: #f8f0f0;
     border: 0px none #ffffff;
     border-radius: 0px;
     &:hover{
@@ -409,3 +412,40 @@ app-breadcrumb {
   .ng-dropdown-panel .scroll-host {
     border: 1px solid #cccccc;
   } 
+
+  .app-footer.d-flex.align-items-center.justify-content-between {
+    background-color: white;
+    text-align: center;
+  }
+
+  .ngx-datatable.material {
+    .datatable-header {
+          background-color: #00377B; // #2196F3; //#43C7F4
+      .datatable-header-cell {
+          color: white;
+          font-size: 14px;
+          font-weight: 600;
+        // your styles here
+        &:not(:last-child){
+          border-right: 1px solid #eee;        
+        }
+      }
+    }
+    .datatable-body-cell:not(:last-child) {
+          border-right: 1px solid #eee;
+    }
+    .datatable-row-wrapper:not(:last-child) {
+          border-bottom: 1px solid #eee;
+    }
+    
+   
+  }
+
+  .bs-datepicker-custom-range,
+    .bs-datepicker-container {
+      padding: 0px;
+    }
+
+    .app.blue.btn-primary {
+    background-color: #00367A;
+  }

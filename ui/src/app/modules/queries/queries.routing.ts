@@ -14,8 +14,10 @@ import { MoneyRefundQueryComponent } from './money-refund-query/money-refund-que
 import { MoneyOutputByWithdrawalComponent } from './money-output-by-withdrawal/money-output-by-withdrawal.component';
 import { DataClientQueryComponent } from './data-client-query/data-client-query.component';
 import { DataAccountQueryComponent } from './data-account-query/data-account-query.component';
+import { IndexComponent } from './index/index.component';
 
 export const routes: Routes = [
+    { path: '', component: IndexComponent },
     { path: 'montlyDebtQuery',  component: MontlyDebtQueryComponent  },
     { path: 'moneyRefundQuery',  component: MoneyRefundQueryComponent  },
     { path: 'moneyOutputByWithdrawal',  component: MoneyOutputByWithdrawalComponent  },
