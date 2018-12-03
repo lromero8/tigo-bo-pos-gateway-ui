@@ -20,7 +20,7 @@ import { CancelCyclicBillComponent } from './cancel-cyclic-bill/cancel-cyclic-bi
 import { CancelCyclicPaymetnBillComponent } from './cancel-cyclic-paymetn-bill/cancel-cyclic-paymetn-bill.component';
 import { IndexComponent } from './index/index.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
+ 
 import { routes, routing } from './cancellations.routing';
 
 import { CancellationsSearchBarComponent } from './cancellations-search-bar/cancellations-search-bar.component';
@@ -37,8 +37,8 @@ import { CancellationsMoneySearchBarComponent } from './cancellations-money-sear
   imports: [
     CommonModule,
     routing,
-    NgxDatatableModule,
-    NgBootstrapFormValidationModule,
+    //NgxDatatableModule,
+    //NgBootstrapFormValidationModule,
     //FormsModule,
     ReactiveFormsModule,
     UtilModule

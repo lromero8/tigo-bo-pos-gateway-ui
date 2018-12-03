@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatepickerModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NgbModule.forRoot(),
     BsDatepickerModule.forRoot(),
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxDatatableModule,
+    NgBootstrapFormValidationModule,
   ],
   declarations: [InputErrorMessagesComponent, UploadComponent, FilterPipe, OnlyNumber,
 
@@ -31,7 +35,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     NgSelectModule,
     ArchwizardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDatatableModule,
+    NgBootstrapFormValidationModule,
   ]
 })
 export class UtilModule { }

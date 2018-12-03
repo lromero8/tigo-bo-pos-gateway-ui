@@ -13,11 +13,13 @@ import { PaymentsOptionsComponent } from './payments-options/payments-options.co
 
 import { routes, routing } from './setups.routing';
 import { IndexComponent } from './index/index.component';
+import { UtilModule } from '../../pages/common/util.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    UtilModule,
   ],
   declarations: [RegularExpressionsComponent, PaymentsOptionsComponent, IndexComponent]
 })
