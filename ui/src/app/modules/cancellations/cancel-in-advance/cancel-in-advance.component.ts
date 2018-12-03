@@ -280,7 +280,7 @@ export class CancelInAdvanceComponent implements OnInit {
     this.confirmationModal = false
     
     this.toastr.success("Registro Anulado Exitosamente", "Exito")
-    this.toastr.error("Error al tratar de procesar la anulacion", "Error"))
+    this.toastr.error("Error al tratar de procesar la anulacion", "Error")
   }
 
 }
