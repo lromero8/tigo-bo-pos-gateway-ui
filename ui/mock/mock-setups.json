@@ -1,0 +1,94 @@
+{
+    "paymentOptions": [
+       {
+           "currencies": [
+                {
+                    "id": 1,
+                    "currency": "Bs",
+                    "desciption": "Bolivianos", 
+                    "changeLocalCurrency": 1,
+                    "exchangeRate": 0.14,
+                    "modifyDate": "21/11/2018"
+                },
+                {
+                    "id": 2,
+                    "currency": "Usd",
+                    "desciption": "Dollar", 
+                    "changeLocalCurrency": 1,
+                    "exchangeRate": 6.91,
+                    "modifyDate": "21/11/2018"
+                },
+                {
+                    "id": 3,
+                    "currency": "Eu",
+                    "desciption": "Euros", 
+                    "changeLocalCurrency": 1,
+                    "exchangeRate": 0.13,
+                    "modifyDate": "21/11/2018"
+                }
+           ],
+           "cards": [
+                {
+                    "id": 1,
+                    "cardCode": "Debito",
+                    "cardType": "VISA",
+                    "premium": "no",
+                    "modifyDate": ""
+                },
+                {
+                    "id": 2,
+                    "cardCode": "Credito",
+                    "cardType": "Mastercard",
+                    "premium": "no",
+                    "modifyDate": ""
+                },
+                {
+                    "id": 3,
+                    "cardCode": "Credito",
+                    "cardType": "American Express",
+                    "premium": "no",
+                    "modifyDate": ""
+                }
+           ],
+           "banks": [
+                {
+                    "id": 1,
+                    "legalPerson": 1,
+                    "businessName": "Debito",
+                    "emmitter": "VISA",
+                    "legalPersonType": "no",
+                    "modifyDate": ""
+                },
+                {
+                    "id": 2,
+                    "legalPerson": 2,
+                    "businessName": "Credito",
+                    "emmitter": "Mastercard",
+                    "legalPersonType": "no",
+                    "modifyDate": ""
+                },
+                {
+                    "id": 3,
+                    "legalPerson": 3,
+                    "businessName": "Credito",
+                    "emmitter": "American Express",
+                    "legalPersonType": "no",
+                    "modifyDate": ""
+                }
+           ],
+           "paymentProcessors": [
+                {
+                    "id": 1
+                }
+           ]
+       }
+      ],
+      "regularExpressions": [
+        {
+            "id": 1,
+            "key": "",
+            "value": "",
+            "components": ""
+          }
+      ]
+}
