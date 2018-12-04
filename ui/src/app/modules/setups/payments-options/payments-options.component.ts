@@ -21,10 +21,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class PaymentsOptionsComponent implements OnInit {
 
   public modalRef: BsModalRef;
+  public animate: boolean;
   constructor(private titleService: Title,
               private paymentOptionsService: PaymentOptionsService,
               private modalService: BsModalService) {
-    
+
+    this.animate = false;
   }
 
   ngOnInit() {

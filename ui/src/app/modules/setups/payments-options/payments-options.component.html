@@ -196,7 +196,7 @@
           <aw-wizard-step stepTitle="Registrar una nueva tarjeta" awOptionalStep>
       
 
-            <div class="row justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center bounceInRight">
               <div class="col-md-8">
                   <form>
                       <div class="form-group">
@@ -248,7 +248,7 @@
           <aw-wizard-step stepTitle="Listado de bancos registrados">
 
 
-              <div>
+              <div [ngClass]="{'bounceInLeftForSetups': animate}">
                   <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
               <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
               [limit]="5" [rows]='[]'>
@@ -274,7 +274,7 @@
   
           <aw-wizard-step stepTitle="Registrar un nuevo banco" awOptionalStep>
       
-            <div class="row justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center bounceInRight">
               <div class="col-md-8">
                   <form>
                       <div class="form-group">
@@ -298,13 +298,13 @@
                       </div>
                       <div class="form-group">
                         <label for=""> &nbsp; &nbsp; </label>
-                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
+                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar" ></button>
                       </div>
                   </form>
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" (click)="animate=true;"  awPreviousStep></button>
       
           </aw-wizard-step>
       </aw-wizard>
