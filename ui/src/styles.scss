@@ -424,6 +424,7 @@ app-breadcrumb {
   }
 
   .ngx-datatable.material {
+      box-shadow: none;
     .datatable-header {
           background-color: #00377B; // #2196F3; //#43C7F4
       .datatable-header-cell {
@@ -436,6 +437,11 @@ app-breadcrumb {
         }
       }
     }
+    .datatable-body{
+      border-style: solid;
+      border-color: #eee;
+      border-width: 0 1px 0 1px;
+    }    
     .datatable-body-cell:not(:last-child) {
           border-right: 1px solid #eee;
     }
@@ -455,7 +461,15 @@ app-breadcrumb {
     background-color: #00367A;
   }
 
+textarea{
+  outline: none 
+}
 
+@media (min-width: 992px){
+  .modal-lg {
+      max-width: 1224px;
+  }
+}
 
   // animations
 
