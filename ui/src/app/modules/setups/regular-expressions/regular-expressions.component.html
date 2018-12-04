@@ -11,7 +11,7 @@
 
 <div class="container-fluid container-fullw  box-shadow mb-5 pt-2">
 
-  <form [formGroup]="checkboxGroupForm" (validSubmit)="search()">
+  <form [formGroup]="regExpr" (validSubmit)="search()">
 
   <!-- <h3 class="text-center mb-4 mt-4">Anular Anticipo</h3> -->
   
@@ -25,30 +25,30 @@
    -->
     <div class="col-md-2">
       <div class="form-group">			
-        <label for="numFactura">Nombre:</label>
-        <input  type="text" name="transacctionId" id="transacctionId" class="rdb form-control"  placeholder="# de transaccion ..." >
+        <label for="name">Nombre:</label>
+        <input  type="text" name="name" id="name" class="rdb form-control"  placeholder="..." formControlName="name" >
       </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group">
-          <label for="">Uri:</label>
-          <input  type="text" name="transacctionId" id="transacctionId" class="rdb form-control"  placeholder="# de transaccion ..." >
+          <label for="uri">Uri:</label>
+          <input  type="text" name="uri" id="uri" class="rdb form-control"  placeholder="..." formControlName="uri" >
         </div>
       </div>
 
     <div class="col-md-2">
       <div class="form-group">			
-        <label for="numFactura">Modificaci&oacute;n:</label>
-        <input  type="text" name="startDate" id="startDate" class="rdb form-control" bsDatepicker  [bsConfig]="bsConfig" #dpa="bsDatepicker" readonly placeholder="Seleccione" >
+        <label for="modifyDate">Modificaci&oacute;n:</label>
+        <input  type="text" name="modifyDate" id="modifyDate" class="rdb form-control" bsDatepicker  [bsConfig]="bsConfig" #dpa="bsDatepicker" readonly placeholder="Seleccione" formControlName="modifyDate" >
       </div>
     </div>
 
     
     <div class="col-md-2">
       <div class="form-group">			
-        <label for="numFactura">Creaci&oacute;n:</label>
-        <input  type="text" name="endDate" id="endDate" class="rdb form-control" bsDatepicker [bsConfig]="bsConfig" #dpb="bsDatepicker" readonly placeholder="Seleccione" >
+        <label for="creationDate">Creaci&oacute;n:</label>
+        <input  type="text" name="creationDate" id="creationDate" class="rdb form-control" bsDatepicker [bsConfig]="bsConfig" #dpb="bsDatepicker" readonly placeholder="Seleccione" formControlName="creationDate" >
       </div>
     </div>
 
@@ -58,10 +58,10 @@
 
         <div class="btn-group btn-group-toggle">
           <label class="btn-primary" ngbButtonLabel style="border-radius: 1rem 0rem 0rem 1rem;">
-            <input type="checkbox" formControlName="left"  ngbButton> Activo
+            <input type="checkbox" formControlName="active"  ngbButton> Activo
           </label>
           <label class="btn-primary" ngbButtonLabel style="border-radius: 0rem 1rem 1rem 0rem;">
-            <input type="checkbox" formControlName="middle"  ngbButton> Inactivo
+            <input type="checkbox" formControlName="inactive"  ngbButton> Inactivo
           </label>
           
         </div>
@@ -85,7 +85,7 @@
           <div class="form-group">
               &nbsp;
             <label for=""> &nbsp; &nbsp; </label>
-            <button class="btn btn-primary  btn-sm btn-block rdb"  ngbTooltip="Limpiar" type="button">
+            <button class="btn btn-primary  btn-sm btn-block rdb"  ngbTooltip="Limpiar"  (click)="regExpr.reset(); clean()" type="button">
                 <i class="fa fa-eraser fa-lg"></i> 
             </button>
           </div>

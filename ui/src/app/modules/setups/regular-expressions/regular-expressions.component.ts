@@ -9,7 +9,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RegularExpressionsService } from '../../../services/regular-expressions.service'
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
+import { listLocales } from 'ngx-bootstrap/chronos';
 
 @Component({
   selector: 'app-regular-expressions',
@@ -20,10 +22,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class RegularExpressionsComponent implements OnInit {
 
   public dataRetrived: Array<any>;
-  public checkboxGroupForm: FormGroup;
+  public regExpr: FormGroup;
+  public colorTheme = 'theme-dark-blue';
+  public bsConfig: Partial<BsDatepickerConfig>;
+
   constructor(private titleService: Title,
               private regularExpressionsService: RegularExpressionsService, 
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private localeService: BsLocaleService,) {
     this.regularExpressionsService.retrieve().subscribe(
       data => {
         this.dataRetrived = data;
@@ -36,15 +42,41 @@ export class RegularExpressionsComponent implements OnInit {
   
   ngOnInit() {
     this.setTitle('Expresiones regulares');
-    this.checkboxGroupForm = this.formBuilder.group({
-      left: true,
-      middle: false
+    this.regExpr = this.formBuilder.group({
+
+      name: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      uri: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      modifyDate: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      creationDate: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      active: true,
+      inactive: false
     });
+
+
+    //['', [ Validators.minLength(2), Validators.maxLength(8)]],
+
+    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+    this.localeService.use('es');
   }
 
   public setTitle( newTitle: string): void {
     this.titleService.setTitle( newTitle );
   }
 
+  get f() { return this.regExpr.controls }
+
+  public search(): void {
+    console.log(
+      this.f.name.value,
+      this.f.uri.value,
+      this.f.modifyDate.value,
+      this.f.creationDate,
+      this.f.active.value
+    )
+  }
+
+  public clean(): void {
+    console.log('clean')
+  }
 
 }
