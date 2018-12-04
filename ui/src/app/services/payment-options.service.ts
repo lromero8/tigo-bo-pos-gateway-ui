@@ -9,4 +9,77 @@ import { Injectable } from '@angular/core';
 export class PaymentOptionsService {
 
   constructor(private http: HttpClient) { }
+
+  /**
+   * 
+   */
+  public getCurrencies() {
+    return this.http.get<any>(environment.SETUPS_URL.concat('currencies'))
+    .pipe(map(data => {
+      
+        return data;
+    }));
+  }
+
+  public editCurrency() {
+
+  }
+
+  public newCurrency() {
+
+  }
+
+  /**
+   * 
+   */
+  public getBanks() {
+    return this.http.get<any>(environment.SETUPS_URL.concat('banks'))
+    .pipe(map(data => {
+      
+        return data;
+    }));
+  }
+
+  public editBank() {
+
+  }
+
+  public newBank() {
+
+  }
+
+  /**
+   * 
+   */
+  public getCollectors() {
+
+  }
+
+  public editCollector() {
+
+  }
+
+  public newCollector() {
+
+  }
+
+
+  /**
+   * 
+   */
+  public getCards() {
+    return this.http.get<any>(environment.SETUPS_URL.concat('cards'))
+    .pipe(map(data => {
+      
+        return data;
+    }));
+  }
+
+  public editCard() {
+
+  }
+
+  public newCard() {
+
+  }
 }

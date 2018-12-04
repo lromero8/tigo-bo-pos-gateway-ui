@@ -22,7 +22,7 @@
           <div class="row justify-content-center align-items-center">
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo por limite" (click)="openModal(money, 1)" >
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo por limite" (click)="openModal(money, 1); retrieveCurrencyData()" >
                 <img src="/assets/img/icons/shortcuts/money.png" alt="Moneda">
                 <small class="d-block mt-2"> Moneda </small>
               </a>
@@ -42,7 +42,7 @@
         <div class="col-md-12">
           <div class="row justify-content-center align-items-center">
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Tarjetas" (click)="openModal(cards, 3)">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Tarjetas" (click)="openModal(cards, 3); retrieveCardsData()">
                 <img src="/assets/img/icons/shortcuts/cards.png" alt="Expresiones regulares">
                 <small class="d-block mt-2"> Tarjetas </small>
               </a>
@@ -52,7 +52,7 @@
 
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo" (click)="openModal(bank, 4)">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo" (click)="openModal(bank, 4); retrieveBanksData()">
                 <img src="/assets/img/icons/shortcuts/bank.png" alt="Bancos">
                 <small class="d-block mt-2"> Bancos </small>
               </a>
@@ -64,10 +64,12 @@
   </div>
 </div>
 
+
+
 <ng-template #money>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Moneda</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateMoney=false">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -81,10 +83,10 @@
           <aw-wizard-step stepTitle="Listado de monedas registradas">
 
 
-              <div>
+              <div [ngClass]="{'bounceInLeftForSetups': animateMoney}">
                   <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
               <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
-              [limit]="5" [rows]='[]'>
+              [limit]="5" [rows]='currencyData'>
           
               <ngx-datatable-column name="Moneda" prop="currency"></ngx-datatable-column>
               <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
@@ -94,7 +96,7 @@
           
               <ngx-datatable-column name="Acciones" prop="acciones">
                   <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                      <button class="btn btn-primary fa fa-edit" (click)="openModal(template)"></button>
                   </ng-template>
               </ngx-datatable-column>
           </ngx-datatable>
@@ -132,7 +134,7 @@
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" (click)="animateMoney=true;" awPreviousStep></button>
       
           </aw-wizard-step>
       </aw-wizard>
@@ -142,6 +144,8 @@
   </div>
 </ng-template>
 
+
+<!--Payments Collectors modal-->
 <ng-template #paymentCollectors>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Procesadores de pago</h4>
@@ -157,7 +161,7 @@
 <ng-template #cards>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Tarjetas</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateCard=false">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -168,28 +172,26 @@
           <aw-wizard-step stepTitle="Listado de tarjetas registradas">
 
 
-              <div>
+              <div [ngClass]="{'bounceInLeftForSetups': animateCard}">
                   <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
               <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
-              [limit]="5" [rows]='[]'>
+              [limit]="5" [rows]='cardsData'>
           
-              <ngx-datatable-column name="Codigo" prop="currency"></ngx-datatable-column>
-              <ngx-datatable-column name="Tipo de tarjeta" prop="description"></ngx-datatable-column>
-              <ngx-datatable-column name="Descripcion" prop="changeLocalCurrency"></ngx-datatable-column>
-              <ngx-datatable-column name="Premium" prop="exchangeRate"></ngx-datatable-column>
+              <ngx-datatable-column name="Codigo" prop="cardCode"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de tarjeta" prop="cardType"></ngx-datatable-column>
+              <ngx-datatable-column name="Emisor" prop="emmitter"></ngx-datatable-column>
+              <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
+              <ngx-datatable-column name="Premium" prop="premium"></ngx-datatable-column>
               <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
           
               <ngx-datatable-column name="Acciones" prop="acciones">
                   <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                      <button class="btn btn-primary fa fa-edit" (click)="openModal(template)"></button>
                   </ng-template>
               </ngx-datatable-column>
           </ngx-datatable>
         
-        
-        
           </div>
-        
           </aw-wizard-step>
       
   
@@ -226,18 +228,20 @@
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" (click)="animateCard=true;" awPreviousStep></button>
       
           </aw-wizard-step>
       </aw-wizard>
 
   </div>
 </ng-template>
+<!--Payments Collectors modal-->
 
+<!--Banks modal-->
 <ng-template #bank>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Bancos</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false;">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -248,20 +252,20 @@
           <aw-wizard-step stepTitle="Listado de bancos registrados">
 
 
-              <div [ngClass]="{'bounceInLeftForSetups': animate}">
+              <div [ngClass]="{'bounceInLeftForSetups': animateBank}">
                   <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
               <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
-              [limit]="5" [rows]='[]'>
+              [limit]="5" [rows]='bankData'>
           
-              <ngx-datatable-column name="Persona juridica" prop="currency"></ngx-datatable-column>
-              <ngx-datatable-column name="Razon social" prop="description"></ngx-datatable-column>
-              <ngx-datatable-column name="Tipo de razon social" prop="changeLocalCurrency"></ngx-datatable-column>
-              <ngx-datatable-column name="Tipo de persona juridica" prop="exchangeRate"></ngx-datatable-column>
+              <ngx-datatable-column name="Persona juridica" prop="legalPerson"></ngx-datatable-column>
+              <ngx-datatable-column name="Razon social" prop="businessName"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de razon social" prop="businessNameType"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de persona juridica" prop="legalPersonType"></ngx-datatable-column>
               <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
           
               <ngx-datatable-column name="Acciones" prop="acciones">
                   <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                      <button class="btn btn-primary fa fa-edit" (click)="openModal(template)"></button>
                   </ng-template>
               </ngx-datatable-column>
           </ngx-datatable>
@@ -304,9 +308,11 @@
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" (click)="animate=true;"  awPreviousStep></button>
+            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" (click)="animateBank=true;"  awPreviousStep></button>
       
           </aw-wizard-step>
       </aw-wizard>
   </div>
 </ng-template>
+
+<!--Banks modal-->

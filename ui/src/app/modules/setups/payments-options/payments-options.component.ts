@@ -2,7 +2,7 @@
 //  
 //  
 //
-//  Created by -- on --
+//  Created by Francisco Hernandez on 03-12-2018
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 
@@ -21,12 +21,24 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class PaymentsOptionsComponent implements OnInit {
 
   public modalRef: BsModalRef;
-  public animate: boolean;
+  public animateMoney: boolean;
+  public animateBank: boolean;
+  public animateCard: boolean;
+  public animateCollector: boolean;
+  public currencyData: Array<any>;
+  public bankData: Array<any>;
+  public cardsData: Array<any>;
+  public collectorsData: Array<any>;
+
   constructor(private titleService: Title,
               private paymentOptionsService: PaymentOptionsService,
               private modalService: BsModalService) {
 
-    this.animate = false;
+    this.animateMoney = false;
+    this.animateBank = false;
+    this.animateCard = false;
+    this.animateCollector = false;
+
   }
 
   ngOnInit() {
@@ -37,11 +49,28 @@ export class PaymentsOptionsComponent implements OnInit {
     this.titleService.setTitle( newTitle ); 
   }
 
-  public banks(): void {
+  public retrieveBanksData(): void {
+    this.paymentOptionsService.getBanks().subscribe(
+      data => {
+        this.bankData = data
+      },
+      error => {
+
+      }
+    )
 
   }
 
-  public money(): void {
+  public retrieveCurrencyData(): void {
+    this.paymentOptionsService.getCurrencies().subscribe(
+      data => {
+        console.log(data)
+        this.currencyData = data;
+      },
+      error => {
+
+      }
+    )
 
   }
 
@@ -49,12 +78,19 @@ export class PaymentsOptionsComponent implements OnInit {
 
   }
 
-  public cards(): void {
+  public retrieveCardsData(): void {
+    this.paymentOptionsService.getCards().subscribe(
+      data => {
+        this.cardsData = data;
+      },
+      error => {
 
+      }
+    )
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template,{'class':'modal-lg'});
+  public openModal(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template,{'class':'modal-lg ', 'keyboard': false, 'ignoreBackdropClick': true});
   }
 
 
