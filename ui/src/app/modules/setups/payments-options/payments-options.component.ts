@@ -12,6 +12,7 @@ import { PaymentOptionsService } from '../../../services/payment-options.service
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-payments-options',
@@ -31,10 +32,15 @@ export class PaymentsOptionsComponent implements OnInit {
   public cardsData: Array<any>;
   public collectorsData: Array<any>;
 
+  public currencyFrm: FormGroup;
+  public cardFrm: FormGroup;
+  public bankFrm: FormGroup;
+
   constructor(private titleService: Title,
               private paymentOptionsService: PaymentOptionsService,
               private modalService: BsModalService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private formBuilder: FormBuilder,) {
 
     this.animateMoney = false;
     this.animateBank = false;
@@ -45,6 +51,28 @@ export class PaymentsOptionsComponent implements OnInit {
 
   ngOnInit() {
     this.setTitle('Opciones de pago');
+
+    this.currencyFrm = this.formBuilder.group({ 
+      currency: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      description: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      changeLocalCurrency: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      exchangeRate: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]]
+    });
+
+    this.cardFrm = this.formBuilder.group({
+      cardCode: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      cardType: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      emmitter: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      description: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      premium: ['', [ Validators.required]],
+    });
+
+    this.bankFrm = this.formBuilder.group({
+      legalPerson: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      businessName: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      businessNameType: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+      legalPersonType: ['', [ Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+    });
   }
 
   public setTitle( newTitle: string): void {
@@ -76,7 +104,7 @@ export class PaymentsOptionsComponent implements OnInit {
 
   }
 
-  public paymentCollectors(): void {
+  public retrievepaymentCollectorsData(): void {
 
   }
 
@@ -95,5 +123,40 @@ export class PaymentsOptionsComponent implements OnInit {
     this.modalRef = this.modalService.show(template,{'class':'modal-lg ', 'keyboard': false, 'ignoreBackdropClick': true});
   }
 
+  get f() { return this.bankFrm.controls }
+  get g() { return this.currencyFrm.controls }
+  get h() { return this.cardFrm.controls }
 
+
+  public saveBanksData() {
+    console.log(
+      this.f.legalPerson.value,
+      this.f.businessName.value,
+      this.f.businessNameType.value,
+      this.f.legalPersonType.value
+    )
+  }
+
+  public saveCurrencyData() {
+    console.log(
+      this.g.currency.value,
+      this.g.description.value,
+      this.g.changeLocalCurrency.value,
+      this.g.exchangeRate.value
+    )
+  }
+
+  public savePaymentCollectorsData() {
+  
+  }
+
+  public saveCardsData() {
+    console.log(
+      this.h.cardCode.value,
+      this.h.cardType.value,
+      this.h.emmitter.value,
+      this.h.description.value,
+      this.h.premium.value
+    )
+  }
 }

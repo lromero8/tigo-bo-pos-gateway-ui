@@ -30,7 +30,7 @@
 
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Procesadores de pago" (click)="openModal(paymentCollectors, 2)">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Procesadores de pago" (click)="openModal(paymentCollectors, 2); retrievepaymentCollectorsData()">
                 <img src="/assets/img/icons/shortcuts/payment-collectors.png" alt="Procesadores de pago">
                 <small class="d-block mt-2"> Procesadores de pago </small>
               </a>
@@ -109,26 +109,28 @@
       
   
           <aw-wizard-step stepTitle="Registrar una nueva moneda" awOptionalStep>
-      
-
             <div class="row justify-content-center align-items-center bounceInRight">
               <div class="col-md-8">
-                  <form>
+                  <form [formGroup]="currencyFrm">
                       <div class="form-group">
-                        <label for="">Moneda:</label>
-                        <input type="text" class="form-control">
+                        <label for="currency">S&iacute;mbolo:</label>
+                        <input type="text" class="form-control" name="currency" id="currency" formControlName="currency">
                       </div>
                       <div class="form-group">
-                        <label for="">Descripci&oacute;n:</label>
-                        <input type="text" class="form-control">
+                        <label for="description">Descripci&oacute;n:</label>
+                        <input type="text" class="form-control" name="description" id="description" formControlName="description">
                       </div>
                       <div class="form-group">
-                        <label for="">S&iacute;mbolo:</label>
-                        <input type="text" class="form-control">
+                        <label for="changeLocalCurrency">Cambio de moneda local:</label>
+                        <input type="text" class="form-control" name="changeLocalCurrency" id="changeLocalCurrency" formControlName="changeLocalCurrency">
+                      </div>
+                      <div class="form-group">
+                        <label for="exchangeRate">Tasa de cambio:</label>
+                        <input type="text" class="form-control" name="exchangeRate" id="exchangeRate" formControlName="exchangeRate">
                       </div>
                       <div class="form-group">
                         <label for=""> &nbsp; &nbsp; </label>
-                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
+                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar" (click)="saveCurrencyData()" ></button>
                       </div>
                   </form>
               </div>
@@ -196,33 +198,37 @@
       
   
           <aw-wizard-step stepTitle="Registrar una nueva tarjeta" awOptionalStep>
-      
 
             <div class="row justify-content-center align-items-center bounceInRight">
               <div class="col-md-8">
-                  <form>
+                  <form [formGroup]="cardFrm">
                       <div class="form-group">
-                        <label for="">C&oacute;digo:</label>
-                        <input type="text" class="form-control">
+                        <label for="cardCode">C&oacute;digo:</label>
+                        <input type="text" class="form-control" id="cardCode" name="cardCode" formControlName="cardCode">
                       </div>
 
                       <div class="form-group">
-                          <label for="">Tipon de tarjeta:</label>
-                          <input type="text" class="form-control">
+                          <label for="cardType">Tipo de tarjeta:</label>
+                          <input type="text" class="form-control" id="cardType" name="cardType" formControlName="cardType">
                       </div>
 
                       <div class="form-group">
-                        <label for="">Descripci&oacute;n:</label>
-                        <input type="text" class="form-control">
+                        <label for="emmitter">Emisor:</label>
+                        <input type="text" class="form-control" id="emmitter" name="emmitter" formControlName="emmitter">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="description">Descripci&oacute;n:</label>
+                        <input type="text" class="form-control" id="description" name="description" formControlName="description">
                       </div>
                       
                       <div class="form-group">
-                          <label for="">Premium:</label>
-                          <input type="text" class="form-control">
+                          <label for="premium">Premium:</label>
+                          <input type="text" class="form-control" id="premium" name="premium" formControlName="premium">
                       </div>
                       <div class="form-group">
                         <label for=""> &nbsp; &nbsp; </label>
-                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
+                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar" (click)="saveCardsData()"></button>
                       </div>
                   </form>
               </div>
@@ -280,29 +286,29 @@
       
             <div class="row justify-content-center align-items-center bounceInRight">
               <div class="col-md-8">
-                  <form>
+                  <form [formGroup]="bankFrm">
                       <div class="form-group">
-                        <label for="">Persona juridica:</label>
-                        <input type="text" class="form-control">
+                        <label for="legalPerson">Persona juridica:</label>
+                        <input type="text" class="form-control" id="legalPerson" name="legalPerson" formControlName="legalPerson">
                       </div>
 
                       <div class="form-group">
-                          <label for="">Razon social:</label>
-                          <input type="text" class="form-control">
+                          <label for="businessName">Razon social:</label>
+                          <input type="text" class="form-control" id="businessName" name="businessName" formControlName="businessName">
                       </div>
 
                       <div class="form-group">
-                        <label for="">Tipo de razon social:</label>
-                        <input type="text" class="form-control">
+                        <label for="businessNameType">Tipo de razon social:</label>
+                        <input type="text" class="form-control" id="businessNameType" name="businessNameType" formControlName="businessNameType">
                       </div>
                       
                       <div class="form-group">
-                          <label for="">Tipo de persona juridica:</label>
-                          <input type="text" class="form-control">
+                          <label for="legalPersonType">Tipo de persona juridica:</label>
+                          <input type="text" class="form-control" id="legalPersonType" name="legalPersonType" formControlName="legalPersonType">
                       </div>
                       <div class="form-group">
                         <label for=""> &nbsp; &nbsp; </label>
-                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar" ></button>
+                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar" (click)="saveBanksData()" ></button>
                       </div>
                   </form>
               </div>
