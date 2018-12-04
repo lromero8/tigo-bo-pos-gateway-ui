@@ -12,6 +12,7 @@ import { RegularExpressionsService } from '../../../services/regular-expressions
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
 import { listLocales } from 'ngx-bootstrap/chronos';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-regular-expressions',
@@ -29,13 +30,14 @@ export class RegularExpressionsComponent implements OnInit {
   constructor(private titleService: Title,
               private regularExpressionsService: RegularExpressionsService, 
               private formBuilder: FormBuilder,
-              private localeService: BsLocaleService,) {
+              private localeService: BsLocaleService,
+              private toastr: ToastrService) {
     this.regularExpressionsService.retrieve().subscribe(
       data => {
         this.dataRetrived = data;
       },
       error => {
-
+        this.toastr.error('Al conectarse al servidor', 'Error');
       }
     ) 
   }

@@ -11,6 +11,7 @@ import { Title } from '@angular/platform-browser';
 import { PaymentOptionsService } from '../../../services/payment-options.service'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-payments-options',
@@ -32,7 +33,8 @@ export class PaymentsOptionsComponent implements OnInit {
 
   constructor(private titleService: Title,
               private paymentOptionsService: PaymentOptionsService,
-              private modalService: BsModalService) {
+              private modalService: BsModalService,
+              private toastr: ToastrService) {
 
     this.animateMoney = false;
     this.animateBank = false;
@@ -55,7 +57,7 @@ export class PaymentsOptionsComponent implements OnInit {
         this.bankData = data
       },
       error => {
-
+        this.toastr.error('Al conectarse al servidor', 'Error');
       }
     )
 
@@ -68,7 +70,7 @@ export class PaymentsOptionsComponent implements OnInit {
         this.currencyData = data;
       },
       error => {
-
+        this.toastr.error('Al conectarse al servidor', 'Error');
       }
     )
 
@@ -84,7 +86,7 @@ export class PaymentsOptionsComponent implements OnInit {
         this.cardsData = data;
       },
       error => {
-
+        this.toastr.error('Al conectarse al servidor', 'Error');
       }
     )
   }
