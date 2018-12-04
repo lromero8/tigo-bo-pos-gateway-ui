@@ -33,7 +33,7 @@
             "emmitter": "VISA",
             "description": "...",
             "premium": "no",
-            "modifyDate": ""
+            "modifyDate": "04-12-2018"
         },
         {
             "id": 2,
@@ -42,7 +42,7 @@
             "emmitter": "Mastercard",
             "description": "...",
             "premium": "no",
-            "modifyDate": ""
+            "modifyDate": "04-12-2018"
         },
         {
             "id": 3,
@@ -51,7 +51,7 @@
             "emmitter": "American Express",
             "description": "...",
             "premium": "no",
-            "modifyDate": ""
+            "modifyDate": "04-12-2018"
         }
    ],
    "banks": [
@@ -61,7 +61,7 @@
             "businessName": "Banco Agricola",
             "businessNameType": "S.A de C.V",
             "legalPersonType": "no",
-            "modifyDate": ""
+            "modifyDate": "04-12-2018"
         },
         {
             "id": 2,
@@ -69,14 +69,14 @@
             "businessName": "Banco de America central",
             "businessNameType": "S.A de C.V",
             "legalPersonType": "no",
-            "modifyDate": ""
+            "modifyDate": "04-12-2018"
         },
         {
             "id": 3,
             "legalPerson": 3,
             "businessName": "Banco Hipotecario",
             "businessNameType": "S.A de C.V",
-            "legalPersonType": "no",
+            "legalPersonTyp04-12-2018e": "no",
             "modifyDate": ""
         }
    ],
