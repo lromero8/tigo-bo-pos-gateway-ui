@@ -3,11 +3,130 @@
 //  
 //  
 //
-//  Created by -- on --
+//  Created by 04-12-2018 on --
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 -->
 
-<p>
-  regular-expressions works!
-</p>
+
+<div class="container-fluid container-fullw  box-shadow mb-5 pt-2">
+
+  <form [formGroup]="checkboxGroupForm" (validSubmit)="search()">
+
+  <!-- <h3 class="text-center mb-4 mt-4">Anular Anticipo</h3> -->
+  
+  <div class="row pb-4">
+    
+   <!--
+
+     <div class="col-md-2">
+      
+    </div>
+   -->
+    <div class="col-md-2">
+      <div class="form-group">			
+        <label for="numFactura">Nombre:</label>
+        <input  type="text" name="transacctionId" id="transacctionId" class="rdb form-control"  placeholder="# de transaccion ..." >
+      </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group">
+          <label for="">Uri:</label>
+          <input  type="text" name="transacctionId" id="transacctionId" class="rdb form-control"  placeholder="# de transaccion ..." >
+        </div>
+      </div>
+
+    <div class="col-md-2">
+      <div class="form-group">			
+        <label for="numFactura">Modificaci&oacute;n:</label>
+        <input  type="text" name="startDate" id="startDate" class="rdb form-control" bsDatepicker  [bsConfig]="bsConfig" #dpa="bsDatepicker" readonly placeholder="Seleccione" >
+      </div>
+    </div>
+
+    
+    <div class="col-md-2">
+      <div class="form-group">			
+        <label for="numFactura">Creaci&oacute;n:</label>
+        <input  type="text" name="endDate" id="endDate" class="rdb form-control" bsDatepicker [bsConfig]="bsConfig" #dpb="bsDatepicker" readonly placeholder="Seleccione" >
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="">Estatus:</label>
+
+        <div class="btn-group btn-group-toggle">
+          <label class="btn-primary" ngbButtonLabel style="border-radius: 1rem 0rem 0rem 1rem;">
+            <input type="checkbox" formControlName="left"  ngbButton> Activo
+          </label>
+          <label class="btn-primary" ngbButtonLabel style="border-radius: 0rem 1rem 1rem 0rem;">
+            <input type="checkbox" formControlName="middle"  ngbButton> Inactivo
+          </label>
+          
+        </div>
+      
+      </div>
+    </div>
+
+    <div class="col-md-1">
+    <div class="form-group">
+        &nbsp;
+      <label for=""> &nbsp; &nbsp; </label>
+      <button class="btn btn-primary  btn-sm btn-block rdb" type="submit" ngbTooltip="Buscar" type="submit" >
+          <i class="fa fa-search fa-lg"></i>
+      </button>
+    </div>   
+    
+        
+    </div>
+
+      <div class="col-md-1">
+          <div class="form-group">
+              &nbsp;
+            <label for=""> &nbsp; &nbsp; </label>
+            <button class="btn btn-primary  btn-sm btn-block rdb"  ngbTooltip="Limpiar" type="button">
+                <i class="fa fa-eraser fa-lg"></i> 
+            </button>
+          </div>
+
+      </div>
+
+      </div>
+      
+    </form>
+  </div>
+
+  <h1 class="display-5 text-center mb-4">Expresiones regulares</h1>
+
+  <!-- DATATABLE -->
+      <ngx-datatable
+        class='material'
+        [columnMode]="'force'"        
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="5"
+        [rows]='dataRetrived'>
+
+  	      <ngx-datatable-column name="Seleccionar" prop="select">
+            <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+              <input type="checkbox" name="" id="" class="form-control">
+            </ng-template>
+          </ngx-datatable-column>
+  	      <ngx-datatable-column name="Nombre" prop="name"></ngx-datatable-column>
+          <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
+          <ngx-datatable-column name="Uri" prop="uri"></ngx-datatable-column>
+          <ngx-datatable-column name="Estatus" prop="status"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha de creacion" prop="creationDate"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
+
+
+          <ngx-datatable-column name="Acciones" prop="actions" >
+              <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                <button class="btn btn-primary fa fa-edit" (click)="openModal(template, row)"></button>
+              </ng-template>
+          </ngx-datatable-column>
+
+        
+      </ngx-datatable> 

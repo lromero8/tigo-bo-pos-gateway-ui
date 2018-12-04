@@ -67,7 +67,7 @@
 
 
 <ng-template #money>
-  <div class="modal-header">
+  <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">Moneda</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateMoney=false">
       <span aria-hidden="true">&times;</span>
@@ -88,7 +88,7 @@
               <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
               [limit]="5" [rows]='currencyData'>
           
-              <ngx-datatable-column name="Moneda" prop="currency"></ngx-datatable-column>
+              <ngx-datatable-column name="Moneda" prop="currency" > </ngx-datatable-column>
               <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
               <ngx-datatable-column name="Cambio de moneda local" prop="changeLocalCurrency"></ngx-datatable-column>
               <ngx-datatable-column name="Tasa de cambio" prop="exchangeRate"></ngx-datatable-column>
@@ -147,7 +147,7 @@
 
 <!--Payments Collectors modal-->
 <ng-template #paymentCollectors>
-  <div class="modal-header">
+  <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">Procesadores de pago</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -159,7 +159,7 @@
 </ng-template>
 
 <ng-template #cards>
-  <div class="modal-header">
+  <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">Tarjetas</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateCard=false">
       <span aria-hidden="true">&times;</span>
@@ -239,7 +239,7 @@
 
 <!--Banks modal-->
 <ng-template #bank>
-  <div class="modal-header">
+  <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">Bancos</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false;">
       <span aria-hidden="true">&times;</span>

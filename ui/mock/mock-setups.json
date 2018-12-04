@@ -88,9 +88,12 @@
    "regularExpressions": [
         {
             "id": 1,
-            "key": "",
-            "value": "",
-            "components": ""
-          }
+            "name": "test",
+            "description": "test",
+            "uri": "/test/",
+            "status": "active",
+            "creationDate": "04-12-2018",
+            "modifyDate": "04-12-2018"
+        }
     ]
 }
