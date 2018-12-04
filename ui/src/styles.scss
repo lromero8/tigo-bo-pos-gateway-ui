@@ -594,7 +594,7 @@ app-breadcrumb {
   
     from {
       opacity: 0;
-      transform: translate3d(40px, 0, 0);
+      transform: translate3d(90px, 0, 0);
     }
   
     60% {
@@ -622,3 +622,9 @@ app-breadcrumb {
     -webkit-animation-fill-mode:both;
     animation-fill-mode:both;
   }
+
+
+.modaleHeader{
+  background-color: #013069; 
+  color: white;
+}
