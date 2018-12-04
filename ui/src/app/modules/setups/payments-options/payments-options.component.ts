@@ -129,20 +129,57 @@ export class PaymentsOptionsComponent implements OnInit {
 
 
   public saveBanksData() {
-    console.log(
+    /*console.log(
       this.f.legalPerson.value,
       this.f.businessName.value,
       this.f.businessNameType.value,
       this.f.legalPersonType.value
+    )*/
+
+    this.paymentOptionsService.newBank({
+
+      legalPerson: this.f.legalPerson.value,
+      businessName: this.f.businessName.value,
+      businessNameType: this.f.businessNameType.value,
+      legalPersonType:this.f.legalPersonType.value
+
+    }).subscribe(
+      data => {
+
+        this.toastr.success('Ok', 'El registro ha sido creado');
+        this.bankFrm.reset();
+        this.modalRef.hide();
+      },
+      error => {
+        this.toastr.error('Error', 'El registro no pudo ser creado');
+      }
     )
   }
 
   public saveCurrencyData() {
-    console.log(
+    /*console.log(
       this.g.currency.value,
       this.g.description.value,
       this.g.changeLocalCurrency.value,
       this.g.exchangeRate.value
+    )*/
+
+    this.paymentOptionsService.newCurrency({
+
+      currency:  this.g.currency.value,
+      description: this.g.description.value,
+      changeLocalCurrency: this.g.changeLocalCurrency.value,
+      exchangeRate: this.g.exchangeRate.value
+
+    }).subscribe(
+      data => {
+        this.toastr.success('Ok', 'El registro ha sido creado');
+        this.currencyFrm.reset();
+        this.modalRef.hide();
+      },
+      error => {
+        this.toastr.error('Error', 'El registro no pudo ser creado');
+      }
     )
   }
 
@@ -151,12 +188,31 @@ export class PaymentsOptionsComponent implements OnInit {
   }
 
   public saveCardsData() {
-    console.log(
+    /*console.log(
       this.h.cardCode.value,
       this.h.cardType.value,
       this.h.emmitter.value,
       this.h.description.value,
       this.h.premium.value
+    )*/
+
+    this.paymentOptionsService.newCard({
+
+      cardCode: this.h.cardCode.value,
+      cardType: this.h.cardType.value,
+      emmitter: this.h.emmitter.value,
+      description: this.h.description.value,
+      premium: this.h.premium.value
+
+    }).subscribe(
+      data => {
+        this.toastr.success('Ok', 'El registro ha sido creado');
+        this.cardFrm.reset();
+        this.modalRef.hide();
+      },
+      error => {
+        this.toastr.error('Error', 'El registro no pudo ser creado');
+      }
     )
   }
 }

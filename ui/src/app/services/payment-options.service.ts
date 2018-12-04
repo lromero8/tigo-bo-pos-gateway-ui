@@ -25,8 +25,12 @@ export class PaymentOptionsService {
 
   }
 
-  public newCurrency() {
-
+  public newCurrency(data) {
+    return this.http.post<any>(environment.SETUPS_URL.concat('currencies'), data)
+    .pipe(map(data => {
+      
+        return data;
+    }));
   }
 
   /**
@@ -44,8 +48,12 @@ export class PaymentOptionsService {
 
   }
 
-  public newBank() {
-
+  public newBank(data) {
+    return this.http.post<any>(environment.SETUPS_URL.concat('banks'), data)
+    .pipe(map(data => {
+      
+        return data;
+    }));
   }
 
   /**
@@ -59,8 +67,8 @@ export class PaymentOptionsService {
 
   }
 
-  public newCollector() {
-
+  public newCollector(data) {
+    
   }
 
 
@@ -79,7 +87,11 @@ export class PaymentOptionsService {
 
   }
 
-  public newCard() {
-
+  public newCard(data) {
+    return this.http.post<any>(environment.SETUPS_URL.concat('cards'), data)
+    .pipe(map(data => {
+      
+        return data;
+    }));
   }
 }
