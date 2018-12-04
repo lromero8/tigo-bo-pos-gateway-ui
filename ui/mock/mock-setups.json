@@ -76,8 +76,8 @@
             "legalPerson": 3,
             "businessName": "Banco Hipotecario",
             "businessNameType": "S.A de C.V",
-            "legalPersonTyp04-12-2018e": "no",
-            "modifyDate": ""
+            "legalPersonType": "no",
+            "modifyDate": "04-12-2018"
         }
    ],
    "paymentProcessors": [
