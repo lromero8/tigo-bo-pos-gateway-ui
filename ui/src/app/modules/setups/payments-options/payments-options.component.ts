@@ -259,7 +259,7 @@ export class PaymentsOptionsComponent implements OnInit {
    * Edit methods
    */
   public editBank(): void {
-
+  
   }
 
   public editCurrency(): void {
@@ -267,7 +267,7 @@ export class PaymentsOptionsComponent implements OnInit {
   }
 
   public editCollectors(): void {
-    
+
   }
 
   public editCard(): void {
