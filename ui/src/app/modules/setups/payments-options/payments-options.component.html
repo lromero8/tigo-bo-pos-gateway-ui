@@ -22,7 +22,7 @@
           <div class="row justify-content-center align-items-center">
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo por limite" (click)="openModal(money, 1); retrieveCurrencyData()" >
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Moneda" (click)="openModal(money, 1); retrieveCurrencyData()" >
                 <img src="/assets/img/icons/shortcuts/money.png" alt="Moneda">
                 <small class="d-block mt-2"> Moneda </small>
               </a>
@@ -35,7 +35,6 @@
                 <small class="d-block mt-2"> Procesadores de pago </small>
               </a>
             </div>
-
           </div>
         </div>
 
@@ -317,23 +316,23 @@
   <form [formGroup]="currencyFrm">
     <div class="form-group">
       <label for="currency">S&iacute;mbolo:</label>
-      <input type="text" class="form-control" name="currency" id="currency" formControlName="currency">
+      <input type="text" class="form-control rdb" name="currency" id="currency" formControlName="currency" autocomplete="off">
     </div>
     <div class="form-group">
       <label for="description">Descripci&oacute;n:</label>
-      <input type="text" class="form-control" name="description" id="description" formControlName="description">
+      <input type="text" class="form-control rdb" name="description" id="description" formControlName="description" autocomplete="off">
     </div>
     <div class="form-group">
       <label for="changeLocalCurrency">Cambio de moneda local:</label>
-      <input type="text" class="form-control" name="changeLocalCurrency" id="changeLocalCurrency" formControlName="changeLocalCurrency">
+      <input type="text" class="form-control rdb" name="changeLocalCurrency" id="changeLocalCurrency" formControlName="changeLocalCurrency" autocomplete="off">
     </div>
     <div class="form-group">
       <label for="exchangeRate">Tasa de cambio:</label>
-      <input type="text" class="form-control" name="exchangeRate" id="exchangeRate" formControlName="exchangeRate">
+      <input type="text" class="form-control rdb" name="exchangeRate" id="exchangeRate" formControlName="exchangeRate" autocomplete="off">
     </div>
     <div class="form-group">
       <label for=""> &nbsp; &nbsp; </label>
-      <button class="btn btn-primary btn-lg btn-block fa" [ngClass]="{'fa-save': !currencyStatus, 'fa-pencil': currencyStatus }" [ngbTooltip]="currencyStatus? 'Editar': 'Guardar'" (click)="currencySelector(); currencyStatus=false;"></button>
+      <button class="btn btn-primary btn-lg btn-block fa rdb" [ngClass]="{'fa-save': !currencyStatus, 'fa-pencil': currencyStatus }" [ngbTooltip]="currencyStatus? 'Editar': 'Guardar'" (click)="currencySelector(); currencyStatus=false;"></button>
     </div>
   </form>
 </ng-template>
@@ -342,31 +341,31 @@
     <form [formGroup]="cardFrm">
         <div class="form-group">
           <label for="cardCode">C&oacute;digo:</label>
-          <input type="text" class="form-control" id="cardCode" name="cardCode" formControlName="cardCode">
+          <input type="text" class="form-control rdb" id="cardCode" name="cardCode" formControlName="cardCode" autocomplete="off" >
         </div>
 
         <div class="form-group">
             <label for="cardType">Tipo de tarjeta:</label>
-            <input type="text" class="form-control" id="cardType" name="cardType" formControlName="cardType">
+            <input type="text" class="form-control rdb" id="cardType" name="cardType" formControlName="cardType" autocomplete="off">
         </div>
 
         <div class="form-group">
           <label for="emmitter">Emisor:</label>
-          <input type="text" class="form-control" id="emmitter" name="emmitter" formControlName="emmitter">
+          <input type="text" class="form-control rdb" id="emmitter" name="emmitter" formControlName="emmitter" autocomplete="off">
         </div>
 
         <div class="form-group">
           <label for="description">Descripci&oacute;n:</label>
-          <input type="text" class="form-control" id="description" name="description" formControlName="description">
+          <input type="text" class="form-control rdb" id="description" name="description" formControlName="description" autocomplete="off">
         </div>
         
         <div class="form-group">
             <label for="premium">Premium:</label>
-            <input type="text" class="form-control" id="premium" name="premium" formControlName="premium">
+            <input type="text" class="form-control rdb" id="premium" name="premium" formControlName="premium" autocomplete="off">
         </div>
         <div class="form-group">
           <label for=""> &nbsp; &nbsp; </label>
-          <button class="btn btn-primary fa btn-lg btn-block" [ngClass]="{ 'fa-save': !cardStatus, 'fa-pencil': cardStatus }" [ngbTooltip]="cardStatus? 'Editar': 'Guardar'" (click)="cardSelector(); cardStatus=false;"></button>
+          <button class="btn btn-primary fa btn-lg btn-block rdb" [ngClass]="{ 'fa-save': !cardStatus, 'fa-pencil': cardStatus }" [ngbTooltip]="cardStatus? 'Editar': 'Guardar'" (click)="cardSelector(); cardStatus=false;"></button>
         </div>
     </form>
 </ng-template>
@@ -375,26 +374,26 @@
     <form [formGroup]="bankFrm">
         <div class="form-group">
           <label for="legalPerson">Persona jur&iacute;dica:</label>
-          <input type="text" class="form-control" id="legalPerson" name="legalPerson" formControlName="legalPerson">
+          <input type="text" class="form-control rdb" id="legalPerson" name="legalPerson" formControlName="legalPerson" autocomplete="off">
         </div>
 
         <div class="form-group">
             <label for="businessName">Raz&oacute;n social:</label>
-            <input type="text" class="form-control" id="businessName" name="businessName" formControlName="businessName">
+            <input type="text" class="form-control rdb" id="businessName" name="businessName" formControlName="businessName" autocomplete="off" >
         </div>
 
         <div class="form-group">
           <label for="businessNameType">Tipo de raz&oacute;n social:</label>
-          <input type="text" class="form-control" id="businessNameType" name="businessNameType" formControlName="businessNameType">
+          <input type="text" class="form-control rdb" id="businessNameType" name="businessNameType" formControlName="businessNameType" autocomplete="off">
         </div>
         
         <div class="form-group">
             <label for="legalPersonType">Tipo de persona jur&iacute;dica:</label>
-            <input type="text" class="form-control" id="legalPersonType" name="legalPersonType" formControlName="legalPersonType">
+            <input type="text" class="form-control rdb" id="legalPersonType" name="legalPersonType" formControlName="legalPersonType" autocomplete="off" >
         </div>
         <div class="form-group">
           <label for=""> &nbsp; &nbsp; </label>
-          <button class="btn btn-primary fa btn-lg btn-block"  [ngClass]="{ 'fa-save': !bankStatus, 'fa-pencil': bankStatus }" [ngbTooltip]="bankStatus? 'Editar': 'Guardar'" (click)="bankSelector(); bankStatus=false;" ></button>
+          <button class="btn btn-primary fa btn-lg btn-block rdb"  [ngClass]="{ 'fa-save': !bankStatus, 'fa-pencil': bankStatus }" [ngbTooltip]="bankStatus? 'Editar': 'Guardar'" (click)="bankSelector(); bankStatus=false;" ></button>
         </div>
     </form>
 </ng-template>
