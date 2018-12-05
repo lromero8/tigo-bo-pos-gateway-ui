@@ -21,8 +21,12 @@ export class PaymentOptionsService {
     }));
   }
 
-  public editCurrency() {
-
+  public editCurrency(data, id) {
+    return this.http.patch<any>(environment.SETUPS_URL.concat(`currencies/${id}`), data)
+    .pipe(map( data => {
+    
+      return data;
+    }))
   }
 
   public newCurrency(data) {
@@ -44,8 +48,12 @@ export class PaymentOptionsService {
     }));
   }
 
-  public editBank() {
-
+  public editBank(data, id) {
+    return this.http.patch<any>(environment.SETUPS_URL.concat(`banks/${id}`), data)
+    .pipe(map( data => {
+    
+      return data;
+    }))
   }
 
   public newBank(data) {
@@ -60,7 +68,11 @@ export class PaymentOptionsService {
    * 
    */
   public getCollectors() {
-
+    return this.http.get<any>(environment.SETUPS_URL.concat('collectors'))
+    .pipe(map(data => {
+      
+        return data;
+    }));
   }
 
   public editCollector() {
@@ -83,8 +95,12 @@ export class PaymentOptionsService {
     }));
   }
 
-  public editCard() {
-
+  public editCard(data, id) {
+    return this.http.patch<any>(environment.SETUPS_URL.concat(`cards/${id}`), data)
+    .pipe(map( data => {
+    
+      return data;
+    }))
   }
 
   public newCard(data) {

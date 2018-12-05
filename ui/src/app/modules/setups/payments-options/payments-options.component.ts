@@ -39,6 +39,12 @@ export class PaymentsOptionsComponent implements OnInit {
   public currencyStatus: boolean;
   public cardStatus: boolean;
   public bankStatus: boolean;
+  public collectorStatus: boolean;
+
+  public currencyId: number;
+  public cardId: number;
+  public bankId: number;
+  public collectorId: number;
 
   constructor(private titleService: Title,
               private paymentOptionsService: PaymentOptionsService,
@@ -54,7 +60,8 @@ export class PaymentsOptionsComponent implements OnInit {
     this.currencyStatus = false;
     this.cardStatus = false;
     this.bankStatus = false;
-
+    this.collectorStatus = false;
+    
   }
 
   ngOnInit() {
@@ -113,7 +120,14 @@ export class PaymentsOptionsComponent implements OnInit {
   }
 
   public retrievepaymentCollectorsData(): void {
-
+    this.paymentOptionsService.getCollectors().subscribe(
+      data => {
+        this.collectorsData = data;
+      },
+      error => {
+        this.toastr.error('Al conectarse al servidor', 'Error');
+      }
+    )
   }
 
   public retrieveCardsData(): void {
@@ -229,6 +243,7 @@ export class PaymentsOptionsComponent implements OnInit {
    * @param row 
    */
   public fillBankFrm(row): void {
+    this.bankId = row.id;
     this.f.legalPerson.patchValue(row.legalPerson);
     this.f.businessName.patchValue(row.businessName);
     this.f.businessNameType.patchValue(row.businessNameType);
@@ -236,6 +251,7 @@ export class PaymentsOptionsComponent implements OnInit {
   }
 
   public fillCurrencyFrm(row): void {
+    this.currencyId = row.id;
     this.g.currency.patchValue(row.currency);
     this.g.description.patchValue(row.description);
     this.g.changeLocalCurrency.patchValue(row.changeLocalCurrency);
@@ -247,6 +263,7 @@ export class PaymentsOptionsComponent implements OnInit {
   }
 
   public fillCardFrm(row): void {
+    this.cardId = row.id; 
     this.h.cardCode.patchValue(row.cardCode);
     this.h.cardType.patchValue(row.cardType);
     this.h.emmitter.patchValue(row.emmitter);
@@ -258,19 +275,99 @@ export class PaymentsOptionsComponent implements OnInit {
   /**
    * Edit methods
    */
-  public editBank(): void {
-  
+  public editBank(id): void {
+    this.paymentOptionsService.editBank({
+      legalPerson: this.f.legalPerson.value,
+      businessName: this.f.businessName.value,
+      businessNameType: this.f.businessNameType.value,
+      legalPersonType:this.f.legalPersonType.value
+    }, id).subscribe(
+      data => {
+        this.toastr.success('El registro fue modificado', 'Ok');
+        this.modalRef.hide();
+        this.bankFrm.reset();
+      },
+      error => {
+        this.toastr.error('No se pudo modificar el registro', 'Error');
+      }
+    )
   }
 
-  public editCurrency(): void {
+  public editCurrency(id): void {
+    this.paymentOptionsService.editCurrency({
+      currency:  this.g.currency.value,
+      description: this.g.description.value,
+      changeLocalCurrency: this.g.changeLocalCurrency.value,
+      exchangeRate: this.g.exchangeRate.value
+    }, id).subscribe(
+      data => {
+        this.toastr.success('El registro fue modificado', 'Ok');
+        this.modalRef.hide();
+        this.currencyFrm.reset();
+      },
+      error => {
+        this.toastr.error('No se pudo modificar el registro', 'Error');
+      }
+    )
+  }
+
+  public editCollectors(id): void {
 
   }
 
-  public editCollectors(): void {
-
+  public editCard(id): void {
+    this.paymentOptionsService.editCard({
+      cardCode: this.h.cardCode.value,
+      cardType: this.h.cardType.value,
+      emmitter: this.h.emmitter.value,
+      description: this.h.description.value,
+      premium: this.h.premium.value
+    }, id).subscribe(
+      data => {
+        this.toastr.success('El registro fue modificado', 'Ok');
+        this.modalRef.hide();
+        this.cardFrm.reset();
+      },
+      error => {
+        this.toastr.error('No se pudo modificar el registro', 'Error');
+      }
+    )
   }
 
-  public editCard(): void {
 
+  /**
+   * Selector methods
+   */
+  public bankSelector(): void {
+    if (this.bankStatus) {
+      this.editBank(this.bankId);
+    } else {
+      this.saveBanksData();
+    }
   }
+
+  public currencySelector(): void {
+    if (this.currencyStatus) {
+      this.editCurrency(this.currencyId);
+    } else {
+      this.saveCurrencyData();
+    }
+  }
+
+  public collectSelector(): void {
+    if (this.collectorStatus) {
+      
+    } else {
+      
+    }
+  }
+
+  public cardSelector(): void {
+    if (this.cardStatus) {
+      this.editCard(this.cardId);
+    } else {
+      this.saveCardsData();
+    }
+  }
+
 }

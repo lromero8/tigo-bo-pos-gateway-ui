@@ -185,7 +185,7 @@
           
               <ngx-datatable-column name="Acciones" prop="acciones">
                   <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                      <button class="btn btn-primary fa fa-edit" [awGoToStep]="{stepIndex: 2}" (click)="fillCardFrm(row)"></button>
+                      <button class="btn btn-primary fa fa-edit" [awGoToStep]="{stepIndex: 2}" (click)="fillCardFrm(row); cardStatus=true"></button>
                   </ng-template>
               </ngx-datatable-column>
           </ngx-datatable>
@@ -222,8 +222,8 @@
               <button type="button" 
                       class="btn btn-outline-secondary fa fa-arrow-left" 
                       ngbTooltip="Retroceder" 
-                      (click)="animateCard=true; bankStatus=false; bankFrm.reset()" 
-                      awPreviousStep>
+                      (click)="animateCard=true;  cardStatus=false; cardFrm.reset()" 
+                      [awGoToStep]="{stepIndex: 0}">
               </button>
         
             </aw-wizard-step>
@@ -333,7 +333,7 @@
     </div>
     <div class="form-group">
       <label for=""> &nbsp; &nbsp; </label>
-      <button class="btn btn-primary btn-lg btn-block fa" [ngClass]="{'fa-save': !currencyStatus, 'fa-pencil': currencyStatus }" [ngbTooltip]="currencyStatus? 'Editar': 'Guardar'" (click)="saveCurrencyData(); currencyStatus=false"></button>
+      <button class="btn btn-primary btn-lg btn-block fa" [ngClass]="{'fa-save': !currencyStatus, 'fa-pencil': currencyStatus }" [ngbTooltip]="currencyStatus? 'Editar': 'Guardar'" (click)="currencySelector(); currencyStatus=false;"></button>
     </div>
   </form>
 </ng-template>
@@ -366,7 +366,7 @@
         </div>
         <div class="form-group">
           <label for=""> &nbsp; &nbsp; </label>
-          <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar" (click)="saveCardsData()"></button>
+          <button class="btn btn-primary fa btn-lg btn-block" [ngClass]="{ 'fa-save': !cardStatus, 'fa-pencil': cardStatus }" [ngbTooltip]="cardStatus? 'Editar': 'Guardar'" (click)="cardSelector(); cardStatus=false;"></button>
         </div>
     </form>
 </ng-template>
@@ -394,7 +394,7 @@
         </div>
         <div class="form-group">
           <label for=""> &nbsp; &nbsp; </label>
-          <button class="btn btn-primary fa btn-lg btn-block"  [ngClass]="{ 'fa-save': !bankStatus, 'fa-pencil': bankStatus }" [ngbTooltip]="bankStatus? 'Editar': 'Guardar'" (click)="saveBanksData()" ></button>
+          <button class="btn btn-primary fa btn-lg btn-block"  [ngClass]="{ 'fa-save': !bankStatus, 'fa-pencil': bankStatus }" [ngbTooltip]="bankStatus? 'Editar': 'Guardar'" (click)="bankSelector(); bankStatus=false;" ></button>
         </div>
     </form>
 </ng-template>
