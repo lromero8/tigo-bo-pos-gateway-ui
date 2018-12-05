@@ -36,6 +36,10 @@ export class PaymentsOptionsComponent implements OnInit {
   public cardFrm: FormGroup;
   public bankFrm: FormGroup;
 
+  public currencyStatus: boolean;
+  public cardStatus: boolean;
+  public bankStatus: boolean;
+
   constructor(private titleService: Title,
               private paymentOptionsService: PaymentOptionsService,
               private modalService: BsModalService,
@@ -46,6 +50,10 @@ export class PaymentsOptionsComponent implements OnInit {
     this.animateBank = false;
     this.animateCard = false;
     this.animateCollector = false;
+
+    this.currencyStatus = false;
+    this.cardStatus = false;
+    this.bankStatus = false;
 
   }
 
@@ -128,7 +136,7 @@ export class PaymentsOptionsComponent implements OnInit {
   get h() { return this.cardFrm.controls }
 
 
-  public saveBanksData() {
+  public saveBanksData(): void {
     /*console.log(
       this.f.legalPerson.value,
       this.f.businessName.value,
@@ -156,7 +164,7 @@ export class PaymentsOptionsComponent implements OnInit {
     )
   }
 
-  public saveCurrencyData() {
+  public saveCurrencyData(): void {
     /*console.log(
       this.g.currency.value,
       this.g.description.value,
@@ -183,11 +191,11 @@ export class PaymentsOptionsComponent implements OnInit {
     )
   }
 
-  public savePaymentCollectorsData() {
+  public savePaymentCollectorsData(): void {
   
   }
 
-  public saveCardsData() {
+  public saveCardsData(): void {
     /*console.log(
       this.h.cardCode.value,
       this.h.cardType.value,
@@ -214,5 +222,31 @@ export class PaymentsOptionsComponent implements OnInit {
         this.toastr.error('Error', 'El registro no pudo ser creado');
       }
     )
+  }
+
+  public fillBankFrm(row): void {
+    this.f.legalPerson.patchValue(row.legalPerson);
+    this.f.businessName.patchValue(row.businessName);
+    this.f.businessNameType.patchValue(row.businessNameType);
+    this.f.legalPersonType.patchValue(row.legalPersonType);
+  }
+
+  public fillCurrencyFrm(row): void {
+    this.g.currency.patchValue(row.currency);
+    this.g.description.patchValue(row.description);
+    this.g.changeLocalCurrency.patchValue(row.changeLocalCurrency);
+    this.g.exchangeRate.patchValue(row.exchangeRate);
+  }
+
+  public fillCollectorsFrm(row): void {
+
+  }
+
+  public fillCardFrm(row): void {
+    this.h.cardCode.patchValue(row.cardCode);
+    this.h.cardType.patchValue(row.cardType);
+    this.h.emmitter.patchValue(row.emmitter);
+    this.h.description.patchValue(row.description);
+    this.h.premium.patchValue(row.premium);
   }
 }

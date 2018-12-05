@@ -44,6 +44,27 @@
       "changeLocalCurrency": "n n",
       "exchangeRate": " n n",
       "id": 6
+    },
+    {
+      "currency": "nknjnjn",
+      "description": "jnjnjnjn",
+      "changeLocalCurrency": "njnjj",
+      "exchangeRate": "jnjnj",
+      "id": 7
+    },
+    {
+      "currency": "njnjn",
+      "description": "jnj",
+      "changeLocalCurrency": "nj",
+      "exchangeRate": "nj",
+      "id": 8
+    },
+    {
+      "currency": "Bs",
+      "description": "Bolivianos",
+      "changeLocalCurrency": 1,
+      "exchangeRate": 0.14,
+      "id": 9
     }
   ],
   "cards": [
