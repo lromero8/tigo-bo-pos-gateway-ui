@@ -284,11 +284,12 @@
         "id": 1,
         "billNumber": 33,
         "accountNumber": 23,
-        "clientDebt":44.32,
+        "clientDebt": 44.32,
         "startDate": "2017-10-06 01:35:19",
         "endDate": "2017-10-06 01:35:19",
         "clientId": 22,
         "contractNumber": 85,
+        "paymentOption": "Credit Card",        
         "invoice": [
             {
                 "id": 1,
@@ -324,7 +325,8 @@
         "startDate": "2017-10-06 01:35:19",
         "endDate": "2017-10-06 01:35:19",
         "clientId": 41,
-        "contractNumber": 34,            
+        "contractNumber": 34,  
+        "paymentOption": "Credit Card",                  
         "invoice": [
             {
                 "id": 1,
@@ -344,7 +346,8 @@
         "startDate": "2017-10-06 01:35:19",
         "endDate": "2017-10-06 01:35:19",
         "clientId": 22,
-        "contractNumber": 98,            
+        "contractNumber": 98, 
+        "paymentOption": "Debit Card",                   
         "invoice": [
             {
                 "id": 1,
@@ -364,7 +367,8 @@
         "startDate": "2016-10-06 01:35:19",
         "endDate": "2017-10-06 01:35:19",
         "clientId": 22,
-        "contractNumber": 96,            
+        "contractNumber": 96, 
+        "paymentOption": "Debit Card",                   
         "invoice": [
             {
                 "id": 1,
