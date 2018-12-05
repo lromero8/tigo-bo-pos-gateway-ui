@@ -63,7 +63,7 @@ export class CancelInAdvanceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getData();
+    // this.getData();
     this.setTitle('cancelar en adelanto');
     
   }
@@ -74,7 +74,7 @@ export class CancelInAdvanceComponent implements OnInit {
     // console.log(row)
     this.billNumber = row.billNumber;
     this.selectedRow = row.invoice;
-        console.log(this.cancellationInAdvanceForm.getRawValue())
+    console.log(this.cancellationInAdvanceForm.getRawValue())
 
     this.selectedRow.forEach( i => {
       // console.log(i)
