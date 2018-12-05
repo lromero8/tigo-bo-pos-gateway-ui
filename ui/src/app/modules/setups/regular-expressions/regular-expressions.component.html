@@ -17,23 +17,18 @@
   
   <div class="row pb-4">
     
-   <!--
 
-     <div class="col-md-2">
-      
-    </div>
-   -->
     <div class="col-md-2">
       <div class="form-group">			
         <label for="name">Nombre:</label>
-        <input  type="text" name="name" id="name" class="rdb form-control"  placeholder="..." formControlName="name" >
+        <input  type="text" name="name" id="name" class="rdb form-control"  placeholder="..." formControlName="name" autocomplete="off" >
       </div>
     </div>
 
     <div class="col-md-2">
         <div class="form-group">
           <label for="uri">Uri:</label>
-          <input  type="text" name="uri" id="uri" class="rdb form-control"  placeholder="..." formControlName="uri" >
+          <input  type="text" name="uri" id="uri" class="rdb form-control"  placeholder="..." formControlName="uri" autocomplete="off">
         </div>
       </div>
 
@@ -124,9 +119,49 @@
 
           <ngx-datatable-column name="Acciones" prop="actions" >
               <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                <button class="btn btn-primary fa fa-edit" (click)="openModal(template, row)"></button>
+                <button class="btn btn-primary fa fa-edit rdb" (click)="openModal(regExprTpl, row); editMode=true"></button>
               </ng-template>
           </ngx-datatable-column>
 
         
       </ngx-datatable> 
+
+
+      <ng-template #regExprTpl>
+        <div class="modal-header modaleHeader">
+          <h4 class="modal-title pull-left" *ngIf="!editMode" >Registrar una nueva expresi&oacute;n regular</h4>
+          <h4 class="modal-title pull-left" *ngIf="editMode">Modificar una expresi&oacute;n regular</h4>
+
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); editMode=false;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-8">
+              <form [formGroup]="regExprModal">
+                <div class="form-group">
+                  <label for="name">Nombre:</label>
+                  <input type="text" class="form-control rdb" id="name" name="name" formControlName="name" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="description">Descripci&oacute;n:</label>
+                  <input type="text" class="form-control rdb" id="description" name="description" formControlName="description" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="uri">Uri:</label>
+                  <input type="text" class="form-control rdb" id="uri" name="uri" formControlName="uri" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="status">Estatus:</label>
+                  <input type="text" class="form-control rdb" id="status" name="status" formControlName="status" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for=""> &nbsp; &nbsp; </label>
+                    <button class="btn btn-primary fa btn-lg btn-block rdb" [ngClass]="{'fa-save': !editMode, 'fa-edit': editMode }" (click)="editMode=false" ></button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </ng-template>
