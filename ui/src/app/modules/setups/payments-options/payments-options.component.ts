@@ -224,6 +224,10 @@ export class PaymentsOptionsComponent implements OnInit {
     )
   }
 
+  /**
+   * Fill frm methods
+   * @param row 
+   */
   public fillBankFrm(row): void {
     this.f.legalPerson.patchValue(row.legalPerson);
     this.f.businessName.patchValue(row.businessName);
@@ -248,5 +252,25 @@ export class PaymentsOptionsComponent implements OnInit {
     this.h.emmitter.patchValue(row.emmitter);
     this.h.description.patchValue(row.description);
     this.h.premium.patchValue(row.premium);
+  }
+
+
+  /**
+   * Edit methods
+   */
+  public editBank(): void {
+
+  }
+
+  public editCurrency(): void {
+
+  }
+
+  public editCollectors(): void {
+    
+  }
+
+  public editCard(): void {
+
   }
 }
