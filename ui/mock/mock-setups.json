@@ -189,6 +189,11 @@
       "id": 1
     }
   ],
+  "collectors": [
+    {
+      "id": 1
+    }
+  ],
   "regularExpressions": [
     {
       "id": 1,

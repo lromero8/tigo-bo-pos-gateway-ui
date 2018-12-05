@@ -94,6 +94,9 @@ export class PaymentsOptionsComponent implements OnInit {
     this.titleService.setTitle( newTitle ); 
   }
 
+  /**
+   * Retrieve methods
+   */
   public retrieveBanksData(): void {
     this.paymentOptionsService.getBanks().subscribe(
       data => {
@@ -151,12 +154,6 @@ export class PaymentsOptionsComponent implements OnInit {
 
 
   public saveBanksData(): void {
-    /*console.log(
-      this.f.legalPerson.value,
-      this.f.businessName.value,
-      this.f.businessNameType.value,
-      this.f.legalPersonType.value
-    )*/
 
     this.paymentOptionsService.newBank({
 
@@ -179,12 +176,6 @@ export class PaymentsOptionsComponent implements OnInit {
   }
 
   public saveCurrencyData(): void {
-    /*console.log(
-      this.g.currency.value,
-      this.g.description.value,
-      this.g.changeLocalCurrency.value,
-      this.g.exchangeRate.value
-    )*/
 
     this.paymentOptionsService.newCurrency({
 
@@ -210,13 +201,6 @@ export class PaymentsOptionsComponent implements OnInit {
   }
 
   public saveCardsData(): void {
-    /*console.log(
-      this.h.cardCode.value,
-      this.h.cardType.value,
-      this.h.emmitter.value,
-      this.h.description.value,
-      this.h.premium.value
-    )*/
 
     this.paymentOptionsService.newCard({
 
