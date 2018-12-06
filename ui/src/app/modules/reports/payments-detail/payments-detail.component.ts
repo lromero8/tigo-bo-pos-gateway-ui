@@ -9,6 +9,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PaymentDetatailService } from '../../../services/payment-detatail.service'
+import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
 
 @Component({
   selector: 'app-payments-detail',
@@ -18,10 +19,15 @@ import { PaymentDetatailService } from '../../../services/payment-detatail.servi
 })
 export class PaymentsDetailComponent implements OnInit {
 
+  public colorTheme = 'theme-dark-blue';
+  public bsConfig: Partial<BsDatepickerConfig>;
   constructor(private titleService: Title,
               private paymentDetatailService: PaymentDetatailService) { }
 
   ngOnInit() {
+    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+    this.setTitle('Detalle de pago');
+
   }
 
   public setTitle( newTitle: string): void {
