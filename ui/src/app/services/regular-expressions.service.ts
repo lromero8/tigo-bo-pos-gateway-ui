@@ -9,4 +9,12 @@ import { Injectable } from '@angular/core';
 export class RegularExpressionsService {
 
   constructor(private http: HttpClient) { }
+
+  public retrieve(){
+    return this.http.get<any>(environment.SETUPS_URL.concat('regularExpressions'))
+    .pipe(map(data => {
+      
+        return data;
+    }));
+  }
 }

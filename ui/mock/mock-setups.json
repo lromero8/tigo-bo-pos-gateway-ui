@@ -1,94 +1,208 @@
 {
-    "paymentOptions": [
-       {
-           "currencies": [
-                {
-                    "id": 1,
-                    "currency": "Bs",
-                    "desciption": "Bolivianos", 
-                    "changeLocalCurrency": 1,
-                    "exchangeRate": 0.14,
-                    "modifyDate": "21/11/2018"
-                },
-                {
-                    "id": 2,
-                    "currency": "Usd",
-                    "desciption": "Dollar", 
-                    "changeLocalCurrency": 1,
-                    "exchangeRate": 6.91,
-                    "modifyDate": "21/11/2018"
-                },
-                {
-                    "id": 3,
-                    "currency": "Eu",
-                    "desciption": "Euros", 
-                    "changeLocalCurrency": 1,
-                    "exchangeRate": 0.13,
-                    "modifyDate": "21/11/2018"
-                }
-           ],
-           "cards": [
-                {
-                    "id": 1,
-                    "cardCode": "Debito",
-                    "cardType": "VISA",
-                    "premium": "no",
-                    "modifyDate": ""
-                },
-                {
-                    "id": 2,
-                    "cardCode": "Credito",
-                    "cardType": "Mastercard",
-                    "premium": "no",
-                    "modifyDate": ""
-                },
-                {
-                    "id": 3,
-                    "cardCode": "Credito",
-                    "cardType": "American Express",
-                    "premium": "no",
-                    "modifyDate": ""
-                }
-           ],
-           "banks": [
-                {
-                    "id": 1,
-                    "legalPerson": 1,
-                    "businessName": "Debito",
-                    "emmitter": "VISA",
-                    "legalPersonType": "no",
-                    "modifyDate": ""
-                },
-                {
-                    "id": 2,
-                    "legalPerson": 2,
-                    "businessName": "Credito",
-                    "emmitter": "Mastercard",
-                    "legalPersonType": "no",
-                    "modifyDate": ""
-                },
-                {
-                    "id": 3,
-                    "legalPerson": 3,
-                    "businessName": "Credito",
-                    "emmitter": "American Express",
-                    "legalPersonType": "no",
-                    "modifyDate": ""
-                }
-           ],
-           "paymentProcessors": [
-                {
-                    "id": 1
-                }
-           ]
-       }
-      ],
-      "regularExpressions": [
-        {
-            "id": 1,
-            "key": "",
-            "value": "",
-            "components": ""
-          }
-      ]
+  "currencies": [
+    {
+      "id": 1,
+      "currency": "Bsss",
+      "description": "Bolivianos",
+      "changeLocalCurrency": "1.12",
+      "exchangeRate": "0.145",
+      "modifyDate": "21/11/2018"
+    },
+    {
+      "id": 2,
+      "currency": "Usd",
+      "description": "Dollar",
+      "changeLocalCurrency": 1,
+      "exchangeRate": 6.91,
+      "modifyDate": "21/11/2018"
+    },
+    {
+      "id": 3,
+      "currency": "Eu",
+      "description": "Euros",
+      "changeLocalCurrency": 1,
+      "exchangeRate": "0.132",
+      "modifyDate": "21/11/2018"
+    },
+    {
+      "currency": "$ ",
+      "description": "dollar",
+      "changeLocalCurrency": "1.13",
+      "exchangeRate": "11",
+      "id": 4
+    },
+    {
+      "currency": "njnjn",
+      "description": "jnj",
+      "changeLocalCurrency": "nj",
+      "exchangeRate": "nj",
+      "id": 5
+    },
+    {
+      "currency": " nn",
+      "description": " n ss",
+      "changeLocalCurrency": "n n",
+      "exchangeRate": " n n",
+      "id": 6
+    },
+    {
+      "currency": "nknjnjn",
+      "description": "jnjnjnjn",
+      "changeLocalCurrency": "njnjj",
+      "exchangeRate": "jnjnj",
+      "id": 7
+    },
+    {
+      "currency": "njnjn",
+      "description": "jnj",
+      "changeLocalCurrency": "nj",
+      "exchangeRate": "nj",
+      "id": 8
+    },
+    {
+      "currency": "Bs",
+      "description": "Bolivianos",
+      "changeLocalCurrency": 1,
+      "exchangeRate": 0.14,
+      "id": 9
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "cardCode": "1",
+      "cardType": "Debito",
+      "emmitter": "VISA",
+      "description": "...",
+      "premium": "si",
+      "modifyDate": "04-12-2018"
+    },
+    {
+      "id": 2,
+      "cardCode": "2",
+      "cardType": "Credito",
+      "emmitter": "Mastercard",
+      "description": "...",
+      "premium": "no",
+      "modifyDate": "04-12-2018"
+    },
+    {
+      "id": 3,
+      "cardCode": "3",
+      "cardType": "Credito",
+      "emmitter": "American Express",
+      "description": "...",
+      "premium": "si",
+      "modifyDate": "04-12-2018"
+    },
+    {
+      "cardCode": "kk",
+      "cardType": "mkmkm",
+      "emmitter": "kmk",
+      "description": "mkmkm",
+      "premium": "kmsuusuu---",
+      "id": 4
+    },
+    {
+      "cardCode": "1",
+      "cardType": "Debito",
+      "emmitter": "VISA",
+      "description": "...kmkmkmk",
+      "premium": "no",
+      "id": 5
+    },
+    {
+      "cardCode": "1",
+      "cardType": "Debito",
+      "emmitter": "VISA",
+      "description": "...kk...",
+      "premium": "no",
+      "id": 6
+    },
+    {
+      "cardCode": "12",
+      "cardType": "Debito",
+      "emmitter": "VISA",
+      "description": "...",
+      "premium": "no",
+      "id": 7
+    },
+    {
+      "cardCode": "www",
+      "cardType": "mkmkm",
+      "emmitter": "kmk",
+      "description": "mkmkm",
+      "premium": "kmsuusuu---",
+      "id": 8
+    },
+    {
+      "cardCode": "www",
+      "cardType": "mkmkm",
+      "emmitter": "kmk",
+      "description": "mkmkm",
+      "premium": "no",
+      "id": 9
+    }
+  ],
+  "banks": [
+    {
+      "id": 1,
+      "legalPerson": "12",
+      "businessName": "Banco Agricola",
+      "businessNameType": "S.A de C.V",
+      "legalPersonType": "no",
+      "modifyDate": "04-12-2018"
+    },
+    {
+      "id": 2,
+      "legalPerson": 2,
+      "businessName": "Banco de America central",
+      "businessNameType": "S.A de C.V",
+      "legalPersonType": "no",
+      "modifyDate": "04-12-2018"
+    },
+    {
+      "id": 3,
+      "legalPerson": 3,
+      "businessName": "Banco Hipotecario",
+      "businessNameType": "S.A de C.V",
+      "legalPersonType": "no",
+      "modifyDate": "04-12-2018"
+    },
+    {
+      "legalPerson": "kmkmkm",
+      "businessName": "kmkm",
+      "businessNameType": "kmk",
+      "legalPersonType": "km==",
+      "id": 4
+    },
+    {
+      "legalPerson": "aavfcaf",
+      "businessName": "facafc",
+      "businessNameType": "vavfvaf",
+      "legalPersonType": "vfafvfa",
+      "id": 5
+    }
+  ],
+  "paymentProcessors": [
+    {
+      "id": 1
+    }
+  ],
+  "collectors": [
+    {
+      "id": 1
+    }
+  ],
+  "regularExpressions": [
+    {
+      "id": 1,
+      "name": "test",
+      "description": "test",
+      "uri": "/test/",
+      "status": "active",
+      "creationDate": "04-12-2018",
+      "modifyDate": "04-12-2018"
+    }
+  ]
 }

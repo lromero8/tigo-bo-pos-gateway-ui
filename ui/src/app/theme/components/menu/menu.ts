@@ -1,7 +1,14 @@
 import { Menu } from './menu.model';
 
 export const verticalMenuItems = [ 
-    new Menu (1, 'Dashboard', '/dashboard', null, 'tachometer', null, false, 0),
+    new Menu (1, 'Cancelaciones', '/cancellations', null, 'times', null, false, 0),
+    new Menu (2, 'Pagos', '/pages/payments', null, 'money', null, false, 0),
+    new Menu (3, 'Consultas', '/pages/queries', null, 'search', null, false, 0),
+    new Menu (4, 'Reportes', '/pages/reports', null, 'file-text-o', null, false, 0),
+    new Menu (5, 'Configuraciones', '/pages/setups', null, 'cog', null, false, 0),
+
+
+
     // new Menu (1, 'Dashboard', null, null, 'tachometer', null, true, 0),
     // new Menu(2,  'interno', '/dashboard', null, 'tachometer', null, false, 1)
 ]

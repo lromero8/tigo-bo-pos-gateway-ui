@@ -22,7 +22,7 @@
           <div class="row justify-content-center align-items-center">
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo por limite" (click)="openModal(money, 1)" >
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Moneda" (click)="openModal(money, 1); retrieveCurrencyData()" >
                 <img src="/assets/img/icons/shortcuts/money.png" alt="Moneda">
                 <small class="d-block mt-2"> Moneda </small>
               </a>
@@ -30,19 +30,18 @@
 
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Procesadores de pago" (click)="openModal(paymentCollectors, 2)">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Procesadores de pago" (click)="openModal(paymentCollectors, 2); retrievepaymentCollectorsData()">
                 <img src="/assets/img/icons/shortcuts/payment-collectors.png" alt="Procesadores de pago">
                 <small class="d-block mt-2"> Procesadores de pago </small>
               </a>
             </div>
-
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="row justify-content-center align-items-center">
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Tarjetas" (click)="openModal(cards, 3)">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Tarjetas" (click)="openModal(cards, 3); retrieveCardsData()">
                 <img src="/assets/img/icons/shortcuts/cards.png" alt="Expresiones regulares">
                 <small class="d-block mt-2"> Tarjetas </small>
               </a>
@@ -52,7 +51,7 @@
 
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
-              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo" (click)="openModal(bank, 4)">
+              <a href="javascript:;" class="py-3 btn-block btn btn-light shadow-sm" ngbTooltip="Anular anticipo" (click)="openModal(bank, 4); retrieveBanksData()">
                 <img src="/assets/img/icons/shortcuts/bank.png" alt="Bancos">
                 <small class="d-block mt-2"> Bancos </small>
               </a>
@@ -64,10 +63,12 @@
   </div>
 </div>
 
+
+
 <ng-template #money>
-  <div class="modal-header">
+  <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">Moneda</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateMoney=false">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -81,12 +82,12 @@
           <aw-wizard-step stepTitle="Listado de monedas registradas">
 
 
-              <div>
+              <div [ngClass]="{'bounceInLeftForSetups': animateMoney}">
                   <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
               <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
-              [limit]="5" [rows]='[]'>
+              [limit]="5" [rows]='currencyData'>
           
-              <ngx-datatable-column name="Moneda" prop="currency"></ngx-datatable-column>
+              <ngx-datatable-column name="Moneda" prop="currency" > </ngx-datatable-column>
               <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
               <ngx-datatable-column name="Cambio de moneda local" prop="changeLocalCurrency"></ngx-datatable-column>
               <ngx-datatable-column name="Tasa de cambio" prop="exchangeRate"></ngx-datatable-column>
@@ -94,46 +95,43 @@
           
               <ngx-datatable-column name="Acciones" prop="acciones">
                   <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                      <button class="btn btn-primary fa fa-edit" [awGoToStep]="{stepIndex: 2}" (click)="fillCurrencyFrm(row); currencyStatus=true;"></button>
                   </ng-template>
               </ngx-datatable-column>
           </ngx-datatable>
-        
-        
-        
           </div>
         
           </aw-wizard-step>
       
   
           <aw-wizard-step stepTitle="Registrar una nueva moneda" awOptionalStep>
-      
-
             <div class="row justify-content-center align-items-center bounceInRight">
               <div class="col-md-8">
-                  <form>
-                      <div class="form-group">
-                        <label for="">Moneda:</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="">Descripci&oacute;n:</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="">S&iacute;mbolo:</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for=""> &nbsp; &nbsp; </label>
-                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
-                      </div>
-                  </form>
+                <ng-container *ngTemplateOutlet="currencyFrmTpl;"></ng-container>
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+            <button type="button" 
+                    class="btn btn-outline-secondary fa fa-arrow-left" 
+                    ngbTooltip="Retroceder" 
+                    (click)="animateMoney=true;" 
+                    awPreviousStep>
+            </button>
       
+          </aw-wizard-step>
+          <aw-wizard-step stepTitle="Editar una moneda" awOptionalStep>
+            <div class="row justify-content-center align-items-center bounceInRight">
+              <div class="col-md-8">
+                <ng-container *ngTemplateOutlet="currencyFrmTpl;"></ng-container>
+              </div>
+            </div>
+
+            <button type="button" 
+                    class="btn btn-outline-secondary fa fa-arrow-left" 
+                    ngbTooltip="Retroceder" 
+                    (click)="animateMoney=true; currencyStatus=false; currencyFrm.reset()" 
+                    [awGoToStep]="{stepIndex: 0}">
+            </button>
           </aw-wizard-step>
       </aw-wizard>
 
@@ -142,8 +140,10 @@
   </div>
 </ng-template>
 
+
+<!--Payments Collectors modal-->
 <ng-template #paymentCollectors>
-  <div class="modal-header">
+  <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">Procesadores de pago</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -153,11 +153,13 @@
     
   </div>
 </ng-template>
+<!--Payments Collectors modal-->
+
 
 <ng-template #cards>
-  <div class="modal-header">
+  <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">Tarjetas</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateCard=false">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -168,76 +170,73 @@
           <aw-wizard-step stepTitle="Listado de tarjetas registradas">
 
 
-              <div>
-                  <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
+              <div [ngClass]="{'bounceInLeftForSetups': animateCard}">
+                  <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva tarjeta" awNextStep></button>
               <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
-              [limit]="5" [rows]='[]'>
+              [limit]="5" [rows]='cardsData'>
           
-              <ngx-datatable-column name="Codigo" prop="currency"></ngx-datatable-column>
-              <ngx-datatable-column name="Tipo de tarjeta" prop="description"></ngx-datatable-column>
-              <ngx-datatable-column name="Descripcion" prop="changeLocalCurrency"></ngx-datatable-column>
-              <ngx-datatable-column name="Premium" prop="exchangeRate"></ngx-datatable-column>
+              <ngx-datatable-column name="Codigo" prop="cardCode"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de tarjeta" prop="cardType"></ngx-datatable-column>
+              <ngx-datatable-column name="Emisor" prop="emmitter"></ngx-datatable-column>
+              <ngx-datatable-column name="Descripcion" prop="description"></ngx-datatable-column>
+              <ngx-datatable-column name="Premium" prop="premium"></ngx-datatable-column>
               <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
           
               <ngx-datatable-column name="Acciones" prop="acciones">
                   <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                      <button class="btn btn-primary fa fa-edit" [awGoToStep]="{stepIndex: 2}" (click)="fillCardFrm(row); cardStatus=true"></button>
                   </ng-template>
               </ngx-datatable-column>
           </ngx-datatable>
         
-        
-        
           </div>
-        
           </aw-wizard-step>
       
   
           <aw-wizard-step stepTitle="Registrar una nueva tarjeta" awOptionalStep>
-      
 
-            <div class="row justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center bounceInRight">
               <div class="col-md-8">
-                  <form>
-                      <div class="form-group">
-                        <label for="">C&oacute;digo:</label>
-                        <input type="text" class="form-control">
-                      </div>
-
-                      <div class="form-group">
-                          <label for="">Tipon de tarjeta:</label>
-                          <input type="text" class="form-control">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="">Descripci&oacute;n:</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      
-                      <div class="form-group">
-                          <label for="">Premium:</label>
-                          <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for=""> &nbsp; &nbsp; </label>
-                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
-                      </div>
-                  </form>
+                  <ng-container *ngTemplateOutlet="cardFrmTpl;"></ng-container>
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+            <button type="button" 
+                    class="btn btn-outline-secondary fa fa-arrow-left" 
+                    ngbTooltip="Retroceder" 
+                    (click)="animateCard=true;" 
+                    awPreviousStep>
+            </button>
       
           </aw-wizard-step>
+
+          <aw-wizard-step stepTitle="Modificar una tarjeta" awOptionalStep>
+
+              <div class="row justify-content-center align-items-center bounceInRight">
+                <div class="col-md-8">
+                    <ng-container *ngTemplateOutlet="cardFrmTpl;"></ng-container>
+                </div>
+              </div>
+  
+              <button type="button" 
+                      class="btn btn-outline-secondary fa fa-arrow-left" 
+                      ngbTooltip="Retroceder" 
+                      (click)="animateCard=true;  cardStatus=false; cardFrm.reset()" 
+                      [awGoToStep]="{stepIndex: 0}">
+              </button>
+        
+            </aw-wizard-step>
       </aw-wizard>
 
   </div>
 </ng-template>
 
+
+<!--Banks modal-->
 <ng-template #bank>
-  <div class="modal-header">
+  <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">Bancos</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false;">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -248,20 +247,20 @@
           <aw-wizard-step stepTitle="Listado de bancos registrados">
 
 
-              <div>
+              <div [ngClass]="{'bounceInLeftForSetups': animateBank}">
                   <button class="btn btn-primary fa fa-plus mb-2 mt-3" ngbTooltip="Registrar una nueva moneda" awNextStep></button>
               <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
-              [limit]="5" [rows]='[]'>
+              [limit]="5" [rows]='bankData'>
           
-              <ngx-datatable-column name="Persona juridica" prop="currency"></ngx-datatable-column>
-              <ngx-datatable-column name="Razon social" prop="description"></ngx-datatable-column>
-              <ngx-datatable-column name="Tipo de razon social" prop="changeLocalCurrency"></ngx-datatable-column>
-              <ngx-datatable-column name="Tipo de persona juridica" prop="exchangeRate"></ngx-datatable-column>
+              <ngx-datatable-column name="Persona juridica" prop="legalPerson"></ngx-datatable-column>
+              <ngx-datatable-column name="Razon social" prop="businessName"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de razon social" prop="businessNameType"></ngx-datatable-column>
+              <ngx-datatable-column name="Tipo de persona juridica" prop="legalPersonType"></ngx-datatable-column>
               <ngx-datatable-column name="Fecha de modificacion" prop="modifyDate"></ngx-datatable-column>
           
               <ngx-datatable-column name="Acciones" prop="acciones">
                   <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-                      <button class="btn btn-primary" (click)="openModal(template)">Large modal</button>
+                      <button class="btn btn-primary fa fa-edit" [awGoToStep]="{stepIndex: 2}" (click)="fillBankFrm(row); bankStatus=true;"></button>
                   </ng-template>
               </ngx-datatable-column>
           </ngx-datatable>
@@ -274,39 +273,127 @@
   
           <aw-wizard-step stepTitle="Registrar un nuevo banco" awOptionalStep>
       
-            <div class="row justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center bounceInRight">
               <div class="col-md-8">
-                  <form>
-                      <div class="form-group">
-                        <label for="">Persona juridica:</label>
-                        <input type="text" class="form-control">
-                      </div>
-
-                      <div class="form-group">
-                          <label for="">Razon social:</label>
-                          <input type="text" class="form-control">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="">Tipo de razon social:</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      
-                      <div class="form-group">
-                          <label for="">Tipo de persona juridica:</label>
-                          <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for=""> &nbsp; &nbsp; </label>
-                        <button class="btn btn-primary fa fa-save btn-lg btn-block" ngbTooltip="Guardar"></button>
-                      </div>
-                  </form>
+                <ng-container *ngTemplateOutlet="bankFrmTpl;"></ng-container>
               </div>
             </div>
 
-            <button type="button" class="btn btn-outline-secondary fa fa-arrow-left" ngbTooltip="Retroceder" awPreviousStep></button>
+            <button type="button" 
+                    class="btn btn-outline-secondary fa fa-arrow-left" 
+                    ngbTooltip="Retroceder" 
+                    (click)="animateBank=true;"  
+                    awPreviousStep>
+            </button>
       
           </aw-wizard-step>
+
+          <aw-wizard-step stepTitle="Modificar un banco" awOptionalStep>
+      
+              <div class="row justify-content-center align-items-center bounceInRight">
+                <div class="col-md-8">
+                  <ng-container *ngTemplateOutlet="bankFrmTpl;"></ng-container>
+                </div>
+              </div>
+  
+              <button type="button" 
+                      class="btn btn-outline-secondary fa fa-arrow-left" 
+                      ngbTooltip="Retroceder" 
+                      (click)="animateBank=true; bankStatus=false; bankFrm.reset()"  
+                      [awGoToStep]="{stepIndex: 0}" >
+                    
+              </button>
+        
+            </aw-wizard-step>
       </aw-wizard>
   </div>
+</ng-template>
+
+<!--Banks modal-->
+
+
+<ng-template #currencyFrmTpl>
+  <form [formGroup]="currencyFrm">
+    <div class="form-group">
+      <label for="currency">S&iacute;mbolo:</label>
+      <input type="text" class="form-control rdb" name="currency" id="currency" formControlName="currency" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="description">Descripci&oacute;n:</label>
+      <input type="text" class="form-control rdb" name="description" id="description" formControlName="description" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="changeLocalCurrency">Cambio de moneda local:</label>
+      <input type="text" class="form-control rdb" name="changeLocalCurrency" id="changeLocalCurrency" formControlName="changeLocalCurrency" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for="exchangeRate">Tasa de cambio:</label>
+      <input type="text" class="form-control rdb" name="exchangeRate" id="exchangeRate" formControlName="exchangeRate" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label for=""> &nbsp; &nbsp; </label>
+      <button class="btn btn-primary btn-lg btn-block fa rdb" [ngClass]="{'fa-save': !currencyStatus, 'fa-pencil': currencyStatus }" [ngbTooltip]="currencyStatus? 'Editar': 'Guardar'" (click)="currencySelector(); currencyStatus=false;"></button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #cardFrmTpl>
+    <form [formGroup]="cardFrm">
+        <div class="form-group">
+          <label for="cardCode">C&oacute;digo:</label>
+          <input type="text" class="form-control rdb" id="cardCode" name="cardCode" formControlName="cardCode" autocomplete="off" >
+        </div>
+
+        <div class="form-group">
+            <label for="cardType">Tipo de tarjeta:</label>
+            <input type="text" class="form-control rdb" id="cardType" name="cardType" formControlName="cardType" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="emmitter">Emisor:</label>
+          <input type="text" class="form-control rdb" id="emmitter" name="emmitter" formControlName="emmitter" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descripci&oacute;n:</label>
+          <input type="text" class="form-control rdb" id="description" name="description" formControlName="description" autocomplete="off">
+        </div>
+        
+        <div class="form-group">
+            <label for="premium">Premium:</label>
+            <input type="text" class="form-control rdb" id="premium" name="premium" formControlName="premium" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for=""> &nbsp; &nbsp; </label>
+          <button class="btn btn-primary fa btn-lg btn-block rdb" [ngClass]="{ 'fa-save': !cardStatus, 'fa-pencil': cardStatus }" [ngbTooltip]="cardStatus? 'Editar': 'Guardar'" (click)="cardSelector(); cardStatus=false;"></button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #bankFrmTpl>
+    <form [formGroup]="bankFrm">
+        <div class="form-group">
+          <label for="legalPerson">Persona jur&iacute;dica:</label>
+          <input type="text" class="form-control rdb" id="legalPerson" name="legalPerson" formControlName="legalPerson" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label for="businessName">Raz&oacute;n social:</label>
+            <input type="text" class="form-control rdb" id="businessName" name="businessName" formControlName="businessName" autocomplete="off" >
+        </div>
+
+        <div class="form-group">
+          <label for="businessNameType">Tipo de raz&oacute;n social:</label>
+          <input type="text" class="form-control rdb" id="businessNameType" name="businessNameType" formControlName="businessNameType" autocomplete="off">
+        </div>
+        
+        <div class="form-group">
+            <label for="legalPersonType">Tipo de persona jur&iacute;dica:</label>
+            <input type="text" class="form-control rdb" id="legalPersonType" name="legalPersonType" formControlName="legalPersonType" autocomplete="off" >
+        </div>
+        <div class="form-group">
+          <label for=""> &nbsp; &nbsp; </label>
+          <button class="btn btn-primary fa btn-lg btn-block rdb"  [ngClass]="{ 'fa-save': !bankStatus, 'fa-pencil': bankStatus }" [ngbTooltip]="bankStatus? 'Editar': 'Guardar'" (click)="bankSelector(); bankStatus=false;" ></button>
+        </div>
+    </form>
 </ng-template>
