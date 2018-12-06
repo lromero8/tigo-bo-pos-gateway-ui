@@ -65,3 +65,30 @@
   
   
     <h1 class="display-5 text-center mb-4">Reporte de forma de pagos</h1>
+
+
+    <ngx-datatable
+        class='material'
+        [columnMode]="'force'"        
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="5"
+        [rows]='[]'>
+
+  	      <ngx-datatable-column name="Cajero" prop=""></ngx-datatable-column>
+  	      <ngx-datatable-column name="Caja" prop=""></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha" prop=""></ngx-datatable-column>
+          <ngx-datatable-column name="Hora" prop=""></ngx-datatable-column>
+          <ngx-datatable-column name="Voucher" prop=""></ngx-datatable-column>
+          <ngx-datatable-column name="Forma" prop=""></ngx-datatable-column>
+          <ngx-datatable-column name="Monto" prop=""></ngx-datatable-column>
+
+          <ngx-datatable-column name="Acciones" prop="acciones" >
+              <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+                <button class="btn btn-primary fa fa-pencil"></button>
+              </ng-template>
+          </ngx-datatable-column>
+
+        
+      </ngx-datatable> 

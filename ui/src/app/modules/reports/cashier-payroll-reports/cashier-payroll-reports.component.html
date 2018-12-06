@@ -92,3 +92,33 @@
   
   
     <h1 class="display-5 text-center mb-4">Reporte de planilla de caja</h1>
+
+    <ngx-datatable
+    class='material'
+    [columnMode]="'force'"        
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="5"
+    [rows]='[]'>
+
+      <ngx-datatable-column name="sucursal" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Local" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Caja" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="EHumano" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Periodo" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Planilla" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Estado de planilla" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Fecha de apertura" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Hora de apertura" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Total cobrado cierre" prop=""></ngx-datatable-column>
+
+
+      <ngx-datatable-column name="Acciones" prop="acciones" >
+          <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
+            <button class="btn btn-primary fa fa-pencil"></button>
+          </ng-template>
+      </ngx-datatable-column>
+
+    
+  </ngx-datatable> 
