@@ -1,9 +1,9 @@
 
 
-$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap";
-@import "../node_modules/bootstrap/scss/bootstrap";
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap";
+@import "~bootstrap/scss/bootstrap";
 $fa-font-path : "../node_modules/font-awesome/fonts";
-@import "../node_modules/font-awesome/scss/font-awesome";
+@import "~font-awesome/scss/font-awesome";
 @import '~@swimlane/ngx-datatable/release/index.css';
 @import '~@swimlane/ngx-datatable/release/themes/material.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
@@ -392,7 +392,9 @@ app-breadcrumb {
   }
 
 
-  .rdb {
+  .rdb, 
+  .btn, 
+  .form-control {
     border-radius: 1rem;
     height: 34px
   }

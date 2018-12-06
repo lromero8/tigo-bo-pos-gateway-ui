@@ -16,11 +16,13 @@ import { PaymentsDetailComponent } from './payments-detail/payments-detail.compo
 
 import { routes, routing } from './reports.routing';
 import { IndexComponent } from './index/index.component';
+import { UtilModule } from '../../pages/common/util.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    UtilModule
   ],
   declarations: [PaymentOptionsReportsComponent, PaymentReportsComponent, CashierPayrollReportsComponent, PaymentsDetailComponent, IndexComponent]
 })
