@@ -393,8 +393,8 @@ app-breadcrumb {
 
 
   .rdb, 
-  .btn, 
-  .form-control {
+  .form-group > .btn, 
+  .form-group > .form-control {
     border-radius: 1rem;
     height: 34px
   }

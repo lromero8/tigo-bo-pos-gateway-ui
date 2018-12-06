@@ -22,7 +22,7 @@ export class PaymentOptionsReportsComponent implements OnInit {
               private paymentOptionsReportService: PaymentOptionsReportService) { }
 
   ngOnInit() {
-    this.setTitle('Opciones de pago');
+    this.setTitle('Reportes de formas de pago');
   }
 
   public setTitle( newTitle: string): void {
