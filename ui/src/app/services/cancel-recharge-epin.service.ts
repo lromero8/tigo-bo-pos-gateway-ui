@@ -9,4 +9,23 @@ import { Injectable } from '@angular/core';
 export class CancelRechargeEpinService {
 
   constructor(private http: HttpClient) { }
+
+  public search(numFactura:any, numCuenta:any, numContrato:any, numIdCliente:any) {
+
+  	let query = "1=1"
+  	query += numFactura == '' || numFactura == null? '' : '&billNumber=' + numFactura
+  	query += numCuenta == '' || numCuenta == null? '' : '&accountNumber=' + numCuenta
+  	query += numContrato == '' || numContrato == null? '' : '&contractNumber=' + numContrato
+  	query += numIdCliente == '' || numIdCliente == null? '' : '&clientId=' + numIdCliente
+
+  	console.log('http://localhost:9090/cancelRechargeEpin?'+ query)
+
+    
+    return this.http.get<any>('http://localhost:9090/cancelRechargeEpin?' + query)
+        .pipe(map(data => {
+          
+            return data;
+        }));
+  }
+  
 }
