@@ -3,7 +3,7 @@
 //  
 //  
 //
-//  Created by -- on --
+//  Created by Luis Romero on December 3rd
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 -->
@@ -32,10 +32,10 @@
         [rows]='responseData?responseData:[]'>
 
   	      <ngx-datatable-column name="N° Factura" prop="billNumber" [width]="200"></ngx-datatable-column>
-  	      <ngx-datatable-column name="N° Cliente" prop="clientDebt"[width]="200"></ngx-datatable-column>
-          <ngx-datatable-column name="Deuda Cliente" prop="startDate"[width]="200"></ngx-datatable-column>
-          <ngx-datatable-column name="Fecha Desde" prop="endDate"[width]="200"></ngx-datatable-column>
-          <ngx-datatable-column name="Fecha Hasta" prop="clientId" [width]="200"></ngx-datatable-column>
+  	      <ngx-datatable-column name="N° Cliente" prop="clientId"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Deuda Cliente" prop="clientDebt"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Desde" prop="startDate"[width]="200"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Hasta" prop="endDate" [width]="200"></ngx-datatable-column>
 
           <ngx-datatable-column name="Acciones" prop="acciones" [width]="200">
               <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
@@ -165,8 +165,9 @@
 
           <br><br>
 
-          <!-- {{"selected " + selectedCancellation}} -->
-          <!-- {{"form " + cancellationInAdvanceForm.invalid}} -->
+
+<!--           {{"selected " + selectedCancellation}}
+          {{"form " + cancellationInAdvanceForm.invalid}} -->
 
           <div class="d-flex justify-content-end">
             <button class="btn btn-primary btn-sm rdb" type="submit" ngbTooltip="Continuar" [disabled]="cancellationInAdvanceForm.invalid || selectedCancellation === true">

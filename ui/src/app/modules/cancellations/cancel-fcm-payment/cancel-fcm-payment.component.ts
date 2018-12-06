@@ -2,7 +2,7 @@
 //  
 //  
 //
-//  Created by -- on --
+//  Created by Luis Romero on December 4th
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 
@@ -105,6 +105,8 @@ export class CancelFcmPaymentComponent implements OnInit {
     this.filteredData = [];
     this.modalRef.hide();
     this.confirmationModal = false
+    this.selectedCancellation = true;
+
 
   }     
 
@@ -257,6 +259,8 @@ export class CancelFcmPaymentComponent implements OnInit {
     this.filteredData = [];
     this.modalRef.hide();
     this.confirmationModal = false
+    this.selectedCancellation = true;
+    
     
     this.toastr.success("Registro Anulado Exitosamente", "Exito")
     this.toastr.error("Error al tratar de procesar la anulacion", "Error")
