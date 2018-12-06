@@ -98,7 +98,9 @@ export class CancelOndemandComponent implements OnInit {
     this.selected = [];
     this.filteredData = [];
     this.modalRef.hide();
-    this.confirmationModal = false
+    this.confirmationModal = false;
+    this.selectedCancellation = true;
+
 
   }
 
@@ -229,11 +231,13 @@ export class CancelOndemandComponent implements OnInit {
     while (forms.length > 0) {
       forms.removeAt(0)
     }    
-    this.selectedRow = []
+    this.selectedRow = [];
     this.selected = [];
     this.filteredData = [];
     this.modalRef.hide();
-    this.confirmationModal = false
+    this.confirmationModal = false;
+    this.selectedCancellation = true;
+
     
     this.toastr.success("Registro Anulado Exitosamente", "Exito")
     this.toastr.error("Error al tratar de procesar la anulacion", "Error")
