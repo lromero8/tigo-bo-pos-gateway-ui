@@ -88,14 +88,14 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [limit]="5"
-    [rows]='[]'>
+    [rows]='results'>
 
-      <ngx-datatable-column name="Fecha" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Monto debe" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Estado contable" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Monto haber" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Estado cobranza" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Saldo" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Fecha" prop="date"></ngx-datatable-column>
+      <ngx-datatable-column name="Monto debe" prop="debtClientAmount"></ngx-datatable-column>
+      <ngx-datatable-column name="Estado contable" prop="accountingStatement"></ngx-datatable-column>
+      <ngx-datatable-column name="Monto haber" prop="amountToHave"></ngx-datatable-column>
+      <ngx-datatable-column name="Estado cobranza" prop="paymentStatus"></ngx-datatable-column>
+      <ngx-datatable-column name="Saldo" prop="balanceStatus"></ngx-datatable-column>
 
 
 

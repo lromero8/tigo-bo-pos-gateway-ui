@@ -29,7 +29,7 @@ export class CashierPayrollReportsComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.setTitle('Opciones de pago');
+    this.setTitle('Reporte de planilla de caja');
   }
 
   public setTitle( newTitle: string): void {
