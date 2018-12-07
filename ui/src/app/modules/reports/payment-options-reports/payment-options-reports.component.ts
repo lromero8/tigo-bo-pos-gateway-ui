@@ -11,6 +11,7 @@ import { Title } from '@angular/platform-browser';
 import { PaymentOptionsReportService } from '../../../services/payment-options-report.service'
 import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-payment-options-reports',
@@ -20,12 +21,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PaymentOptionsReportsComponent implements OnInit {
 
+  public paymentOptFrm: FormGroup;
   public bsConfig: Partial<BsDatepickerConfig>;
   public colorTheme = 'theme-dark-blue';
   public paymentOptData: any;
   constructor(private titleService: Title, 
               private paymentOptionsReportService: PaymentOptionsReportService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private formBuilder: FormBuilder,) {
 
     this.paymentOptData = {
       id: 0,
@@ -39,6 +42,9 @@ export class PaymentOptionsReportsComponent implements OnInit {
     this.setTitle('Reportes de formas de pago');
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
     this.retriveResults();
+    this.paymentOptFrm = this.formBuilder.group({
+
+    })
   }
 
   public setTitle( newTitle: string): void {

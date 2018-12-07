@@ -11,6 +11,7 @@ import { Title } from '@angular/platform-browser';
 import { PaymentReporsService } from '../../../services/payment-repors.service'
 import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-payment-reports',
@@ -20,12 +21,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PaymentReportsComponent implements OnInit {
 
+  public paymentReportsFrm: FormGroup;
   public colorTheme = 'theme-dark-blue';
   public bsConfig: Partial<BsDatepickerConfig>;
   public paymentReportsResults: any;
   constructor(private titleService: Title,
               private PaymentReporsService: PaymentReporsService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private formBuilder: FormBuilder,) { }
 
   ngOnInit() {
     this.setTitle('Reportes de pago');
@@ -46,6 +49,9 @@ export class PaymentReportsComponent implements OnInit {
       
     
     this.retrieveResults();
+    this.paymentReportsFrm = this.formBuilder.group({
+
+    })
   }
 
   public setTitle( newTitle: string): void {

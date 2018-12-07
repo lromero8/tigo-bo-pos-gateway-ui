@@ -10,45 +10,45 @@
 
 <div class="container-fluid container-fullw  box-shadow mb-5 pt-2">
 
-    <form>
+    <form [formGroup]="cashierPayrollFrm" (validSubmit)="search()">
     
     <div class="row pb-4">
   
       <div class="col-md-2">
         <div class="form-group">			
-          <label for="">N&uacute;mero de caja:</label>
-          <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+          <label for="cashierNumber">N&uacute;mero de caja:</label>
+          <input  type="text" name="cashierNumber" id="cashierNumber" class="form-control"  placeholder=" ..." formControlName="cashierNumber">
         </div>
 
         <div class="form-group">			
-            <label for="">EHumano:</label>
-            <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+            <label for="EHumano">EHumano:</label>
+            <input  type="text" name="EHumano" id="EHumano" class="form-control"  placeholder=" ..." formControlName="EHumano">
           </div>
       </div>
   
       <div class="col-md-2">
         <div class="form-group">			
-          <label for="">Sucural:</label>
-          <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+          <label for="branchOffice">Sucural:</label>
+          <input  type="text" name="branchOffice" id="branchOffice" class="form-control"  placeholder=" ..." formControlName="branchOffice">
 
         </div>
 
         <div class="form-group">			
-            <label for="">Local:</label>
-            <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+            <label for="local">Local:</label>
+            <input  type="text" name="local" id="local" class="form-control"  placeholder=" ..." formControlName="local">
   
           </div>
       </div>
   
       <div class="col-md-2">
         <div class="form-group">			
-          <label for="">Fecha:</label>
-          <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+          <label for="date">Fecha:</label>
+          <input  type="text" name="date" id="date" class="form-control"  placeholder=" ..." formControlName="date">
         </div>
 
         <div class="form-group">			
-            <label for="">Estado:</label>
-            <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+            <label for="status">Estado:</label>
+            <input  type="text" name="status" id="status" class="form-control"  placeholder=" ..." formControlName="status">
           </div>
       </div>
 
@@ -57,8 +57,8 @@
           
   
           <div class="form-group">			
-              <label for="">Per&iacute;odo:</label>
-              <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+              <label for="period">Per&iacute;odo:</label>
+              <input  type="text" name="period" id="period" class="form-control"  placeholder=" ..." formControlName="period">
             </div>
         </div>
   

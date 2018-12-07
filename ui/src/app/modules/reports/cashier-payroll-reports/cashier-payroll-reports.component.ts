@@ -10,6 +10,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CashierPayrollReportsService } from '../../../services/cashier-payroll-reports.service'
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-cashier-payroll-reports',
@@ -19,17 +20,30 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CashierPayrollReportsComponent implements OnInit {
 
+  public cashierPayrollFrm: FormGroup;
   public results: Array<any>;
   constructor(private titleService: Title,
               private cashierPayrollReportsService: CashierPayrollReportsService, 
-              private toastr: ToastrService) { 
+              private toastr: ToastrService,
+              private formBuilder: FormBuilder,) { 
 
-    this.retrieveResults()
-
+    this.retrieveResults();
+      
     }
+
+    //['', [ Validators.minLength(2), Validators.maxLength(8)]]
 
   ngOnInit() {
     this.setTitle('Reporte de planilla de caja');
+    this.cashierPayrollFrm = this.formBuilder.group({
+      cashierNumber: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      EHumano: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      branchOffice: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      local: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      date: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      status: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      period: ['', [ Validators.minLength(2), Validators.maxLength(8)]]
+    })
   }
 
   public setTitle( newTitle: string): void {
@@ -45,6 +59,20 @@ export class CashierPayrollReportsComponent implements OnInit {
       error => {
         this.toastr.error('No se pudo conectar al servidor', 'Error')
       }
+    )
+  }
+
+  get f (){ return this.cashierPayrollFrm.controls }
+
+  public search(): void {
+    console.log(
+      this.f.cashierNumber.value,
+      this.f.EHumano.value,
+      this.f.branchOffice.value,
+      this.f.local.value,
+      this.f.date.value,
+      this.f.status.value,
+      this.f.period.value,
     )
   }
 
