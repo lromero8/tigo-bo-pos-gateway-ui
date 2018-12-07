@@ -33,7 +33,7 @@ export class PaymentsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
-    this.setTitle('Re[orte de detalle de pago');
+    this.setTitle('Reporte de detalle de pago');
 
   }
 
