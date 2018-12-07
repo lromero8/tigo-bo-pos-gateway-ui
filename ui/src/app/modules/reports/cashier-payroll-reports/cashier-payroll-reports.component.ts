@@ -9,6 +9,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CashierPayrollReportsService } from '../../../services/cashier-payroll-reports.service'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cashier-payroll-reports',
@@ -18,8 +19,14 @@ import { CashierPayrollReportsService } from '../../../services/cashier-payroll-
 })
 export class CashierPayrollReportsComponent implements OnInit {
 
+  public results: Array<any>;
   constructor(private titleService: Title,
-              private cashierPayrollReportsService: CashierPayrollReportsService) { }
+              private cashierPayrollReportsService: CashierPayrollReportsService, 
+              private toastr: ToastrService) { 
+
+    this.retrieveResults()
+
+    }
 
   ngOnInit() {
     this.setTitle('Opciones de pago');
@@ -27,6 +34,18 @@ export class CashierPayrollReportsComponent implements OnInit {
 
   public setTitle( newTitle: string): void {
     this.titleService.setTitle( newTitle ); 
+  }
+
+  public retrieveResults(): void {
+    this.cashierPayrollReportsService.retrieve().subscribe(
+      data => {
+        console.log(data)
+        this.results = data;
+      },
+      error => {
+        this.toastr.error('No se pudo conectar al servidor', 'Error')
+      }
+    )
   }
 
 }
