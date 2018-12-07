@@ -43,7 +43,9 @@ export class PaymentOptionsReportsComponent implements OnInit {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
     this.retriveResults();
     this.paymentOptFrm = this.formBuilder.group({
-
+      invoiceId: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      startDate: ['', [ Validators.required ]],
+      endDate: ['', [ Validators.required ]],
     })
   }
 
