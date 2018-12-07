@@ -80,16 +80,16 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [limit]="5"
-    [rows]='[]'>
+    [rows]='paymentReportsResults.paymentDetails'>
 
-      <ngx-datatable-column name="Estado" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Tipo" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Numero" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Serie" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Fecha" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Cliente" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Razon social" prop=""></ngx-datatable-column>
-      <ngx-datatable-column name="Monto" prop=""></ngx-datatable-column>
+      <ngx-datatable-column name="Estado" prop="status"></ngx-datatable-column>
+      <ngx-datatable-column name="Tipo" prop="type"></ngx-datatable-column>
+      <ngx-datatable-column name="Numero" prop="number"></ngx-datatable-column>
+      <ngx-datatable-column name="Serie" prop="serie"></ngx-datatable-column>
+      <ngx-datatable-column name="Fecha" prop="date"></ngx-datatable-column>
+      <ngx-datatable-column name="Cliente" prop="client"></ngx-datatable-column>
+      <ngx-datatable-column name="Razon social" prop="businessName"></ngx-datatable-column>
+      <ngx-datatable-column name="Monto" prop="amountCharged"></ngx-datatable-column>
 
 
 

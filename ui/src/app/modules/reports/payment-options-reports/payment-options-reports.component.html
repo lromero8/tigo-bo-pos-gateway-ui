@@ -27,7 +27,7 @@
           <input  type="text" name="startDate" id="startDate" class="form-control" bsDatepicker  [bsConfig]="bsConfig" #dpa="bsDatepicker" readonly placeholder="Seleccione" >
         </div>
       </div>
-  
+   
       <div class="col-md-3">
         <div class="form-group">			
           <label for="">Fecha Final:</label>
@@ -74,15 +74,15 @@
         [footerHeight]="50"
         [rowHeight]="'auto'"
         [limit]="5"
-        [rows]='[]'>
+        [rows]='paymentOptData.payments'>
 
-  	      <ngx-datatable-column name="Cajero" prop=""></ngx-datatable-column>
-  	      <ngx-datatable-column name="Caja" prop=""></ngx-datatable-column>
-          <ngx-datatable-column name="Fecha" prop=""></ngx-datatable-column>
-          <ngx-datatable-column name="Hora" prop=""></ngx-datatable-column>
-          <ngx-datatable-column name="Voucher" prop=""></ngx-datatable-column>
-          <ngx-datatable-column name="Forma" prop=""></ngx-datatable-column>
-          <ngx-datatable-column name="Monto" prop=""></ngx-datatable-column>
+  	      <ngx-datatable-column name="Cajero" prop="cahsierId"></ngx-datatable-column>
+  	      <ngx-datatable-column name="Caja" prop="registerId"></ngx-datatable-column>
+          <ngx-datatable-column name="Fecha" prop="date"></ngx-datatable-column>
+          <ngx-datatable-column name="Hora" prop="hour"></ngx-datatable-column>
+          <ngx-datatable-column name="Voucher" prop="voucher"></ngx-datatable-column>
+          <ngx-datatable-column name="Forma" prop="paymentOption"></ngx-datatable-column>
+          <ngx-datatable-column name="Monto" prop="amount"></ngx-datatable-column>
 
           <ngx-datatable-column name="Acciones" prop="acciones" >
               <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>

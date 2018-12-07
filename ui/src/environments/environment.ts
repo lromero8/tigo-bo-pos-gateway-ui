@@ -5,7 +5,7 @@ export const environment = {
   SSO_URL: 'http://localhost:3003/api',
 
   SETUPS_URL: 'http://localhost:9292/',
-
+  REPORTS_URL: 'http://localhost:2929/',
   SERVER_ERROR_MSG: 'Server Error',
   HEADER_SERVICE_CODE: 'service_code',
   SUCCESS_CODE: '0',
