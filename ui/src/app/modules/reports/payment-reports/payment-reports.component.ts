@@ -50,7 +50,11 @@ export class PaymentReportsComponent implements OnInit {
     
     this.retrieveResults();
     this.paymentReportsFrm = this.formBuilder.group({
-
+      registerId: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      cashierId: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      branchOffice: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      local: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      date: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
     })
   }
 
@@ -67,6 +71,18 @@ export class PaymentReportsComponent implements OnInit {
       error => {
         this.toastr.error('No se pudo conectar al servidor', 'Error')
       }
+    )
+  }
+
+  get f () { return this.paymentReportsFrm.controls }
+
+  public search(): void {
+    console.log(
+      this.f.registerId.value,
+      this.f.cashierId.value,
+      this.f.branchOffice.value,
+      this.f.local.value,
+      this.f.date.value,
     )
   }
 

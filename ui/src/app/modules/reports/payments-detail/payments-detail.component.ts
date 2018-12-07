@@ -39,7 +39,12 @@ export class PaymentsDetailComponent implements OnInit {
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
     this.setTitle('Reporte de detalle de pago');
     this.paymentDetailFrm = this.formBuilder.group({
-
+      client: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      contract: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      accountType: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      accountNumber: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      startDate: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      endDate: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
     })
   }
 
@@ -56,6 +61,19 @@ export class PaymentsDetailComponent implements OnInit {
       error => {
         this.toastr.error('No se pudo conectar al sevidor', 'Error')
       }
+    )
+  }
+
+  get f() { return this.paymentDetailFrm.controls }
+
+  public search(): void {
+    console.log(
+      this.f.client.value,
+      this.f.contract.value,
+      this.f.accountType.value,
+      this.f.accountNumber.value,
+      this.f.startDate.value,
+      this.f.endDate.value,
     )
   }
 }

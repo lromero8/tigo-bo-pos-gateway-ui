@@ -11,38 +11,38 @@
 
 <div class="container-fluid container-fullw  box-shadow mb-5 pt-2">
 
-    <form>
+    <form [formGroup]="paymentReportsFrm" (validSubmit)="search()">
     
     <div class="row pb-4">
   
       <div class="col-md-3">
         <div class="form-group">			
-          <label for="">N&uacute;mero de caja:</label>
-          <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+          <label for="registerId">N&uacute;mero de caja:</label>
+          <input  type="text" name="registerId" id="registerId" class="form-control"  placeholder=" ..." formControlName="registerId">
         </div>
       
         <div class="form-group">			
-          <label for="">Cajero:</label>
-          <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+          <label for="cashierId">Cajero:</label>
+          <input  type="text" name="cashierId" id="cashierId" class="form-control"  placeholder=" ..." formControlName="cashierId">
         </div>
       </div>
   
       <div class="col-md-3">
         <div class="form-group">			
-          <label for="">Sucursal:</label>
-          <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+          <label for="branchOffice">Sucursal:</label>
+          <input  type="text" name="branchOffice" id="branchOffice" class="form-control"  placeholder=" ..." formControlName="branchOffice">
         </div>
 
         <div class="form-group">			
-            <label for="">Localidad:</label>
-            <input  type="text" name="" id="" class="form-control"  placeholder=" ..." >
+            <label for="local">Localidad:</label>
+            <input  type="text" name="local" id="local" class="form-control"  placeholder=" ..." formControlName="local">
           </div>
       </div>
 
       <div class="col-md-3">
           <div class="form-group">			
-              <label for="">Fecha:</label>
-              <input  type="text" name="" id="" class="form-control" bsDatepicker  [bsConfig]="bsConfig" #dpa="bsDatepicker" readonly placeholder="Seleccione" >
+              <label for="date">Fecha:</label>
+              <input  type="text" name="date" id="date" class="form-control" bsDatepicker  [bsConfig]="bsConfig" #dpa="bsDatepicker" readonly placeholder="Seleccione" formControlName="date">
             </div>
       </div>
   
