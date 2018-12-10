@@ -35,24 +35,23 @@ export class PaymentOptionsReportsComponent implements OnInit {
       invoiceId: 0,
       payments: []
     }
-    this.retriveResults();
   }
-
+  
   ngOnInit() {
     this.setTitle('Reportes de formas de pago');
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
-    this.retriveResults();
+    //this.retriveResults();
     this.paymentOptFrm = this.formBuilder.group({
       invoiceId: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
       startDate: ['', [ Validators.required ]],
       endDate: ['', [ Validators.required ]],
     })
   }
-
+  
   public setTitle( newTitle: string): void {
     this.titleService.setTitle( newTitle ); 
   }
-
+  
   public retriveResults(): void {
     this.paymentOptionsReportService.retrieve().subscribe(
       data => {
@@ -64,6 +63,17 @@ export class PaymentOptionsReportsComponent implements OnInit {
         this.toastr.error('Error al conectarse al servidor', 'Error');
       }
     )
+  }
+  
+  get f() { return this.paymentOptFrm.controls }
+
+  public search(): void {
+      this.retriveResults();
+      console.log(
+        this.f.invoiceId.value,
+        this.f.startDate.value,
+        this.f.endDate.value
+      )
   }
 
 }

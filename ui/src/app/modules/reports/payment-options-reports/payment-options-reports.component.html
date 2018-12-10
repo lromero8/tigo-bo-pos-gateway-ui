@@ -39,7 +39,7 @@
       <div class="form-group">
           &nbsp;
         <label for=""> &nbsp; &nbsp; </label>
-        <button class="btn btn-primary  btn-sm btn-block" type="submit" ngbTooltip="Buscar" type="submit">
+        <button class="btn btn-primary  btn-sm btn-block" type="submit" ngbTooltip="Buscar" (click)="search()" type="submit">
             <i class="fa fa-search fa-lg"></i>
         </button>
       </div>   
@@ -65,7 +65,7 @@
   
   
     <h1 class="display-5 text-center mb-4">Reporte de forma de pagos</h1>
-
+    <h3 class="display-6 text-center mb-4">N&uacute;mero de Factura: {{ paymentOptData.invoiceId }} </h3>
 
     <ngx-datatable
         class='material'
