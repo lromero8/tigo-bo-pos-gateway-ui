@@ -6,11 +6,13 @@
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CashierPayrollReportsService } from '../../../services/cashier-payroll-reports.service'
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-cashier-payroll-reports',
@@ -20,18 +22,19 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class CashierPayrollReportsComponent implements OnInit {
 
+  public modalRef: BsModalRef;
+  public selected = [];
   public cashierPayrollFrm: FormGroup;
   public results: Array<any>;
   constructor(private titleService: Title,
               private cashierPayrollReportsService: CashierPayrollReportsService, 
               private toastr: ToastrService,
+              private modalService: BsModalService,
               private formBuilder: FormBuilder,) { 
 
     this.retrieveResults();
       
     }
-
-    //['', [ Validators.minLength(2), Validators.maxLength(8)]]
 
   ngOnInit() {
     this.setTitle('Reporte de planilla de caja');
@@ -53,7 +56,7 @@ export class CashierPayrollReportsComponent implements OnInit {
   public retrieveResults(): void {
     this.cashierPayrollReportsService.retrieve().subscribe(
       data => {
-        console.log(data)
+        //console.log(data)
         this.results = data;
       },
       error => {
@@ -74,6 +77,62 @@ export class CashierPayrollReportsComponent implements OnInit {
       this.f.status.value,
       this.f.period.value,
     )
+  }
+
+  public changeSelected(): void {
+    console.log('change')
+  }
+
+  public onActivate(): void {
+
+  }
+
+  public onSelect(): void {
+    console.log('on select')
+    console.log(this.selected)
+
+    this.selected = [...this.selected]
+  }
+
+  public displayCheck(row) {
+
+    console.log('in displayCheck')
+    console.log(row)
+    return row.name !== '~';
+  }
+
+  public hola(): void {
+    console.log('hola')
+  }
+
+  public openModal(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template, {'class':'modal-lg', 'keyboard': false, 'ignoreBackdropClick': true});
+  }
+
+  public validSelected(template): void {
+
+    if (this.selected.length > 0) {
+        this.openModal(template);
+    } else {
+        this.toastr.warning('Debe de seleccionar al menos una caja para realizar el cierre', 'Advertencia')
+    }
+
+    console.log(this.selected)
+  }
+
+  public auditCashRegister(): void {
+
+    this.modalRef.hide();
+  }
+
+  public cancel(): void {
+
+    this.modalRef.hide();
+    //this.selected = [];
+  }
+
+  public cl(): void {
+    this.selected = [];
   }
 
 }

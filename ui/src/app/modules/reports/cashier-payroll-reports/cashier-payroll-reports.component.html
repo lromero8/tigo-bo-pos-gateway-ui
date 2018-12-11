@@ -17,25 +17,25 @@
       <div class="col-md-2">
         <div class="form-group">			
           <label for="cashierNumber">N&uacute;mero de caja:</label>
-          <input  type="text" name="cashierNumber" id="cashierNumber" class="form-control"  placeholder=" ..." formControlName="cashierNumber">
+          <input  type="text" name="cashierNumber" id="cashierNumber" class="form-control"  placeholder=" ..." formControlName="cashierNumber" autocomplete="off">
         </div>
 
         <div class="form-group">			
             <label for="EHumano">EHumano:</label>
-            <input  type="text" name="EHumano" id="EHumano" class="form-control"  placeholder=" ..." formControlName="EHumano">
+            <input  type="text" name="EHumano" id="EHumano" class="form-control"  placeholder=" ..." formControlName="EHumano" autocomplete="off">
           </div>
       </div>
   
       <div class="col-md-2">
         <div class="form-group">			
           <label for="branchOffice">Sucural:</label>
-          <input  type="text" name="branchOffice" id="branchOffice" class="form-control"  placeholder=" ..." formControlName="branchOffice">
+          <input  type="text" name="branchOffice" id="branchOffice" class="form-control"  placeholder=" ..." formControlName="branchOffice" autocomplete="off">
 
         </div>
 
         <div class="form-group">			
             <label for="local">Local:</label>
-            <input  type="text" name="local" id="local" class="form-control"  placeholder=" ..." formControlName="local">
+            <input  type="text" name="local" id="local" class="form-control"  placeholder=" ..." formControlName="local" autocomplete="off">
   
           </div>
       </div>
@@ -43,12 +43,12 @@
       <div class="col-md-2">
         <div class="form-group">			
           <label for="date">Fecha:</label>
-          <input  type="text" name="date" id="date" class="form-control"  placeholder=" ..." formControlName="date">
+          <input  type="text" name="date" id="date" class="form-control"  placeholder=" ..." formControlName="date" autocomplete="off">
         </div>
 
         <div class="form-group">			
             <label for="status">Estado:</label>
-            <input  type="text" name="status" id="status" class="form-control"  placeholder=" ..." formControlName="status">
+            <input  type="text" name="status" id="status" class="form-control"  placeholder=" ..." formControlName="status" autocomplete="off"> 
           </div>
       </div>
 
@@ -58,7 +58,7 @@
   
           <div class="form-group">			
               <label for="period">Per&iacute;odo:</label>
-              <input  type="text" name="period" id="period" class="form-control"  placeholder=" ..." formControlName="period">
+              <input  type="text" name="period" id="period" class="form-control"  placeholder=" ..." formControlName="period" autocomplete="off">
             </div>
         </div>
   
@@ -70,7 +70,13 @@
             <i class="fa fa-search fa-lg"></i>
         </button>
       </div>   
-      
+
+      <div class="form-group">
+        <label for=""> &nbsp; &nbsp; </label>
+        <button class="btn btn-primary  btn-sm btn-block"  ngbTooltip="Cierre de caja" type="button" (click)="validSelected(auditRegister)" >
+            <i class="fa fa-bank fa-lg"></i> 
+        </button>
+      </div>
           
       </div>
   
@@ -86,7 +92,7 @@
         </div>
   
         </div>
-        
+
       </form>
     </div>
   
@@ -100,8 +106,27 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [limit]="5"
-    [rows]='results'>
+    [rows]='results'
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    [selectAllRowsOnPage]="false"
+    [displayCheck]="displayCheck"
+    (activate)="onActivate($event)"
+    (select)='onSelect($event)'>
 
+
+      <ngx-datatable-column
+                [width]="50"
+                [sortable]="false"
+                [canAutoResize]="false"
+                [draggable]="false"
+                [resizeable]="false"
+                [headerCheckboxable]="false"
+                [checkboxable]="true"
+                (change)="hola()">      
+    </ngx-datatable-column>          
+
+      
       <ngx-datatable-column name="sucursal" prop="branchOffice"></ngx-datatable-column>
       <ngx-datatable-column name="Local" prop="local"></ngx-datatable-column>
       <ngx-datatable-column name="Caja" prop="register"></ngx-datatable-column>
@@ -122,3 +147,57 @@
 
     
   </ngx-datatable> 
+
+<ng-template #auditRegister>
+  <div class="modal-header modaleHeader">
+    <h4 class="modal-title pull-left">cierre de caja</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; ">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+    <h6 class="text-center text-bold font-weight-bold">Est&aacute; seguro de que quiere realizar un cierre de caja?</h6>
+    <div class="row mt-4 justify-content-center align-items-center">
+
+      <div class="col-md-12 mt-4">
+
+
+          <ngx-datatable
+          class='material'
+          [columnMode]="'force'"        
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [limit]="5"
+          [rows]='selected'>
+       
+      
+            
+            <ngx-datatable-column name="sucursal" prop="branchOffice"></ngx-datatable-column>
+            <ngx-datatable-column name="Local" prop="local"></ngx-datatable-column>
+            <ngx-datatable-column name="Caja" prop="register"></ngx-datatable-column>
+            <ngx-datatable-column name="EHumano" prop="EHumano"></ngx-datatable-column>
+            <ngx-datatable-column name="Periodo" prop="period"></ngx-datatable-column>
+            <ngx-datatable-column name="Planilla" prop="payroll"></ngx-datatable-column>
+            <ngx-datatable-column name="Estado de planilla" prop="payrollStatus"></ngx-datatable-column>
+            <ngx-datatable-column name="Fecha de apertura" prop="startDate"></ngx-datatable-column>
+            <ngx-datatable-column name="Hora de apertura" prop="endDate"></ngx-datatable-column>
+            <ngx-datatable-column name="Total cobrado cierre" prop="totalCharging"></ngx-datatable-column>
+      
+      
+          </ngx-datatable>
+        <div class="row justify-content-center align-items-center">
+
+
+          <div class="ml-2 mr-2 ">
+            <button class="btn btn-secondary" (click)="cancel()"> Cancelar</button>
+          </div>
+          <div class="ml-2 mr-2 ">
+            <button class="btn btn-primary" (click)="auditCashRegister()" >Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
