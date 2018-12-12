@@ -3,6 +3,7 @@ import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 
 import { listLocales } from 'ngx-bootstrap/chronos';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
+
 @Component({
   selector: 'app-cancellations-money-search-bar',
   templateUrl: './cancellations-money-search-bar.component.html',
@@ -16,7 +17,12 @@ export class CancellationsMoneySearchBarComponent implements OnInit {
   public bsConfig: Partial<BsDatepickerConfig>;
   public locales = listLocales();
   public reasons: Array<any>;
-  public cancelMoneyFrm: FormGroup;
+  public cancelMoneyFrm: FormGroup; 
+
+  public bsValue = new Date();
+  public bsRangeValue: Date[];
+  public maxDate = new Date()
+
 
   
   @ViewChild('dpa') dpa: BsDaterangepickerDirective;
@@ -32,30 +38,35 @@ export class CancellationsMoneySearchBarComponent implements OnInit {
               ) { 
     this.reasons = [
       {
-        "id": 1,
+        "id": 'a',
         "name": "a"
       },
       {
-        "id": 2,
+        "id": 'b',
         "name": "b"
       },
       {
-        "id": 3,
+        "id": 'c',
         "name": "c"
       }
     ]
 
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsRangeValue = [this.bsValue, this.maxDate];
+
     this.cancelMoneyFrm = this.formBuilder.group({ 
 
-      transacctionId : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
-      reason : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
-      startDate : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
-      endDate : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      transactionId : ['', [ Validators.minLength(2), Validators.maxLength(8)]],
+      reason : ['', [ Validators.minLength(1), Validators.maxLength(8)]],
+      dateRange : [/*this.bsRangeValue*/'', [ /*Validators.required*/ ]],
     }); 
+
+
+
   }
 
   ngOnInit() {
-    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme }, { dateInputFormat: 'MM/DD/YYYY' });
     this.localeService.use('es');
     
   }
@@ -64,18 +75,16 @@ export class CancellationsMoneySearchBarComponent implements OnInit {
  
  public search() {
     console.log(
-      this.f.transacctionId.value,
+      this.f.transactionId.value,
       this.f.reason.value,
-      this.f.startDate.value,
-      this.f.endDate.value,
+      this.f.dateRange.value,
     )
 
     this.sendData.emit({
       formData: {
-        transacctionId: this.f.transacctionId.value,
+        transactionId: this.f.transactionId.value,
         reason:   this.f.reason.value,
-        startDate: this.f.startDate.value,
-        endDate: this.f.endDate.value
+        dateRange: this.f.dateRange.value,
       } 
     })
  }

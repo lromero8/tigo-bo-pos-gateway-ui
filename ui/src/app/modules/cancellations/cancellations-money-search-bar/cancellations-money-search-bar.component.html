@@ -12,10 +12,10 @@
         
       </div>
      -->
-      <div class="col-md-2">
+      <div class="col-md-2 offset-md-1">
         <div class="form-group">			
           <label for="numFactura">Id de transacci&oacute;n:</label>
-          <input  type="text" name="transacctionId" id="transacctionId" class="rdb form-control"  placeholder="# de transaccion ..." formControlName="transacctionId" >
+          <input  type="text" name="transactionId" id="transactionId" class="rdb form-control"  placeholder="# de transaccion" formControlName="transactionId" >
         </div>
       </div>
 
@@ -24,9 +24,9 @@
             <label for="">Motivo:</label>
             <ng-select class="rdb" [items]="reasons" [selectOnTab]="true" bindValue="id" bindLabel="name" name="reason" id="reason" placeholder="Seleccione" formControlName="reason"></ng-select>
           </div>
-        </div>
+      </div>
   
-      <div class="col-md-2">
+<!--       <div class="col-md-2">
         <div class="form-group">			
           <label for="numFactura">Fecha Inicial:</label>
           <input  type="text" name="startDate" id="startDate" class="rdb form-control" bsDatepicker  [bsConfig]="bsConfig" #dpa="bsDatepicker" readonly placeholder="Seleccione" formControlName="startDate" >
@@ -38,7 +38,23 @@
           <label for="numFactura">Fecha Final:</label>
           <input  type="text" name="endDate" id="endDate" class="rdb form-control" bsDatepicker [bsConfig]="bsConfig" #dpb="bsDatepicker" readonly placeholder="Seleccione" formControlName="endDate">
         </div>
+      </div> -->
+
+      <div class="col-md-2">
+        <div class="form-group"> 
+          <label for="numFactura">Rango de Fecha:</label>     
+          <input 
+          class="rdb form-control" 
+          [bsConfig]="bsConfig"
+          #drp="bsDaterangepicker"
+          bsDaterangepicker
+          formControlName="dateRange">
+        </div>
       </div>
+
+<!--       <div class="col-xs-12 col-12 col-md-3 form-group">
+        <button class="btn btn-success" (click)="drp.toggle()" [attr.aria-expanded]="drp.isOpen">Date Range Picker</button>
+      </div> -->            
   
       <div class="col-md-2">
       <div class="form-group">

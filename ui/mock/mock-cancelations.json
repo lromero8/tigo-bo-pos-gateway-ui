@@ -167,22 +167,52 @@
   "cancelMoneyOutPut": [
     {
       "id": 1,
+      "transactionId": 53,      
       "billNumber": 33,
       "accountNumber": "23.59Bs",
-      "startDate": "2017-10-06 01:35:19",
-      "endDate": "2017-10-06 01:35:19",
-      "clientId": "",
-      "invoice": [
+      "paymentDate": "2018-12-06",
+      "clientId": 63,
+      "reason": "a",      
+      "clientDebt": 96.23,      
+      "details": [
         {
-          "id": 1,
-          "amountPayment": 100,
-          "paymentDate": "",
-          "reason": "",
-          "comments": "",
-          "modifyDate": ""
+          "clientName": "Clint Barton",
+          "amountPayment": 100
         }
       ]
-    }
+    },
+    {
+      "id": 2,
+      "transactionId": 87,      
+      "billNumber": 67,
+      "accountNumber": "62.59Bs",
+      "paymentDate": "2018-12-07",
+      "clientId": 89,
+      "clientDebt": 134.84,            
+      "reason": "b",      
+      "details": [
+        {
+          "clientName": "Wilson Fisk",
+          "amountPayment": 200
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "transactionId": 79,      
+      "billNumber": 22,
+      "accountNumber": "273.59Bs",
+      "paymentDate": "2018-11-29",
+      "clientId": 89,
+      "clientDebt": 162.84,            
+      "reason": "c",      
+      "details": [
+        {
+          "clientName": "Red Skull",
+          "amountPayment": 300
+        }
+      ]
+    }        
   ],
   "cancelCyclicBill": [
     {
