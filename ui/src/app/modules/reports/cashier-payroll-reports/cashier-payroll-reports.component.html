@@ -141,7 +141,7 @@
 
       <ngx-datatable-column name="Acciones" prop="acciones" >
           <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
-            <button class="btn btn-primary fa fa-pencil"></button>
+            <button class="btn btn-primary fa fa-pencil" (click)="openModal(modal)"></button>
           </ng-template>
       </ngx-datatable-column>
 
@@ -151,7 +151,7 @@
 <ng-template #auditRegister>
   <div class="modal-header modaleHeader">
     <h4 class="modal-title pull-left">cierre de caja</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; ">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; cl()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -194,10 +194,88 @@
             <button class="btn btn-secondary" (click)="cancel()"> Cancelar</button>
           </div>
           <div class="ml-2 mr-2 ">
-            <button class="btn btn-primary" (click)="auditCashRegister()" >Aceptar</button>
+            <button class="btn btn-primary" (click)="auditCashRegister(payroll)" >Aceptar</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</ng-template>
+
+
+<ng-template #modal>
+  <div class="modal-header modaleHeader">
+    <h4 class="modal-title pull-left">modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; ">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+  </div>
+</ng-template>
+
+
+<ng-template #payroll>
+  <div class="modal-header modaleHeader">
+    <h4 class="modal-title pull-left">Planilla de caja</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; ">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-2">
+            <p class="font-weight-bold">Sucural: </p>
+            <p class="font-weight-bold">Local: </p>
+            <p class="font-weight-bold">Caja:</p>
+            <p class="font-weight-bold">EHumano: </p>
+          </div>
+          <div class="col-md-4">
+            <p>3 Santa Cruz</p>
+            <p>1 EDIFICIO VIEDMA</p>
+            <p>64 CAJA SINTESIS</p>
+            <p>999 Telecel Bolivia</p>
+          </div>
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-2">
+            <p class="font-weight-bold">Planilla:</p>
+            <p class="font-weight-bold">Fecha:</p>
+          </div>
+          <div class="col-md-2">
+            <p>1</p>
+            <p> 12-12-2018 </p>
+          </div>
+        </div>
+
+        <!-- Other table-->
+        <ngx-datatable
+        class='material'
+        [columnMode]="'force'"        
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="5"
+        [rows]='[]'>
+     
+    
+        <ngx-datatable-column name="F. Pago" prop="paymentType"></ngx-datatable-column>
+        <ngx-datatable-column name="Documento" prop="document"></ngx-datatable-column>
+        <ngx-datatable-column name="Tot. Mo. Local" prop="totalLocalAmount"></ngx-datatable-column>
+        <ngx-datatable-column name="Tot. Mo. Ext." prop="totalExtAmount"></ngx-datatable-column>
+        <ngx-datatable-column name="Cotizacion" prop="quotation"></ngx-datatable-column>
+        <ngx-datatable-column name="Numero" prop="number"></ngx-datatable-column>
+
+        </ngx-datatable>
+
+        <!--/ Other table-->
+      </div>
+    </div>
+
   </div>
 </ng-template>

@@ -120,15 +120,18 @@ export class CashierPayrollReportsComponent implements OnInit {
     console.log(this.selected)
   }
 
-  public auditCashRegister(): void {
+  public auditCashRegister(template): void {
 
     this.modalRef.hide();
+    this.toastr.success('La planilla ha sido actualizada.', 'Ok')
+
+    this.openModal(template);
   }
 
   public cancel(): void {
 
     this.modalRef.hide();
-    //this.selected = [];
+    this.selected = [];
   }
 
   public cl(): void {
