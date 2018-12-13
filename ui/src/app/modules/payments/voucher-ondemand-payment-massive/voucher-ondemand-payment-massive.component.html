@@ -1,3 +1,151 @@
-<p>
-  voucher-ondemand-payment-massive works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <app-payments-header></app-payments-header>
+  </div>
+  <div class="col-md-6">
+    <app-payments-contracts [contracts]="listContractsAdded" (parentSearchPaymentContracts)="searchPaymentContracts($event)"></app-payments-contracts>
+  </div>
+  <div class="col-md-6">
+    <app-payments-methods (parentSearchPaymentMethods)="searchPaymentMethods($event)"></app-payments-methods>
+  </div>
+</div>
+
+<ng-template #modalPaymentContract let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Buscar</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <aw-wizard>
+          <aw-wizard-step stepTitle="Paso 1">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-12 mt-1">
+                    <p class="font-weight-bold"> Ingrese la información para busqueda de facturas</p>
+                  </div>
+                  <div class="col-md-12 mt-3">
+                    <div class="form-group row">
+                      <label class="col-md-3 offset-md-2 col-form-label" for="">Número de Contrato:</label>
+                      <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="N° de contrato">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 offset-md-2 col-form-label" for="">Número de Identificación:</label>
+                      <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="N° identificación del cliente">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 offset-md-2 col-form-label" for="">Número de Cuenta:</label>
+                      <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="N° de cuenta">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 text-center mt-4">
+                <button type="button" class="btn btn-success" awNextStep (click)="getContracts()">Siguiente</button>
+              </div>
+            </div>
+          </aw-wizard-step>
+          <aw-wizard-step stepTitle="Paso 2">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-12 mt-1">
+                    <p class="font-weight-bold"> Seleccione el o los contratos a pagar</p>
+                  </div>
+                  <div class="col-md-12 mt-3">
+                    <ng-container *ngFor="let item of ContractForm.controls.items.controls;let i = index">
+                      <form [formGroup]="ContractForm">
+                        <ng-container formArrayName="items">
+                            <ng-container [formGroupName]="i">
+                                <div class="card">
+                                    <div class="card-header card-title-custom">Contratos</div>
+                                    <div class="card-body">
+                                      <ul class="list-group">
+                                        <ng-container formArrayName="contracts">
+                                          <li class="list-group-item" *ngFor="let contracts of item.controls.contracts.controls; let c = index">
+                                            <ng-container [formGroupName]="c">
+                                              <div class="row">
+                                                <div class="col-md-12">
+                                                  <div class="form-check">
+                                                    <input class="form-check-input" formControlName="status_contract" type="checkbox"
+                                                      id="chkContract_{{i}}_{{c}}" data-toggle="collapse" [attr.href]="'#divContract_' + i + '_' + c"
+                                                      (change)="checkContract(i, c )">
+                                                    <label class="form-check-label" for="chkContract_{{i}}_{{c}}">
+                                                      {{contracts.controls.name_contract.value}}
+                                                    </label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-12 collapse mt-3" id="divContract_{{i}}_{{c}}">
+                                                  <ul class="list-group">
+                                                    <ng-container formArrayName="invoices">
+                                                      <li class="list-group-item" *ngFor="let invoices of contracts.controls.invoices.controls; let a = index">
+                                                        <ng-container [formGroupName]="a">
+                                                          <div class="form-check">
+                                                            <input type="checkbox" formControlName="status_invoice" class="form-check-input"
+                                                              id="chkInvoice{{i}}_{{c}}_{{a}}" (change)="checkInvoice(i, c, a)">
+                                                            <label for="chkInvoice{{i}}_{{c}}_{{a}}" class="form-check-label">{{invoices.controls.name_invoice.value}}</label>
+                                                          </div>
+                                                        </ng-container>
+                                                      </li>
+                                                    </ng-container>
+                                                  </ul>
+                                                </div>
+                                              </div>
+                                            </ng-container>
+                                          </li>
+                                        </ng-container>
+                                      </ul>          
+                                    </div>
+                                  </div>
+                            </ng-container>
+                        </ng-container>
+                      </form>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 text-center mt-4">
+                <button type="button" class="btn btn-primary mr-4" awPreviousStep>Anterior</button>
+                <button type="button" class="btn btn-success" (click)="finishContracts()">Finalizar</button>
+              </div>
+            </div>
+          </aw-wizard-step>
+        </aw-wizard>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #modalPaymentMethod let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Formas de Pago</h4> <button type="button" class="close"
+      aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>

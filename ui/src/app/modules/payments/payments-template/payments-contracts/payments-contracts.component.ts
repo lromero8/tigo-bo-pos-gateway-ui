@@ -11,13 +11,13 @@ export class PaymentsContractsComponent implements OnInit {
   private totalInvoices: Number = 0;
   @Input('contracts')
   set data(data: any) {
-    if (data) {            
+    if (data) {
       this.dataContracts = data;
       for (let index = 0; index < data.length; index++) {
         let contracts = data[index].contracts;
         for (let c = 0; c < data[index].contracts.length; c++) {
           let invoices = contracts[c].invoices;
-          for (let i = 0; i < contracts.length; i++) {
+          for (let i = 0; i < invoices.length; i++) {
             let invoiceValue = invoices[i].price_invoice;
             this.totalInvoices = this.totalInvoices  + invoiceValue;
           }

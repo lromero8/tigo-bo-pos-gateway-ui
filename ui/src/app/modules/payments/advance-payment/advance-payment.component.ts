@@ -10,6 +10,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { AdvancePaymentService } from 'app/services/advance-payment.service';
 
 @Component({
   selector: 'app-advance-payment',
@@ -97,7 +98,8 @@ export class AdvancePaymentComponent implements OnInit {
   ];
 
   constructor(private modalService: NgbModal,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private advancePaymentService: AdvancePaymentService) {
     this.ContractForm = this.fb.group({
       items: this.fb.array([])
     });
@@ -211,8 +213,8 @@ export class AdvancePaymentComponent implements OnInit {
         uniqueInvoice.disable();
       }
     } else {
-        let uniqueInvoice = itemsInvoices.at(0).get('status_invoice');
-        uniqueInvoice.enable();
+      let uniqueInvoice = itemsInvoices.at(0).get('status_invoice');
+      uniqueInvoice.enable();
     }
   }
 
@@ -230,15 +232,29 @@ export class AdvancePaymentComponent implements OnInit {
   getContracts() {
 
     this.resetForm();
-    console.table(this.ContractForm.getRawValue());
-    this.listContracts.forEach(element => {
-      this.addItemForm(element);
-    });
+
+    this.advancePaymentService.getContracts('', '', '')
+      .subscribe(
+        response => {
+          if (response) {
+            response.forEach(element => {
+              this.addItemForm(element);
+            });
+          }
+        },
+        error => {
+
+        },
+        () => {
+
+        }
+      );
   }
 
   finishContracts() {
     this.listContractsAdded = [];
     const items = this.ContractForm.get('items') as FormArray;
+    let isCheckedOne = false;
     for (let i = 0; i < items.length; i++) {
       const idClient = items.at(i).get('id').value;
       const clientName = items.at(i).get('client_name').value;
@@ -258,6 +274,7 @@ export class AdvancePaymentComponent implements OnInit {
         let itemAdded = false;
         const itemContractStatus = itemsContracts.at(c).get('status_contract');
         if (itemContractStatus.value) {
+          isCheckedOne = true;
           const idContract = itemsContracts.at(c).get('id').value;
           const nameContract = itemsContracts.at(c).get('name_contract').value;
           const itemsInvoices = itemsContracts.at(c).get('invoices') as FormArray;
@@ -283,11 +300,17 @@ export class AdvancePaymentComponent implements OnInit {
           }
           if (!itemAdded) {
             alert('Se ha seleccionado uno o mas contratos sin elegir alguna factura');
+            this.listContractsAdded = [];
             return;
           }
 
         }
       }
+    }
+    if (!isCheckedOne) {
+      alert('Seleccione un elemento');
+      this.listContractsAdded = [];
+      return;
     }
     this.closeModal();
   }

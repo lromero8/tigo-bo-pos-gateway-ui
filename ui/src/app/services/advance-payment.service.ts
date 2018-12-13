@@ -9,4 +9,12 @@ import { Injectable } from '@angular/core';
 export class AdvancePaymentService {
 
   constructor(private http: HttpClient) { }
+
+  getContracts(nContract, nIdentification, nCuenta) {
+    return this.http.get<any>('http://localhost:3000/contracts')
+      .pipe(map(data => {
+        return data;
+      }))
+
+  }
 }
