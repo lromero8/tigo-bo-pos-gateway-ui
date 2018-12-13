@@ -2,7 +2,7 @@
 //  
 //  
 //
-//  Created by -- on --
+//  Created by Luis Romero on December 13th
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 
@@ -10,7 +10,11 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, TemplateRef } from '@a
 import { Title } from '@angular/platform-browser';
 import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
 import { listLocales } from 'ngx-bootstrap/chronos';
+
+// ************************* FORM VALIDATOR ***********************************
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+// ************************* FORM VALIDATOR ***********************************
+
 // ************************* SERVICES ***********************************
 import { ToastrService } from 'ngx-toastr';
 import { BsModalService } from 'ngx-bootstrap/modal';
