@@ -136,6 +136,7 @@ export class CancelMoneyOutputComponent implements OnInit {
 
   public anular(){
     console.log(this.cancelMoneyOutputForm.value)
+    this.cancelMoneyOutputForm.reset()
     this.modalRef.hide();
     this.toastr.success("Registro Anulado Exitosamente", "Exito")
     this.toastr.error("Error al tratar de procesar la anulacion", "Error")

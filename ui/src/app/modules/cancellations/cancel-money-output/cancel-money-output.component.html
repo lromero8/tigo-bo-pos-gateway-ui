@@ -55,7 +55,7 @@
 <ng-template #template>
   <div class="modal-header modaleHeader">
     <h3 class="modal-title pull-left">{{isDetail?'Detalle de Egreso de Dinero':'Anular Egreso de Dinero'}}</h3>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal(); cancelMoneyOutputForm.reset()">
       <span aria-hidden="true" style="color: white">&times;</span>
     </button>
   </div>
