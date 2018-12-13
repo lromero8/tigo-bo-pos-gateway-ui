@@ -138,4 +138,12 @@ export class CashierPayrollReportsComponent implements OnInit {
     this.selected = [];
   }
 
+  public print(template): void {
+    if (this.selected.length > 0) {
+      this.openModal(template);
+    } else {
+        this.toastr.warning('Debe de seleccionar al menos una caja para realizalizar una impresion', 'Advertencia')
+    }
+  }
+
 }

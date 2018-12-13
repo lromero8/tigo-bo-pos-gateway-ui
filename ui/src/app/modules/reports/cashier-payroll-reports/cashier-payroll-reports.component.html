@@ -88,6 +88,14 @@
                   <i class="fa fa-eraser fa-lg"></i> 
               </button>
             </div>
+
+            <div class="form-group">
+                &nbsp;
+              <label for=""> &nbsp; &nbsp; </label>
+              <button class="btn btn-primary  btn-sm btn-block"  ngbTooltip="Imprimir" (click)="print(printTpl)" type="button">
+                  <i class="fa fa-print fa-lg"></i> 
+              </button>
+            </div>
   
         </div>
   
@@ -276,6 +284,20 @@
         <!--/ Other table-->
       </div>
     </div>
+
+  </div>
+</ng-template>
+
+
+<ng-template #printTpl>
+  <div class="modal-header modaleHeader">
+    <h4 class="modal-title pull-left">Imprimir</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; ">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
 
   </div>
 </ng-template>
