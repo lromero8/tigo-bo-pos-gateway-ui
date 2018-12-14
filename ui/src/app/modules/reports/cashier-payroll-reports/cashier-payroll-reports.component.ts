@@ -14,6 +14,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import * as FileSaver from 'file-saver';
+import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
+
 
 @Component({
   selector: 'app-cashier-payroll-reports',
@@ -27,11 +29,15 @@ export class CashierPayrollReportsComponent implements OnInit {
   public selected = [];
   public cashierPayrollFrm: FormGroup;
   public results: Array<any>;
+  public colorTheme = 'theme-dark-blue';
+  public bsConfig: Partial<BsDatepickerConfig>;
+  public statuses: Array<any>;
   constructor(private titleService: Title,
               private cashierPayrollReportsService: CashierPayrollReportsService, 
               private toastr: ToastrService,
               private modalService: BsModalService,
-              private formBuilder: FormBuilder,) { 
+              private formBuilder: FormBuilder,
+              private localeService: BsLocaleService, ) { 
 
     this.retrieveResults();
       
@@ -48,6 +54,28 @@ export class CashierPayrollReportsComponent implements OnInit {
       status: ['', [ Validators.minLength(2), Validators.maxLength(8)]],
       period: ['', [ Validators.minLength(2), Validators.maxLength(8)]]
     })
+
+    this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+    this.localeService.use('es');
+
+    this.statuses = [
+      {
+        id: 1,
+        name: "Todos"
+      },
+      {
+        id: 2,
+        name: "Abierta"
+      },
+      {
+        id: 3,
+        name: "Cerrada"
+      },
+      {
+        id: 4,
+        name: "Depositado"
+      }
+    ]
   }
 
   public setTitle( newTitle: string): void {
