@@ -25,4 +25,11 @@ export class CashierPayrollReportsService {
   public modify(data, id) {
 
   }
+
+  public reporting(data) {
+    return this.http.post(environment.REPORT_SERVER.concat('reports/pdf'), data, {
+      responseType: "blob",
+      headers: new HttpHeaders().append("Content-Type", "application/json")
+    });
+  }
 }

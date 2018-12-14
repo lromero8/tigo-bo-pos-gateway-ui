@@ -3,7 +3,7 @@ export const environment = {
 
   LOG_URL: 'http://localhost:3003/api/',
   SSO_URL: 'http://localhost:3003/api',
-
+  REPORT_SERVER: "http://localhost:3030/",
   SETUPS_URL: 'http://localhost:9292/',
   REPORTS_URL: 'http://localhost:2929/',
   SERVER_ERROR_MSG: 'Server Error',

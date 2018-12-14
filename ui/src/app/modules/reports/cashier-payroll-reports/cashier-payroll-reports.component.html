@@ -110,7 +110,7 @@
     <ngx-datatable
     class='material'
     [columnMode]="'force'"        
-    [headerHeight]="50"
+    [headerHeight]="70"
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [limit]="5"
@@ -141,17 +141,17 @@
       <ngx-datatable-column name="EHumano" prop="EHumano"></ngx-datatable-column>
       <ngx-datatable-column name="Periodo" prop="period"></ngx-datatable-column>
       <ngx-datatable-column name="Planilla" prop="payroll"></ngx-datatable-column>
-      <ngx-datatable-column name="Estado de planilla" prop="payrollStatus"></ngx-datatable-column>
-      <ngx-datatable-column name="Fecha de apertura" prop="startDate"></ngx-datatable-column>
-      <ngx-datatable-column name="Hora de apertura" prop="endDate"></ngx-datatable-column>
-      <ngx-datatable-column name="Total cobrado cierre" prop="totalCharging"></ngx-datatable-column>
+      <ngx-datatable-column name="Estado de <br> planilla" prop="payrollStatus"></ngx-datatable-column>
+      <ngx-datatable-column name="Fecha de <br> apertura" prop="startDate"></ngx-datatable-column>
+      <ngx-datatable-column name="Hora de <br> apertura" prop="endDate"></ngx-datatable-column>
+      <ngx-datatable-column name="Total cobrado <br> cierre" prop="totalCharging"></ngx-datatable-column>
 
 
-      <ngx-datatable-column name="Acciones" prop="acciones" >
+      <!---ngx-datatable-column name="Acciones" prop="acciones" >
           <ng-template let-row="row" let-id="value" ngx-datatable-cell-template>
             <button class="btn btn-primary fa fa-pencil" (click)="openModal(modal)"></button>
           </ng-template>
-      </ngx-datatable-column>
+      </ngx-datatable-column-->
 
     
   </ngx-datatable> 
@@ -297,7 +297,17 @@
     </button>
   </div>
   <div class="modal-body">
+    <h6 class="text-center text-bold font-weight-bold">¿Esta seguro que desea realizar imprimir el item(s) seleccionado(s)?</h6>
+
+    <div class="row justify-content-center align-items-center">
 
 
+      <div class="ml-2 mr-2 ">
+        <button class="btn btn-secondary" (click)="cancel()"> Cancelar</button>
+      </div>
+      <div class="ml-2 mr-2 ">
+        <button class="btn btn-primary" (click)="printSelected()" >Aceptar</button>
+      </div>
+    </div>
   </div>
 </ng-template>

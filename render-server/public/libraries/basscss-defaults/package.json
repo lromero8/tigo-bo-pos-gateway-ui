@@ -1,0 +1,51 @@
+{
+  "_from": "basscss-defaults@^2.0.1",
+  "_id": "basscss-defaults@2.1.3",
+  "_inBundle": false,
+  "_integrity": "sha1-tOpjToFcaSPwx2ZbFIpMyLO0OSc=",
+  "_location": "/basscss-defaults",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "basscss-defaults@^2.0.1",
+    "name": "basscss-defaults",
+    "escapedName": "basscss-defaults",
+    "rawSpec": "^2.0.1",
+    "saveSpec": null,
+    "fetchSpec": "^2.0.1"
+  },
+  "_requiredBy": [
+    "/basscss-base-tables"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-defaults/-/basscss-defaults-2.1.3.tgz",
+  "_shasum": "b4ea634e815c6923f0c7665b148a4cc8b3b43927",
+  "_spec": "basscss-defaults@^2.0.1",
+  "_where": "/home/franceskynov/Desktop/test/node_modules/basscss-base-tables",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/addons/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "colors.css": "^2.0.4"
+  },
+  "deprecated": false,
+  "description": "Default variables for Basscss",
+  "homepage": "https://github.com/basscss/addons",
+  "keywords": [
+    "CSS",
+    "OOCSS",
+    "Basscss",
+    "Rework"
+  ],
+  "license": "MIT",
+  "name": "basscss-defaults",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basscss/addons.git"
+  },
+  "version": "2.1.3"
+}

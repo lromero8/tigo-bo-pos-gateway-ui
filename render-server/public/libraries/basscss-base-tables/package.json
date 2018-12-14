@@ -1,0 +1,52 @@
+{
+  "_from": "basscss-base-tables",
+  "_id": "basscss-base-tables@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha1-uFDqHWSwb5GSK/z0AUuqoINquzA=",
+  "_location": "/basscss-base-tables",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "basscss-base-tables",
+    "name": "basscss-base-tables",
+    "escapedName": "basscss-base-tables",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/basscss-base-tables/-/basscss-base-tables-1.0.2.tgz",
+  "_shasum": "b850ea1d64b06f91922bfcf4014baaa0836abb30",
+  "_spec": "basscss-base-tables",
+  "_where": "/home/franceskynov/Desktop/test",
+  "author": {
+    "name": "Brent Jackson"
+  },
+  "bugs": {
+    "url": "https://github.com/basscss/addons/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "basscss-defaults": "^2.0.1"
+  },
+  "deprecated": false,
+  "description": "Base table styles for Basscss",
+  "homepage": "https://github.com/basscss/addons",
+  "keywords": [
+    "CSS",
+    "OOCSS",
+    "Basscss",
+    "Rework"
+  ],
+  "license": "MIT",
+  "name": "basscss-base-tables",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basscss/addons.git"
+  },
+  "version": "1.0.2"
+}

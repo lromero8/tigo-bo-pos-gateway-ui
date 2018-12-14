@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{ title }} </title>
+    <link rel="stylesheet" href="file:///{{ dirPath }}/libraries/basscss-defaults/index.css">
+    <link rel="stylesheet" href="file:///{{ dirPath }}/libraries/basscss-base-tables/index.css">
+    <link rel="stylesheet" href="file:///{{ dirPath }}/assets/css/invoice.css">
+  </head>
+  <body>
+
+    <header class="clearfix">
+      <div id="logo">
+        <img src="file:///{{ dirPath }}/assets/img/logo.svg">
+      </div>
+      <div class="documentTitle" >
+        <h2>
+          {{ documentTitle }}
+        </h2>
+      </div>      
+      <div id="company">
+        <h2 class="name">{{ company.conpanyName }}</h2>
+        <div> {{ company.phone }} </div>
+        <div><a href="mailto:{{ company.email }}">{{ company.email }}</a></div>
+        <div><a href="{{ company.url }}">{{ company.url }}</a></div>
+      </div>
+    </header>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <span>Fecha de creaci&oacute;n:  </span> <span> {{ client.creationDate }} </span> <br>
+          <span>Id de transacci&oacute;n: {{ client.transactionId }} </span>
+        </div>
+      </div>
+      <div class="overflow-scroll">
+        <table class="table-light">
+          <thead>
+            <tr>
+              <th>#</th>
+              {{#each headers}}
+                  <th> {{ removeUnderScore this }} </th>
+              {{/each}}
+            </tr>
+          </thead>
+          <tbody>
+              {{#each rows}}
+                  <tr>
+                    <td> {{increment @index}} </td>
+                      {{#each ../columnNames}}
+                        <td> {{lookup .. this}} </td>
+                      {{/each}}
+                  </tr>
+              {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </main>
+</html>

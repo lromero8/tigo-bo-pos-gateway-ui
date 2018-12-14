@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-cashier-payroll-reports',
@@ -105,14 +106,14 @@ export class CashierPayrollReportsComponent implements OnInit {
     console.log('hola')
   }
 
-  public openModal(template: TemplateRef<any>): void {
-    this.modalRef = this.modalService.show(template, {'class':'modal-lg', 'keyboard': false, 'ignoreBackdropClick': true});
+  public openModal(template: TemplateRef<any>, size): void {
+    this.modalRef = this.modalService.show(template, {'class': size==1 ? 'modal-lg': 'modal-sm', 'keyboard': false, 'ignoreBackdropClick': true});
   }
 
   public validSelected(template): void {
 
     if (this.selected.length > 0) {
-        this.openModal(template);
+        this.openModal(template, 1);
     } else {
         this.toastr.warning('Debe de seleccionar al menos una caja para realizar el cierre', 'Advertencia')
     }
@@ -125,7 +126,7 @@ export class CashierPayrollReportsComponent implements OnInit {
     this.modalRef.hide();
     this.toastr.success('La planilla ha sido actualizada.', 'Ok')
 
-    this.openModal(template);
+    this.openModal(template, 1);
   }
 
   public cancel(): void {
@@ -140,10 +141,33 @@ export class CashierPayrollReportsComponent implements OnInit {
 
   public print(template): void {
     if (this.selected.length > 0) {
-      this.openModal(template);
+      this.openModal(template, 2);
     } else {
         this.toastr.warning('Debe de seleccionar al menos una caja para realizalizar una impresion', 'Advertencia')
     }
+  }
+
+  public printSelected(): void {
+    this.cashierPayrollReportsService.reporting({
+
+      documentTitle: "",
+      fileName: "",
+      headers: ["sucursal", "Local", "Caja", "EHumano", "Periodo", "Planilla", "Estado de planilla", "Fecha de apertura", "Hora de apertura", "Total cobrado cierre"],
+      columnNames: ["branchOffice", "local", "register", "EHumano", "period", "payroll", "payrollStatus", "startDate", "endDate", "totalCharging"],
+      rows: this.selected,
+      creationDate: new Date(),
+      transactionId: "121545-g48tgtg15t48te51e5-frerr4848ewe-qwe748de84de84dedghrf4c8e"
+    }).subscribe(
+      data => {
+        FileSaver.saveAs(data, 'reporte.pdf', true)
+        this.modalRef.hide();
+        this.selected = []
+      },
+      error => {
+        this.toastr.error('No se pudo conectar al servidor de reportes', 'Error')
+        
+      }
+    )
   }
 
 }

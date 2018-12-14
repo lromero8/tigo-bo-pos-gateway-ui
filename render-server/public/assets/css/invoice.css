@@ -1,0 +1,144 @@
+@font-face {
+	font-family: 'Cronos Pro Regular';
+	src: url('../fonts/Cronos Pro Regular.eot');
+  src: url('../fonts/Cronos Pro Regular.woff') format('woff'), 
+       url('../fonts/Cronos Pro Regular.ttf') format('truetype'), 
+       url('../fonts/Cronos Pro Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html{
+    /*padding-top: 1em;*/
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  body {
+    font-family: 'Cronos Pro Regular';
+  }
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  a {
+    color: #2A0A78;
+    text-decoration: none;
+  }
+
+  body {
+    position: relative;
+    width: 99%; 
+    margin: 0 auto; 
+    color: #383838;
+    background: #FFFFFF; 
+    font-size: 10px; 
+    font-family: 'Cronos Pro Regular';
+  }
+
+  header {
+    padding: 5px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #6FB5EF;
+  }
+
+  #logo {
+    float: left;
+    /*margin-top: 8px;*/
+  }
+
+  #logo img {
+    height: 35px;
+  }
+
+  #company {
+    float: right;
+    text-align: right;
+  }
+
+
+  #details {
+    margin-bottom: 5px;
+  }
+
+  #client {
+    padding-left: 2px;
+    border-left: 2px solid #2A0A78;
+    float: left;
+    font-size: 1em;
+  }
+
+  #client .to {
+    color: #6FB5EF;
+  }
+
+  h2.name {
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  #invoice {
+    float: right;
+    text-align: right;
+  }
+
+  #invoice .date {
+    font-size: 1.1em;
+    color: #6FB5EF;
+  }
+  /*#2A0A78*/
+  /*#6FB5EF*/
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  table th {
+    color: #2A0A78;
+    border-bottom-color: transparent;
+    
+  }
+  table th,
+  table td {
+    padding: 7px;
+    text-align: center;
+    border: 1px solid #6FB5EF;
+    
+    /*border: 1px solid #6FB5EF;*/
+   /* border-bottom: 1px solid #6FB5EF;
+    border-right: 1px solid #6FB5EF;*/
+  }
+  
+  .address{
+    font-size: 10px;
+  }
+
+  footer {
+    color: #383838;
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    bottom: 0;
+    left:0px;
+    border-top: 1px solid #6FB5EF;
+    padding: 8px 0;
+    text-align: center;
+  }
+
+  #qrcode {
+    width:50px;
+    height:50px;
+  }
+
+
+.documentTitle {
+    position: fixed;
+    width: 500px;
+    height: 200px;
+    top: 10px;
+    left: 40%;
+  }  
