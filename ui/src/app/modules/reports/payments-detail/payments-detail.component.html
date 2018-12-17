@@ -55,22 +55,36 @@
 
     
 
-      <div class="col-md-3">
+      <div class="col-md-1">
           <div class="form-group">
               &nbsp;
             <label for=""> &nbsp; &nbsp; </label>
-            <button class="btn btn-primary  btn-sm btn-block" type="submit" ngbTooltip="Buscar" type="submit">
+            <button class="btn btn-primary  btn-sm btn-block" ngbTooltip="Buscar" type="submit">
                 <i class="fa fa-search fa-lg"></i>
             </button>
           </div>  
-          <div class="form-group">
-              &nbsp;
-            <label for=""> &nbsp; &nbsp; </label>
-            <button class="btn btn-primary  btn-sm btn-block"  ngbTooltip="Limpiar" type="button">
-                <i class="fa fa-eraser fa-lg"></i> 
-            </button>
-          </div>
+        
 
+      </div>
+
+      <div class="col-md-1">
+        <div class="form-group">
+          &nbsp;
+        <label for=""> &nbsp; &nbsp; </label>
+        <button class="btn btn-primary  btn-sm btn-block" (click)="print(printTpl)" ngbTooltip="Imprimir" type="button">
+            <i class="fa fa-print fa-lg"></i> 
+        </button>
+      </div>
+      </div>
+
+      <div class="col-md-1">
+        <div class="form-group">
+          &nbsp;
+        <label for=""> &nbsp; &nbsp; </label>
+        <button class="btn btn-primary  btn-sm btn-block"  ngbTooltip="Limpiar" type="button">
+            <i class="fa fa-eraser fa-lg"></i> 
+        </button>
+      </div>
       </div>
 
       </div>
@@ -88,8 +102,23 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [limit]="5"
-    [rows]='results'>
+    [rows]='results'
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    [selectAllRowsOnPage]="false"
+    [displayCheck]="displayCheck"
+    (activate)="onActivate($event)"
+    (select)='onSelect($event)'>
 
+    <ngx-datatable-column
+            [width]="50"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            [headerCheckboxable]="false"
+            [checkboxable]="true"
+            (change)="hola()"> </ngx-datatable-column>
       <ngx-datatable-column name="Fecha" prop="date"></ngx-datatable-column>
       <ngx-datatable-column name="Monto debe" prop="debtClientAmount"></ngx-datatable-column>
       <ngx-datatable-column name="Estado contable" prop="accountingStatement"></ngx-datatable-column>

@@ -85,6 +85,28 @@ export class PaymentsDetailComponent implements OnInit {
     )
   }
 
+  public onActivate(): void {
+
+  }
+
+  public onSelect(): void {
+    console.log('on select')
+    console.log(this.selected)
+
+    this.selected = [...this.selected]
+  }
+
+  public displayCheck(row) {
+
+    console.log('in displayCheck')
+    console.log(row)
+    return row.name !== '~';
+  }
+
+  public hola(): void {
+    console.log('hola')
+  }
+
   public openModal(template: TemplateRef<any>, size): void {
     this.modalRef = this.modalService.show(template, {'class': size==1 ? 'modal-lg': 'modal-sm', 'keyboard': false, 'ignoreBackdropClick': true});
   }
@@ -101,15 +123,15 @@ export class PaymentsDetailComponent implements OnInit {
     this.reporting.document({
 
       documentTitle: "",
-      fileName: "",
-      headers: [],
-      columnNames: [],
+      fileName: "Detalle de pago",
+      headers: ["Fecha", "Monto debe", "Estado contable", "Monto haber", "Estado cobranza", "Saldo"],
+      columnNames: ["date", "debtClientAmount", "accountingStatement", "amountToHave", "paymentStatus", "balanceStatus"],
       rows: this.selected,
       creationDate: new Date(),
       transactionId: "ss24frfe-g48tgtg15t48te51e5-frerr4848ewe-44gddeeg445g"
     }).subscribe(
       data => {
-        FileSaver.saveAs(data, 'reporte-formas-de-pago.pdf', true)
+        FileSaver.saveAs(data, 'reporte-detalle-de-pago.pdf', true)
         this.modalRef.hide();
         this.selected = []
       },
