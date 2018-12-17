@@ -9,6 +9,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FcmHotBillingPaymentService } from 'app/services/fcm-hot-billing-payment.service';
 
 @Component({
   selector: 'app-fcm-hotbilling-payment',
@@ -96,7 +97,8 @@ export class FcmHotbillingPaymentComponent implements OnInit {
   ];
 
   constructor(private modalService: NgbModal,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private fcmHotbillingPaymentService: FcmHotBillingPaymentService) {
     this.ContractForm = this.fb.group({
       items: this.fb.array([])
     });
@@ -210,8 +212,8 @@ export class FcmHotbillingPaymentComponent implements OnInit {
         uniqueInvoice.disable();
       }
     } else {
-        let uniqueInvoice = itemsInvoices.at(0).get('status_invoice');
-        uniqueInvoice.enable();
+      let uniqueInvoice = itemsInvoices.at(0).get('status_invoice');
+      uniqueInvoice.enable();
     }
   }
 
@@ -229,9 +231,17 @@ export class FcmHotbillingPaymentComponent implements OnInit {
   getContracts() {
 
     this.resetForm();
-    this.listContracts.forEach(element => {
-      this.addItemForm(element);
-    });
+    this.fcmHotbillingPaymentService.getContracts('', '', '')
+      .subscribe(
+        response => {
+          response.forEach(element => {
+            this.addItemForm(element);
+          });
+        },
+        error => {
+
+        }
+      )
   }
 
   finishContracts() {

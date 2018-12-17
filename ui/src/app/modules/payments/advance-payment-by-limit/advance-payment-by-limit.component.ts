@@ -8,6 +8,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { AdvancePaymentByLimitService } from 'app/services/advance-payment-by-limit.service';
 
 @Component({
   selector: 'app-advance-payment-by-limit',
@@ -95,7 +96,8 @@ export class AdvancePaymentByLimitComponent implements OnInit {
   ];
 
   constructor(private modalService: NgbModal,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private advancePaymentByLimit: AdvancePaymentByLimitService) {
     this.ContractForm = this.fb.group({
       items: this.fb.array([])
     });
@@ -209,8 +211,8 @@ export class AdvancePaymentByLimitComponent implements OnInit {
         uniqueInvoice.disable();
       }
     } else {
-        let uniqueInvoice = itemsInvoices.at(0).get('status_invoice');
-        uniqueInvoice.enable();
+      let uniqueInvoice = itemsInvoices.at(0).get('status_invoice');
+      uniqueInvoice.enable();
     }
   }
 
@@ -228,9 +230,18 @@ export class AdvancePaymentByLimitComponent implements OnInit {
   getContracts() {
 
     this.resetForm();
-    this.listContracts.forEach(element => {
-      this.addItemForm(element);
-    });
+    this.advancePaymentByLimit.getContracts('', '', '')
+      .subscribe(response => {
+        if (response) {
+          response.forEach(element => {
+            this.addItemForm(element);
+          });
+        }
+      },
+        error => {
+
+        }
+      )
   }
 
   finishContracts() {

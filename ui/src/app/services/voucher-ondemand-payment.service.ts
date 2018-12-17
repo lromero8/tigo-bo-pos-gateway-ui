@@ -9,4 +9,13 @@ import { Injectable } from '@angular/core';
 export class VoucherOndemandPaymentService {
 
   constructor(private http: HttpClient) { }
+
+  getContracts(nContract, nIdentification, nAccount) {
+    return this.http.get<any>('http://localhost:3000/contracts')
+      .pipe(
+        map(data => {
+          return data;
+        })
+      );
+  }
 }

@@ -9,6 +9,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { SmallRechargePaymentService } from 'app/services/small-recharge-payment.service';
 
 @Component({
   selector: 'app-small-recharge-payment',
@@ -26,51 +27,6 @@ export class SmallRechargePaymentComponent implements OnInit {
   @ViewChild('modalPaymentMethod') modalPaymentMethod: any;
   @ViewChild('modalPaymentContract') modalPaymentContract: any;
   private ContractForm: FormGroup;
-
-  private listContracts =
-    [
-      {
-        id: 123213,
-        client_name: 'JORGE ANTONIO',
-        client_last_name: 'SAAVEDRA SAAVEDRA',
-        contract_number: '1070230',
-        type_account: 'CET',
-        contracts: [
-          {
-            id: 0,
-            name_contract: 'Contrato 1',
-            invoices: [
-              {
-                id: 0,
-                name_invoice: 'Factura 1',
-                price_invoice: 120
-              },
-              {
-                id: 1,
-                name_invoice: 'Factura 2',
-                price_invoice: 110
-              }
-            ]
-          },
-          {
-            id: 1,
-            name_contract: 'Contrato 2',
-            invoices: [
-              {
-                id: 0,
-                name_invoice: 'Factura 1',
-                price_invoice: 100
-              },
-              {
-                id: 1,
-                name_invoice: 'Factura 2',
-                price_invoice: 130
-              }
-            ]
-          }
-        ]
-      }
-    ];
 
   private listContractsAdded = [
     {
@@ -96,7 +52,8 @@ export class SmallRechargePaymentComponent implements OnInit {
   ];
 
   constructor(private modalService: NgbModal,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private smallRechargePaymentService: SmallRechargePaymentService) {
     this.ContractForm = this.fb.group({
       items: this.fb.array([])
     });
@@ -229,9 +186,14 @@ export class SmallRechargePaymentComponent implements OnInit {
   getContracts() {
 
     this.resetForm();
-    this.listContracts.forEach(element => {
-      this.addItemForm(element);
-    });
+    this.smallRechargePaymentService.getContracts('', '', '')
+    .subscribe(
+      response => {
+        response.forEach(element => {
+          this.addItemForm(element);
+        });
+      }
+    );
   }
 
   finishContracts() {

@@ -29,51 +29,6 @@ export class AdvancePaymentComponent implements OnInit {
   @ViewChild('modalPaymentContract') modalPaymentContract: any;
   private ContractForm: FormGroup;
 
-  private listContracts =
-    [
-      {
-        id: 123213,
-        client_name: 'JORGE ANTONIO',
-        client_last_name: 'SAAVEDRA SAAVEDRA',
-        contract_number: '1070230',
-        type_account: 'CET',
-        contracts: [
-          {
-            id: 0,
-            name_contract: 'Contrato 1',
-            invoices: [
-              {
-                id: 0,
-                name_invoice: 'Factura 1',
-                price_invoice: 120
-              },
-              {
-                id: 1,
-                name_invoice: 'Factura 2',
-                price_invoice: 110
-              }
-            ]
-          },
-          {
-            id: 1,
-            name_contract: 'Contrato 2',
-            invoices: [
-              {
-                id: 0,
-                name_invoice: 'Factura 1',
-                price_invoice: 100
-              },
-              {
-                id: 1,
-                name_invoice: 'Factura 2',
-                price_invoice: 130
-              }
-            ]
-          }
-        ]
-      }
-    ];
-
   private listContractsAdded = [
     {
       id: null,
@@ -232,7 +187,6 @@ export class AdvancePaymentComponent implements OnInit {
   getContracts() {
 
     this.resetForm();
-
     this.advancePaymentService.getContracts('', '', '')
       .subscribe(
         response => {
