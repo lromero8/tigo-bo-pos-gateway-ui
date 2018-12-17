@@ -180,7 +180,7 @@ export class CashierPayrollReportsComponent implements OnInit {
   public printSelected(): void {
     this.reporting.document({
 
-      documentTitle: "",
+      documentTitle: "Reporte de planilla de caja",
       fileName: "",
       headers: ["sucursal", "Local", "Caja", "EHumano", "Periodo", "Planilla", "Estado de planilla", "Fecha de apertura", "Hora de apertura", "Total cobrado cierre"],
       columnNames: ["branchOffice", "local", "register", "EHumano", "period", "payroll", "payrollStatus", "startDate", "endDate", "totalCharging"],

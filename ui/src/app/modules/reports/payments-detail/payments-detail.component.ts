@@ -6,12 +6,16 @@
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PaymentDetatailService } from '../../../services/payment-detatail.service'
+import { ReportingService } from '../../../services/reporting.service';
 import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import * as FileSaver from 'file-saver';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-payments-detail',
@@ -21,6 +25,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class PaymentsDetailComponent implements OnInit {
 
+  public modalRef: BsModalRef;
+  public selected = [];
   public paymentDetailFrm: FormGroup;
   public paymentDetail: Array<any>;
   public results: Array<any>;
@@ -29,7 +35,9 @@ export class PaymentsDetailComponent implements OnInit {
   constructor(private titleService: Title,
               private paymentDetatailService: PaymentDetatailService,
               private toastr: ToastrService,
-              private formBuilder: FormBuilder,) { 
+              private formBuilder: FormBuilder,
+              private reporting: ReportingService,
+              private modalService: BsModalService,) { 
 
 
     this.retrieveResults();
@@ -74,6 +82,41 @@ export class PaymentsDetailComponent implements OnInit {
       this.f.accountNumber.value,
       this.f.startDate.value,
       this.f.endDate.value,
+    )
+  }
+
+  public openModal(template: TemplateRef<any>, size): void {
+    this.modalRef = this.modalService.show(template, {'class': size==1 ? 'modal-lg': 'modal-sm', 'keyboard': false, 'ignoreBackdropClick': true});
+  }
+
+  public print(template): void {
+    if (this.selected.length > 0) {
+      this.openModal(template, 2);
+    } else {
+        this.toastr.warning('Debe de seleccionar al menos un registro para realizalizar una impresion', 'Advertencia')
+    }
+  }
+
+  public printSelected(): void {
+    this.reporting.document({
+
+      documentTitle: "",
+      fileName: "",
+      headers: [],
+      columnNames: [],
+      rows: this.selected,
+      creationDate: new Date(),
+      transactionId: "ss24frfe-g48tgtg15t48te51e5-frerr4848ewe-44gddeeg445g"
+    }).subscribe(
+      data => {
+        FileSaver.saveAs(data, 'reporte-formas-de-pago.pdf', true)
+        this.modalRef.hide();
+        this.selected = []
+      },
+      error => {
+        this.toastr.error('No se pudo conectar al servidor de reportes', 'Error')
+        
+      }
     )
   }
 }

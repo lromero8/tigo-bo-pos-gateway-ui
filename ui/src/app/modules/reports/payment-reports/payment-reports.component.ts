@@ -6,12 +6,16 @@
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation,TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PaymentReporsService } from '../../../services/payment-repors.service'
+import { ReportingService } from '../../../services/reporting.service';
 import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import * as FileSaver from 'file-saver';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-payment-reports',
@@ -21,6 +25,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class PaymentReportsComponent implements OnInit {
 
+  public modalRef: BsModalRef;
+  public selected = [];
   public paymentReportsFrm: FormGroup;
   public colorTheme = 'theme-dark-blue';
   public bsConfig: Partial<BsDatepickerConfig>;
@@ -28,7 +34,9 @@ export class PaymentReportsComponent implements OnInit {
   constructor(private titleService: Title,
               private PaymentReporsService: PaymentReporsService,
               private toastr: ToastrService,
-              private formBuilder: FormBuilder,) { }
+              private formBuilder: FormBuilder,
+              private reporting: ReportingService,
+              private modalService: BsModalService,) { }
 
   ngOnInit() {
     this.setTitle('Reportes de pago');
@@ -83,6 +91,68 @@ export class PaymentReportsComponent implements OnInit {
       this.f.branchOffice.value,
       this.f.local.value,
       this.f.date.value,
+    )
+  }
+
+
+  public changeSelected(): void {
+    console.log('change')
+  }
+
+  public onActivate(): void {
+
+  }
+
+  public onSelect(): void {
+    console.log('on select')
+    console.log(this.selected)
+
+    this.selected = [...this.selected]
+  }
+
+  public displayCheck(row) {
+
+    console.log('in displayCheck')
+    console.log(row)
+    return row.name !== '~';
+  }
+
+  public hola(): void {
+    console.log('hola')
+  }
+
+  public openModal(template: TemplateRef<any>, size): void {
+    this.modalRef = this.modalService.show(template, {'class': size==1 ? 'modal-lg': 'modal-sm', 'keyboard': false, 'ignoreBackdropClick': true});
+  }
+
+  public print(template): void {
+    if (this.selected.length > 0) {
+      this.openModal(template, 2);
+    } else {
+        this.toastr.warning('Debe de seleccionar al menos un registro para realizalizar una impresion', 'Advertencia')
+    }
+  }
+
+  public printSelected(): void {
+    this.reporting.document({
+
+      documentTitle: "Reporte de pagos",
+      fileName: "",
+      headers: ["Estado", "Tipo", "Numero", "Serie", "Fecha", "Cliente", "Razon social", "Monto"],
+      columnNames: ["status", "type", "number", "serie", "date", "client", "businessName", "amountCharged"],
+      rows: this.selected,
+      creationDate: new Date(),
+      transactionId: "ss24frfe-g48tgtg15t48te51e5-frerr4848ewe-44gddeeg445g"
+    }).subscribe(
+      data => {
+        FileSaver.saveAs(data, 'reporte-de-pagos.pdf', true)
+        this.modalRef.hide();
+        this.selected = []
+      },
+      error => {
+        this.toastr.error('No se pudo conectar al servidor de reportes', 'Error')
+        
+      }
     )
   }
 

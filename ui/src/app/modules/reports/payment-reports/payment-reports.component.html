@@ -44,13 +44,22 @@
               <label for="date">Fecha:</label>
               <input  type="text" name="date" id="date" class="form-control" bsDatepicker  [bsConfig]="bsConfig" #dpa="bsDatepicker" readonly placeholder="Seleccione" formControlName="date">
             </div>
+
+
+            <div class="form-group">
+              &nbsp;
+              <label for=""> &nbsp; &nbsp; </label>
+              <button class="btn btn-primary  btn-sm btn-block" ngbTooltip="Imprimir" (click)="print(printTpl)" type="button">
+                <i class="fa fa-print fa-lg"></i>
+              </button>
+            </div>
       </div>
   
       <div class="col-md-3">
       <div class="form-group">
           &nbsp;
         <label for=""> &nbsp; &nbsp; </label>
-        <button class="btn btn-primary  btn-sm btn-block" type="submit" ngbTooltip="Buscar" type="submit">
+        <button class="btn btn-primary  btn-sm btn-block"  ngbTooltip="Buscar" type="submit">
             <i class="fa fa-search fa-lg"></i>
         </button>
       </div>   
@@ -80,8 +89,23 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [limit]="5"
-    [rows]='paymentReportsResults.paymentDetails'>
+    [rows]='paymentReportsResults.paymentDetails'
+    [selected]="selected"
+        [selectionType]="'checkbox'"
+        [selectAllRowsOnPage]="false"
+        [displayCheck]="displayCheck"
+        (activate)="onActivate($event)"
+        (select)='onSelect($event)'>
 
+    <ngx-datatable-column
+            [width]="50"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            [headerCheckboxable]="false"
+            [checkboxable]="true"
+            (change)="hola()"> </ngx-datatable-column>
       <ngx-datatable-column name="Estado" prop="status"></ngx-datatable-column>
       <ngx-datatable-column name="Tipo" prop="type"></ngx-datatable-column>
       <ngx-datatable-column name="Numero" prop="number"></ngx-datatable-column>
@@ -102,3 +126,28 @@
 
     
   </ngx-datatable> 
+
+
+
+  <ng-template #printTpl>
+    <div class="modal-header modaleHeader">
+      <h4 class="modal-title pull-left">Imprimir</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; ">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h6 class="text-center text-bold font-weight-bold">¿Esta seguro que desea realizar imprimir el item(s) seleccionado(s)?</h6>
+  
+      <div class="row justify-content-center align-items-center">
+  
+  
+        <div class="ml-2 mr-2 ">
+          <button class="btn btn-secondary" (click)="cancel()"> Cancelar</button>
+        </div>
+        <div class="ml-2 mr-2 ">
+          <button class="btn btn-primary" (click)="printSelected()" >Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>

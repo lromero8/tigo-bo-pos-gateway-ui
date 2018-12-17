@@ -107,3 +107,28 @@
 
     
   </ngx-datatable> 
+
+
+  <ng-template #printTpl>
+    <div class="modal-header modaleHeader">
+      <h4 class="modal-title pull-left">Imprimir</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; ">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h6 class="text-center text-bold font-weight-bold">¿Esta seguro que desea realizar imprimir el item(s)
+        seleccionado(s)?</h6>
+  
+      <div class="row justify-content-center align-items-center">
+  
+  
+        <div class="ml-2 mr-2 ">
+          <button class="btn btn-secondary" (click)="cancel()"> Cancelar</button>
+        </div>
+        <div class="ml-2 mr-2 ">
+          <button class="btn btn-primary" (click)="printSelected()">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>

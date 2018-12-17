@@ -132,7 +132,7 @@ export class PaymentOptionsReportsComponent implements OnInit {
   public printSelected(): void {
     this.reporting.document({
 
-      documentTitle: "",
+      documentTitle: "Reporte de opciones de Pago",
       fileName: "",
       headers: ["Cajero", "Caja", "Fecha", "Hora", "Voucher", "Forma de pago", "Monto"],
       columnNames: ["cahsierId", "registerId", "date", "hour", "voucher", "paymentOption", "amount"],
