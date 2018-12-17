@@ -6,24 +6,14 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CashierPayrollReportsService {
+export class ReportingService {
 
   constructor(private http: HttpClient) { }
 
-  public retrieve() {
-    return this.http.get<any>(environment.REPORTS_URL.concat('registerPayrollReports'))
-    .pipe(map(data => {
-      
-        return data;
-    }))
+  public document(data) {
+    return this.http.post(environment.REPORT_SERVER.concat('reports/pdf'), data, {
+      responseType: "blob",
+      headers: new HttpHeaders().append("Content-Type", "application/json")
+    });
   }
-
-  public make(data) {
-
-  }
-
-  public modify(data, id) {
-
-  }
-  
 }

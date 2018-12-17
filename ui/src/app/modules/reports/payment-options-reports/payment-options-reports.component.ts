@@ -6,12 +6,16 @@
 //  Copyright © 2018 hightech-corp. All rights reserved.
 //
 
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PaymentOptionsReportService } from '../../../services/payment-options-report.service'
+import { ReportingService } from '../../../services/reporting.service'
 import { BsDatepickerConfig, BsLocaleService, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker'
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-payment-options-reports',
@@ -21,14 +25,19 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class PaymentOptionsReportsComponent implements OnInit {
 
+  public modalRef: BsModalRef;
   public paymentOptFrm: FormGroup;
   public bsConfig: Partial<BsDatepickerConfig>;
   public colorTheme = 'theme-dark-blue';
   public paymentOptData: any;
+  public selected = [];
   constructor(private titleService: Title, 
               private paymentOptionsReportService: PaymentOptionsReportService,
               private toastr: ToastrService,
-              private formBuilder: FormBuilder,) {
+              private formBuilder: FormBuilder,
+              private modalService: BsModalService,
+              private reporting: ReportingService
+              ) {
 
     this.paymentOptData = {
       id: 0,
@@ -76,5 +85,75 @@ export class PaymentOptionsReportsComponent implements OnInit {
       )
   }
 
+
+  public changeSelected(): void {
+    console.log('change')
+  }
+
+  public onActivate(): void {
+
+  }
+
+  public onSelect(): void {
+    console.log('on select')
+    console.log(this.selected)
+
+    this.selected = [...this.selected]
+  }
+
+  public displayCheck(row) {
+
+    console.log('in displayCheck')
+    console.log(row)
+    return row.name !== '~';
+  }
+
+  public hola(): void {
+    console.log('hola')
+  }
+
+  public clean(): void {
+    this.selected = [];
+    this.paymentOptData = {}
+  }
+
+  public cancel(): void {
+    this.selected = [];
+  }
+   
+  public print(template): void {
+    if (this.selected.length > 0) {
+      this.openModal(template, 2);
+    } else {
+        this.toastr.warning('Debe de seleccionar al menos una caja para realizalizar una impresion', 'Advertencia')
+    }
+  }
+
+  public printSelected(): void {
+    this.reporting.document({
+
+      documentTitle: "",
+      fileName: "",
+      headers: ["Cajero", "Caja", "Fecha", "Hora", "Voucher", "Forma de pago", "Monto"],
+      columnNames: ["cahsierId", "registerId", "date", "hour", "voucher", "paymentOption", "amount"],
+      rows: this.selected,
+      creationDate: new Date(),
+      transactionId: "ss24frfe-g48tgtg15t48te51e5-frerr4848ewe-44gddeeg445g"
+    }).subscribe(
+      data => {
+        FileSaver.saveAs(data, 'reporte-formas-de-pago.pdf', true)
+        this.modalRef.hide();
+        this.selected = []
+      },
+      error => {
+        this.toastr.error('No se pudo conectar al servidor de reportes', 'Error')
+        
+      }
+    )
+  }
+
+  public openModal(template: TemplateRef<any>, size): void {
+    this.modalRef = this.modalService.show(template, {'class': size==1 ? 'modal-lg': 'modal-sm', 'keyboard': false, 'ignoreBackdropClick': true});
+  }
 }
  

@@ -44,14 +44,24 @@
         </button>
       </div>   
       
+      
           
+      </div>
+
+      <div class="col-md-1">
+        <div class="form-group">
+          <label for=""> &nbsp; &nbsp; </label>
+          <button class="btn btn-primary btn-sm btn-block" type="button" (click)="print(printTpl)">
+            <i class="fa fa-print"></i>
+          </button>
+        </div>
       </div>
   
         <div class="col-md-1">
             <div class="form-group">
                 &nbsp;
               <label for=""> &nbsp; &nbsp; </label>
-              <button class="btn btn-primary  btn-sm btn-block"  ngbTooltip="Limpiar" type="button">
+              <button class="btn btn-primary  btn-sm btn-block"  ngbTooltip="Limpiar" (click)="clean()" type="button">
                   <i class="fa fa-eraser fa-lg"></i> 
               </button>
             </div>
@@ -74,8 +84,24 @@
         [footerHeight]="50"
         [rowHeight]="'auto'"
         [limit]="5"
-        [rows]='paymentOptData.payments'>
+        [rows]='paymentOptData.payments'
+        [selected]="selected"
+        [selectionType]="'checkbox'"
+        [selectAllRowsOnPage]="false"
+        [displayCheck]="displayCheck"
+        (activate)="onActivate($event)"
+        (select)='onSelect($event)'>
 
+          <ngx-datatable-column
+            [width]="50"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            [headerCheckboxable]="false"
+            [checkboxable]="true"
+            (change)="hola()">      
+          </ngx-datatable-column> 
   	      <ngx-datatable-column name="Cajero" prop="cahsierId"></ngx-datatable-column>
   	      <ngx-datatable-column name="Caja" prop="registerId"></ngx-datatable-column>
           <ngx-datatable-column name="Fecha" prop="date"></ngx-datatable-column>
@@ -92,3 +118,28 @@
 
         
       </ngx-datatable> 
+
+
+<ng-template #printTpl>
+  <div class="modal-header modaleHeader">
+    <h4 class="modal-title pull-left">Imprimir</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); animateBank=false; ">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h6 class="text-center text-bold font-weight-bold">¿Esta seguro que desea realizar imprimir el item(s)
+      seleccionado(s)?</h6>
+
+    <div class="row justify-content-center align-items-center">
+
+
+      <div class="ml-2 mr-2 ">
+        <button class="btn btn-secondary" (click)="cancel()"> Cancelar</button>
+      </div>
+      <div class="ml-2 mr-2 ">
+        <button class="btn btn-primary" (click)="printSelected()">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

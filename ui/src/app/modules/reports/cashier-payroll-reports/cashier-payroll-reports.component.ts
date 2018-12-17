@@ -9,6 +9,7 @@
 import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CashierPayrollReportsService } from '../../../services/cashier-payroll-reports.service'
+import { ReportingService } from '../../../services/reporting.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -37,7 +38,8 @@ export class CashierPayrollReportsComponent implements OnInit {
               private toastr: ToastrService,
               private modalService: BsModalService,
               private formBuilder: FormBuilder,
-              private localeService: BsLocaleService, ) { 
+              private localeService: BsLocaleService, 
+              private reporting: ReportingService,) { 
 
     this.retrieveResults();
       
@@ -176,7 +178,7 @@ export class CashierPayrollReportsComponent implements OnInit {
   }
 
   public printSelected(): void {
-    this.cashierPayrollReportsService.reporting({
+    this.reporting.document({
 
       documentTitle: "",
       fileName: "",
@@ -187,7 +189,7 @@ export class CashierPayrollReportsComponent implements OnInit {
       transactionId: "121545-g48tgtg15t48te51e5-frerr4848ewe-qwe748de84de84dedghrf4c8e"
     }).subscribe(
       data => {
-        FileSaver.saveAs(data, 'reporte.pdf', true)
+        FileSaver.saveAs(data, 'reporte-planilla-caja.pdf', true)
         this.modalRef.hide();
         this.selected = []
       },
