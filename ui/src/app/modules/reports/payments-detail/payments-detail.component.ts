@@ -122,8 +122,8 @@ export class PaymentsDetailComponent implements OnInit {
   public printSelected(): void {
     this.reporting.document({
 
-      documentTitle: "",
-      fileName: "Detalle de pago",
+      documentTitle: "Detalle de pago",
+      fileName: "",
       headers: ["Fecha", "Monto debe", "Estado contable", "Monto haber", "Estado cobranza", "Saldo"],
       columnNames: ["date", "debtClientAmount", "accountingStatement", "amountToHave", "paymentStatus", "balanceStatus"],
       rows: this.selected,
